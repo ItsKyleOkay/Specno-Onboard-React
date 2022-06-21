@@ -13,7 +13,7 @@ const ProfilePage = () => {
   return (
     <div>
       <span className={classes.header}>
-        <div className={classes.logo}>Inspire Academy</div>
+        <div className={classes.logo}>Specno</div>
         <nav>
           <ul>
             <li>

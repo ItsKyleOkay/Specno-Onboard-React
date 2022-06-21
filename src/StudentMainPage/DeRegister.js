@@ -85,20 +85,22 @@ const DeRegister = () => {
   return (
     <div>
       <span className={classes.header}>
-        <div className={classes.logo}>Inspire Academy</div>
+        <div className={classes.logo}>Specno</div>
         <nav>
           <ul>
             <li>
               <a href="/profile">Home</a>
             </li>
             <li>
-              <a href="/register">Register</a>
+              <a href="/register">About Us</a>
             </li>
             <li>
-              <a href="/de-register">De-register</a>
+              <a href="/de-register">Blog</a>
             </li>
             <li>
-              <a href="/marks">Marks</a>
+              <a className={classes.onboard} href="/onboard">
+                Onboard
+              </a>
             </li>
           </ul>
         </nav>

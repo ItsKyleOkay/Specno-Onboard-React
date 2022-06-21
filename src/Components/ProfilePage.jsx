@@ -26,7 +26,7 @@ const ProfilePage = () => {
               <a href="/de-register">Blog</a>
             </li>
             <li>
-              <a className={classes.onboard} href="/marks">
+              <a className={classes.onboard} href="/onboard">
                 Onboard
               </a>
             </li>

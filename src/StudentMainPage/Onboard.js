@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
-import classes from "./Marks.module.css";
+import classes from "./Onboard.module.css";
 import firebase from "firebase";
 
-const Marks = () => {
+const Onboard = () => {
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState();
   const [posts, setPosts] = useState([]);
@@ -36,57 +36,31 @@ const Marks = () => {
   return (
     <div>
       <span className={classes.header}>
-        <div className={classes.logo}>Inspire Academy</div>
+        <div className={classes.logo}>Specno</div>
         <nav>
           <ul>
             <li>
               <a href="/profile">Home</a>
             </li>
             <li>
-              <a href="/register">Register</a>
+              <a href="/register">About Us</a>
             </li>
             <li>
-              <a href="/de-register">De-register</a>
+              <a href="/de-register">Blog</a>
             </li>
             <li>
-              <a href="/marks">Marks</a>
+              <a className={classes.onboard} href="/onboard">
+                Onboard
+              </a>
             </li>
           </ul>
         </nav>
       </span>
       <div>
-        <h1>Marks</h1>
-        {posts.length > 0 ? (
-          posts.map((post) => (
-            <div key={post.key}>
-              {(post.email === email) & (post.student === true) ? (
-                <span className={classes.Course}>
-                  <h1>{post.email}</h1>{" "}
-                  <h2>
-                    {post.Course} - {post.AccountingMark}
-                  </h2>
-                  <h2>
-                    {post.Course2} - {post.MathsMark}
-                  </h2>
-                  <h2>
-                    {post.Course3} - {post.ScienceMark}
-                  </h2>
-                  <h2>
-                    {post.Course4} - {post.ICTMark}
-                  </h2>
-                  <h2>Comments - {post.Comments}</h2>
-                </span>
-              ) : (
-                <h1></h1>
-              )}
-            </div>
-          ))
-        ) : (
-          <h1>no answers yet :(</h1>
-        )}
+        <h1>Needs onboard code</h1>
       </div>
     </div>
   );
 };
 
-export default Marks;
+export default Onboard;

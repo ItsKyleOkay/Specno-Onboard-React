@@ -4,14 +4,14 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #aeddf3;
+  background-color: #489DDA;
   padding: 1rem;
 }
 
 .logo {
   font-size: 2rem;
   width: 50rem;
-  color: black;
+  color: white;
   font-weight: bold;
 }
 
@@ -30,7 +30,7 @@
 .header a {
   text-decoration: none;
   font-size: 1.5rem;
-  color: black;
+  color: white;
 }
 
 .header a:hover,
@@ -77,4 +77,11 @@
 .h1{
     color: black;
     font-style: bold;
+}
+
+.onboard{
+  color: rgb(59, 142, 208);
+  background-color: rgb(112, 36, 254);
+  border-radius: 5px;
+
 }

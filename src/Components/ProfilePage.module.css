@@ -79,3 +79,10 @@ width: 20rem;
 .buttons :hover{
   background-color: rgb(32, 206, 236);
 }
+
+.onboard{
+  color: rgb(59, 142, 208);
+  background-color: rgb(112, 36, 254);
+  border-radius: 5px;
+
+}

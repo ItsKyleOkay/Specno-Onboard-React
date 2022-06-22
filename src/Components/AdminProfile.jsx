@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { UserContext } from "../providers/UserProvider";
 import { auth } from "../firebase";
 import RegisterCourse from "../StudentMainPage/RegisterCourse";
-import classes from "./TeacherProfile.module.css";
+import classes from "./AdminProfile.module.css";
 import { useNavigate } from "react-router-dom";
 
 const TeacherProfile = () => {
@@ -13,26 +13,26 @@ const TeacherProfile = () => {
   return (
     <div>
       <span className={classes.header}>
-        <div className={classes.logo}>Inspire Academy</div>
+        <div className={classes.logo}>Specno</div>
         <nav>
           <ul>
             <li>
               <a href="/teacher-profile">Home</a>
             </li>
             <li>
-              <a href="/students-list">Students</a>
+              <a href="/students-list">Employees</a>
             </li>
             <li>
-              <a href="/search-students">Centres</a>
+              <a href="/search-students">Departments</a>
             </li>
             <li>
-              <a href="/search-courses">Courses</a>
+              <a href="/search-courses">Quizzes</a>
             </li>
             <li>
-              <a href="/reports">Reports</a>
+              <a href="/reports">Content</a>
             </li>
             <li>
-              <a href="/search">Search</a>
+              <a href="/search">Leaderboard</a>
             </li>
           </ul>
         </nav>
@@ -40,8 +40,8 @@ const TeacherProfile = () => {
       <div className={classes.welcome}>
         <h1>Welcome!</h1>
         <h2>
-          Our goal is to promote academic excellence, develop leadership skills
-          and build a foundation for future generation of African leaders
+          Designing And Building World Class Digital Products Specno Partners
+          With You To Validate, Design And Develop Industry Leading Solutions
         </h2>
       </div>
       <div className="mx-auto w-11/12 md:w-2/4 py-8 px-4 md:px-8">

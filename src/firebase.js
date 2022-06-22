@@ -27,8 +27,7 @@ export const generateUserDocument = async (
   Centre,
   Age,
   Department,
-  ID,
-  parentpdf
+  ID
 ) => {
   if (!user) return;
 
@@ -48,7 +47,6 @@ export const generateUserDocument = async (
         ...Age,
         ...Department,
         ...ID,
-        ...parentpdf,
       });
     } catch (error) {
       console.error("Error creating user document", error);

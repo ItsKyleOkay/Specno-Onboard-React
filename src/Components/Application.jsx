@@ -15,7 +15,7 @@ import DeRegisterCourseInfo from "../StudentMainPage/DeRegisterCourse";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Onboard from "../StudentMainPage/Onboard";
 import Students from "../TeacherMainPage/Students";
-import TeacherProfile from "../Components/TeacherProfile";
+import AdminProfile from "./AdminProfile";
 import SearchStudents from "../TeacherMainPage/SearchStudents";
 import SearchCourses from "../TeacherMainPage/Courses";
 import Reports from "../TeacherMainPage/Report";
@@ -44,7 +44,7 @@ function Application() {
       <Route path="/de-register-info" element={<DeRegisterCourseInfo />} />
       <Route path="/onboard" element={<Onboard />} />
       <Route path="/students-list" element={<Students />} />
-      <Route path="/teacher-profile" element={<TeacherProfile />} />
+      <Route path="/admin-profile" element={<AdminProfile />} />
       <Route path="/search-students" element={<SearchStudents />} />
       <Route path="/search-courses" element={<SearchCourses />} />
       <Route path="/reports" element={<Reports />} />

@@ -17,7 +17,7 @@ const SignIn = () => {
           (post.email === email) & (post.employee === true)
             ? navigate("/profile")
             : (post.email === email) & (post.employee === false)
-            ? navigate("/teacher-profile")
+            ? navigate("/admin-profile")
             : console.log("this shouldnt happen")
         )
       : console.log("error101");

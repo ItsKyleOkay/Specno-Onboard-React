@@ -9,7 +9,6 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [teacherpassword, setTeacherPassword] = useState();
   const [employee, setEmployee] = useState(true);
-  const [parentpdf, setparentpdf] = useState(false);
   const [Age, setAge] = useState();
   const [Department, setDepartment] = useState("");
   const [ID, setID] = useState("");
@@ -36,8 +35,7 @@ const SignUp = () => {
         { employee },
         { Age },
         { Department },
-        { ID },
-        { parentpdf }
+        { ID }
       );
       isChecked ? navigate("/profile") : navigate("/teacher-profile");
     } catch (error) {
@@ -64,8 +62,7 @@ const SignUp = () => {
         { employee },
         { Age },
         { Department },
-        { ID },
-        { parentpdf }
+        { ID }
       );
       navigate("/teacher-profile");
     } catch (error) {

@@ -23,17 +23,11 @@ export default storage;
 export const generateUserDocument = async (
   user,
   additionalData,
-  student,
+  employee,
   Centre,
-  Course,
-  Course2,
-  Course3,
-  Course4,
-  MathsMark,
-  AccountingMark,
-  ScienceMark,
-  ICTMark,
-  Grade,
+  Age,
+  Department,
+  ID,
   parentpdf
 ) => {
   if (!user) return;
@@ -49,17 +43,11 @@ export const generateUserDocument = async (
         email,
         photoURL,
         ...additionalData,
-        ...student,
+        ...employee,
         ...Centre,
-        ...Course,
-        ...Course2,
-        ...Course3,
-        ...Course4,
-        ...MathsMark,
-        ...ScienceMark,
-        ...AccountingMark,
-        ...ICTMark,
-        ...Grade,
+        ...Age,
+        ...Department,
+        ...ID,
         ...parentpdf,
       });
     } catch (error) {

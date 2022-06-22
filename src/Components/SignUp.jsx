@@ -8,20 +8,17 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [teacherpassword, setTeacherPassword] = useState();
-  const [admin, setAdmin] = useState(true);
-  const [centre, setCentre] = useState("");
-  const [MathsMark, setMaths] = useState("");
-  const [AccountingMark, setAccounting] = useState("");
-  const [ScienceMark, setScience] = useState("");
-  const [ICTMark, setICT] = useState("");
+  const [employee, setEmployee] = useState(true);
   const [parentpdf, setparentpdf] = useState(false);
-  const [Department, setDepartment] = useState();
+  const [Age, setAge] = useState();
+  const [Department, setDepartment] = useState("");
+  const [ID, setID] = useState("");
   const [isChecked, setIsChecked] = useState(true);
   const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   console.log(isChecked);
-  console.log(admin);
+  console.log(employee);
   const createUserWithEmailAndPasswordHandler = async (
     event,
     email,
@@ -36,13 +33,10 @@ const SignUp = () => {
       generateUserDocument(
         user,
         { displayName },
-        { admin },
-        { centre },
-        { MathsMark },
-        { ScienceMark },
-        { AccountingMark },
-        { ICTMark },
+        { employee },
+        { Age },
         { Department },
+        { ID },
         { parentpdf }
       );
       isChecked ? navigate("/profile") : navigate("/teacher-profile");
@@ -53,13 +47,12 @@ const SignUp = () => {
     setEmail("");
     setPassword("");
     setDisplayName("");
-    setAdmin(false);
+    setEmployee(false);
   };
   const createTeacherWithEmailAndPasswordHandler = async (email, password) => {
     setIsChecked(false);
-    setAdmin(false);
-    console.log(admin);
-    console.log(admin + " yhoooh");
+    setEmployee(false);
+
     try {
       const { user } = await auth.createUserWithEmailAndPassword(
         email,
@@ -68,13 +61,10 @@ const SignUp = () => {
       generateUserDocument(
         user,
         { displayName },
-        { admin },
-        { centre },
-        { MathsMark },
-        { ScienceMark },
-        { AccountingMark },
-        { ICTMark },
+        { employee },
+        { Age },
         { Department },
+        { ID },
         { parentpdf }
       );
       navigate("/teacher-profile");
@@ -85,11 +75,11 @@ const SignUp = () => {
     setEmail("");
     setPassword("");
     setDisplayName("");
-    setAdmin(false);
+    setEmployee(false);
   };
 
   function CheckPassword() {
-    if (teacherpassword === "123specno#") {
+    if (teacherpassword === "123inspireacademy#") {
       createTeacherWithEmailAndPasswordHandler(email, password);
     }
   }
@@ -101,15 +91,17 @@ const SignUp = () => {
       setPassword(value);
     } else if (name === "displayName") {
       setDisplayName(value);
-    } else if (name === "userGrade") {
+    } else if (name === "userDepartment") {
       setDepartment(value);
+    } else if (name === "userAge") {
+      setAge(value);
     } else if (name === "teacherpassword") {
       setTeacherPassword(value);
       setIsChecked(false);
-      setAdmin(false);
-    } else if (name === "student") {
+      setEmployee(false);
+    } else if (name === "Employee") {
       setIsChecked(isChecked);
-      setAdmin(isChecked);
+      setEmployee(isChecked);
     }
   };
   // instead of creating new css classes I just added it to the jsx code
@@ -159,38 +151,53 @@ const SignUp = () => {
             id="userPassword"
             onChange={(event) => onChangeHandler(event)}
           />
-          <label htmlFor="userGrade" className="block">
+          <label htmlFor="userDepartment" className="block">
             Department:
           </label>
           <input
             type="text"
-            className="mt-1 mb-3 p-1 w-full"
+            className="my-1 p-1 w-full"
             name="userDepartment"
-            placeholder="Finance, Dev, Admin"
-            id="userGrade"
+            value={Department}
+            placeholder="Finance, Dev, admin"
+            id="userDepartment"
+            onChange={(event) => onChangeHandler(event)}
+          />
+          <label htmlFor="userAge" className="block">
+            Age:
+          </label>
+          <input
+            type="number"
+            className="mt-1 mb-3 p-1 w-full"
+            name="userAge"
+            value={Age}
+            min="18"
+            max="65"
+            placeholder="Employees age"
+            id="userAge"
             onChange={(event) => onChangeHandler(event)}
           />
           <Popup
             trigger={
               <input
                 type="checkbox"
-                id="admin"
-                name="admin"
-                value={admin}
+                id="Employee"
+                name="Employee"
+                value={employee}
                 checked={isChecked}
                 onChange={(event) => onChangeHandler(event)}
               />
             }
             position="left"
           >
-            <div>Please enter the password</div>
+            <div>Teacher please enter the password</div>
             <input
               type="text"
               className="mt-1 mb-3 p-1 w-full"
               name="teacherpassword"
               defaultValue={teacherpassword}
-              placeholder="Admin Password"
-              id="adminpassword"
+              placeholder="Teacher Password"
+              id="teacherpassword"
               onChange={(event) => onChangeHandler(event)}
             />
             <button

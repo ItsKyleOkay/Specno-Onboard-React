@@ -14,11 +14,11 @@ const SignIn = () => {
   function routeUser() {
     posts.length > 0
       ? posts.map((post) =>
-          (post.email === email) & (post.student === true)
+          (post.email === email) & (post.employee === true)
             ? navigate("/profile")
-            : (post.email === email) & (post.student === false)
+            : (post.email === email) & (post.employee === false)
             ? navigate("/teacher-profile")
-            : console.log("nobody of importance")
+            : console.log("this shouldnt happen")
         )
       : console.log("error101");
   }
@@ -120,13 +120,6 @@ const SignIn = () => {
           </button>
         </form>
         <p className="text-center my-3">
-          Don't have an account?
-          <button
-            onClick={() => navigate("/sign-up")}
-            className="text-blue-500 hover:text-blue-600"
-          >
-            Sign up here
-          </button>
           <br />
           <button
             onClick={() => navigate("/password-reset")}

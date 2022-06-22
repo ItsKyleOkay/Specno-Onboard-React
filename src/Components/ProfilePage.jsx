@@ -36,8 +36,8 @@ const ProfilePage = () => {
       <div className={classes.welcome}>
         <h1>Welcome!</h1>
         <h2>
-          Our goal is to promote academic excellence, develop leadership skills
-          and build a foundation for future generation of African leaders
+          Designing And Building World Class Digital Products Specno Partners
+          With You To Validate, Design And Develop Industry Leading Solutions
         </h2>
       </div>
       <div className="mx-auto w-11/12 md:w-2/4 py-8 px-4 md:px-8">

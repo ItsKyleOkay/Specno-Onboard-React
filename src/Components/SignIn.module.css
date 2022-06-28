@@ -1,0 +1,99 @@
+.contentcontainer {
+    padding: 10%;
+    height: 100vh;
+    background-color: white;
+    
+}
+
+.leftpanel {
+  background-color: #489DDA;
+
+  display: block;
+  border-radius: 0.5mm;
+  flex: 5;
+}
+
+.rightpanel {
+ background-color: white;
+ display: block;
+  border: 0.1px;
+ border:solid rgb(103, 103, 103);
+border-radius: 0.5mm;
+
+ flex: 5;
+}
+
+.row {
+    display: flex;
+    height: 100%;
+}
+.welcome{
+    position: relative;
+    color: white;
+    font-size: 25px;
+    margin-left: 0.6cm;
+    margin-top: 4cm;
+    font-weight: 500;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.headingspecno{
+    color: #489DDA;
+    font-style: bold;
+    margin-left: 1cm;
+    position: static;
+    font-family: Avertademope, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+}
+.signinhead{
+    color: black;
+    margin-left: 1cm;
+    margin-top: 0.1cm;
+    position: static;
+    font-family: Avertademope, sans-serif;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.useremail{
+    
+    background-color: #e0e0e0;
+    margin-left: 1cm;
+    height: 1cm;
+    width: 15cm;
+    margin-top: 0.5cm;
+    border-width: 0.1em;
+    border:solid rgb(0, 0, 0);
+    
+}
+
+.headerdetails{
+    font-size:18px;
+    font-weight: 400;
+    margin-left: 1cm;
+    margin-top: 2cm;
+}
+
+.buttonSignin{
+    margin-left: 1cm;
+    margin-top: 1cm;
+    font-size:20px;
+    font-weight: 600;
+     background-color: #489DDA ;
+     color: white;
+     width: 10cm;
+     height: 1cm;
+}
+
+.rocket{
+     margin-top: 2.2cm;
+}
+
+.forgotpassword{
+     margin-left: 1cm;
+    font-size:20px;
+    font-weight: 600;
+    color: #489DDA ;
+}

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../providers/UserProvider";
 import { auth } from "../firebase";
-import RegisterCourse from "../StudentMainPage/RegisterCourse";
+import RegisterCourse from "../EmployeeMainPage/ContentQuiz";
 import classes from "./ProfilePage.module.css";
 import { useNavigate } from "react-router-dom";
 
@@ -20,15 +20,16 @@ const ProfilePage = () => {
               <a href="/profile">Home</a>
             </li>
             <li>
-              <a href="/register">About Us</a>
+              <a href="/specno-quiz-content">Content</a>
             </li>
             <li>
-              <a href="/de-register">Blog</a>
+              <a href="/specno-quiz">Quizzes</a>
             </li>
             <li>
-              <a className={classes.onboard} href="/onboard">
-                Onboard
-              </a>
+              <a href="/specno-blog">Blog</a>
+            </li>
+            <li>
+              <a href="/leaderboard">Leaderboard</a>
             </li>
           </ul>
         </nav>

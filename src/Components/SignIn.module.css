@@ -19,8 +19,14 @@
   border: 0.1px;
  border:solid rgb(103, 103, 103);
 border-radius: 0.5mm;
+box-shadow: inset;
 
+box-shadow: 1px 2px 9px #ffffff00;
  flex: 5;
+}
+
+.rightpanel:hover {
+  box-shadow: 1px 2px 9px #489DDA;
 }
 
 .row {

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../providers/UserProvider";
 import { auth } from "../firebase";
-import RegisterCourse from "../StudentMainPage/RegisterCourse";
+import RegisterCourse from "../EmployeeMainPage/ContentQuiz";
 import classes from "./AdminProfile.module.css";
 import { useNavigate } from "react-router-dom";
 

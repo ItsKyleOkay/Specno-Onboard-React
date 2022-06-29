@@ -5,15 +5,10 @@ import UserProvider from "../providers/UserProvider";
 import ProfilePage from "./ProfilePage";
 import { UserContext } from "../providers/UserProvider";
 import PasswordReset from "./PasswordReset";
-import RegisterCourse from "../StudentMainPage/RegisterCourse";
-import RegisterCourseKwt from "../StudentMainPage/RegisterKWT";
-import RegisterCourseBisho from "../StudentMainPage/RegisterBisho27";
-import RegisterCourseSoweto from "../StudentMainPage/RegisterSoweto";
-import RegisterCourseBisho25 from "../StudentMainPage/RegisterBisho25";
-import DeRegisterCourse from "../StudentMainPage/DeRegister";
-import DeRegisterCourseInfo from "../StudentMainPage/DeRegisterCourse";
+import ContentQuiz from "../EmployeeMainPage/ContentQuiz";
+import Quiz from "../EmployeeMainPage/Quiz";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Onboard from "../StudentMainPage/Onboard";
+import Onboard from "../EmployeeMainPage/Onboard";
 import Students from "../TeacherMainPage/Students";
 import AdminProfile from "./AdminProfile";
 import SearchStudents from "../TeacherMainPage/SearchStudents";
@@ -29,6 +24,7 @@ import SearchStudentsKWT from "../TeacherMainPage/SearchingStudents/SearchingKWT
 import SearchStudentsAll from "../TeacherMainPage/SearchingStudents/SearchingAll";
 import SearchICT from "../TeacherMainPage/SearchingCourses/ICT";
 import SoftSearch from "../TeacherMainPage/SoftSearch";
+import Leaderboard from "../EmployeeMainPage/Leaderboard";
 
 function Application() {
   const user = useContext(UserContext);
@@ -39,28 +35,16 @@ function Application() {
       <Route path="/search" element={<SoftSearch />} />
       <Route path="/sign-up" element={<Navigate to="/login" />} />
       <Route path="/password-reset" element={<Navigate to="/profile" />} />
-      <Route path="/register" element={<RegisterCourse />} />
-      <Route path="/de-register" element={<DeRegisterCourse />} />
-      <Route path="/de-register-info" element={<DeRegisterCourseInfo />} />
+      <Route path="/specno-quiz-content" element={<ContentQuiz />} />
+      <Route path="/specno-quiz" element={<Quiz />} />
       <Route path="/onboard" element={<Onboard />} />
+      <Route path="/leaderboard" element={<Leaderboard />} />
       <Route path="/students-list" element={<Students />} />
       <Route path="/admin-profile" element={<AdminProfile />} />
       <Route path="/search-students" element={<SearchStudents />} />
       <Route path="/search-courses" element={<SearchCourses />} />
       <Route path="/reports" element={<Reports />} />
-      <Route path="/register-course-kwt" element={<RegisterCourseKwt />} />
-      <Route
-        path="/register-course-bisho27"
-        element={<RegisterCourseBisho />}
-      />
-      <Route
-        path="/register-course-soweto"
-        element={<RegisterCourseSoweto />}
-      />
-      <Route
-        path="/register-course-bisho25"
-        element={<RegisterCourseBisho25 />}
-      />
+
       <Route path="/search-course-accounting" element={<SearchAccounting />} />
       <Route path="/search-course-science" element={<SearchScience />} />
       <Route path="/search-course-maths" element={<SearchMaths />} />

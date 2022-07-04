@@ -1,4 +1,3 @@
-import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,7 +5,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Divider from "@mui/material/Divider";
+import firebase from "firebase";
+import { db } from "../firebase";
+
+import React, { useState, useEffect } from "react";
 
 import classes from "./Onboard.module.css";
 
@@ -20,7 +22,38 @@ const rows = [
   createData("john smith", "January 13, 2022 10:53 AM", "Easy", "Dev", "60"),
 ];
 
-export default function BasicTable() {
+const Leaderboard = () => {
+  const [loading, setLoading] = useState(true);
+  const [email, setEmail] = useState();
+  const [posts, setPosts] = useState([]);
+
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      setEmail(user.email);
+    } else {
+      // No user is signed in.
+      console.log("There is no logged in user");
+    }
+  });
+  useEffect(() => {
+    const getPostsFromFirebase = [];
+    const userinfo = db.collection("users").onSnapshot((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        getPostsFromFirebase.push({
+          ...doc.data(), //spread operator
+          key: doc.id, // `id` given to us by Firebase
+        });
+      });
+      setPosts(getPostsFromFirebase);
+      console.log(posts);
+      setLoading(false);
+    });
+    return () => userinfo();
+  }, [loading]); // empty dependencies array => useEffect only called once
+
+  if (loading) {
+    return <h1>loading firebase data...</h1>;
+  }
   return (
     <div>
       <span className={classes.header}>
@@ -62,7 +95,7 @@ export default function BasicTable() {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {rows.map((row) => (
+                    {posts.map((row) => (
                       <TableRow
                         key={row.name}
                         sx={{
@@ -70,19 +103,18 @@ export default function BasicTable() {
                         }}
                       >
                         <TableCell component="th" scope="row">
-                          {row.name}
+                          {row.displayName}
                         </TableCell>
-                        <TableCell align="right">{row.calories}</TableCell>
-                        <TableCell align="right">{row.fat}</TableCell>
-                        <TableCell align="right">{row.carbs}</TableCell>
-                        <TableCell align="right">{row.protein}</TableCell>
+                        <TableCell align="right">{row.DateTime}</TableCell>
+                        <TableCell align="right">{row.Difficulty}</TableCell>
+                        <TableCell align="right">{row.Department}</TableCell>
+                        <TableCell align="right">{row.FinalScore}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
                 </Table>
               </TableContainer>
             </div>
-
             <div>
               <div className={classes.leaderboard}>
                 <h1 className={classes.firsthead}>Recent Activity</h1>
@@ -98,7 +130,7 @@ export default function BasicTable() {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {rows.map((row) => (
+                      {posts.map((row) => (
                         <TableRow
                           key={row.name}
                           sx={{
@@ -106,12 +138,12 @@ export default function BasicTable() {
                           }}
                         >
                           <TableCell component="th" scope="row">
-                            {row.name}
+                            {row.displayName}
                           </TableCell>
-                          <TableCell align="right">{row.calories}</TableCell>
-                          <TableCell align="right">{row.fat}</TableCell>
-                          <TableCell align="right">{row.carbs}</TableCell>
-                          <TableCell align="right">{row.protein}</TableCell>
+                          <TableCell align="right">{row.DateTime}</TableCell>
+                          <TableCell align="right">{row.Difficulty}</TableCell>
+                          <TableCell align="right">{row.Department}</TableCell>
+                          <TableCell align="right">{row.RecentScore}</TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
@@ -161,4 +193,6 @@ export default function BasicTable() {
       </div>
     </div>
   );
-}
+};
+
+export default Leaderboard;

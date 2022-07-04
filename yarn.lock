@@ -3218,6 +3218,11 @@
   dependencies:
     "rsvp" "^4.8.4"
 
+"card-grid@^0.1.2":
+  "integrity" "sha512-FejrYpIYg00uZ6cLey5S5WrdCyMbUVt9OmfP/EMoWUyJQ2rORFeoec2GH46hYHa2AUZNjwk5wuzrgZHVZSEymg=="
+  "resolved" "https://registry.npmjs.org/card-grid/-/card-grid-0.1.2.tgz"
+  "version" "0.1.2"
+
 "case-sensitive-paths-webpack-plugin@2.2.0":
   "integrity" "sha512-u5ElzokS8A1pm9vM3/iDgTcI3xqHxuCao94Oz8etI3cf0Tio0p8izkDYbTIn09uP3yUUr6+veaE6IkjnTYS46g=="
   "resolved" "https://registry.npmjs.org/case-sensitive-paths-webpack-plugin/-/case-sensitive-paths-webpack-plugin-2.2.0.tgz"

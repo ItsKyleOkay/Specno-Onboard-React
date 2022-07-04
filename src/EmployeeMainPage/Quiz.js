@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
-import classes from "./Onboard.module.css";
+import classes from "./Quiz.module.css";
 import firebase from "firebase";
+
+import { Card, CardGroup, Button } from "react-bootstrap";
 
 const Quiz = () => {
   const [loading, setLoading] = useState(true);
@@ -58,7 +60,30 @@ const Quiz = () => {
         </nav>
       </span>
       <div>
-        <h1>Needs Quiz code</h1>
+        <CardGroup>
+          {posts.map((post) => (
+            <Card className={"card-grid"} key={post}>
+              <Card.Body>
+                <Card.Title>
+                  <strong>{post.Name}</strong>
+                </Card.Title>
+                <Card.Text>
+                  <p>
+                    Level: {post.Level} Department:
+                    {post.Department} Time: {post.Time}
+                  </p>
+                </Card.Text>
+                <Button
+                  className={"btn"}
+                  href="www.google.com"
+                  rel={"noopener noreferrer"}
+                >
+                  Learn More
+                </Button>
+              </Card.Body>
+            </Card>
+          ))}
+        </CardGroup>
       </div>
     </div>
   );

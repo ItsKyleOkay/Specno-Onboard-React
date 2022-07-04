@@ -11,6 +11,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "auth": "^0.0.9",
+    "card-grid": "^0.1.2",
     "database": "^0.0.2",
     "firebase": "^8.10.1",
     "firestore": "^1.1.6",

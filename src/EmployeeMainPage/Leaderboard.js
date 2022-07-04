@@ -12,16 +12,6 @@ import React, { useState, useEffect } from "react";
 
 import classes from "./Onboard.module.css";
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData("Kyle Kretschmer", "July 3, 2022 11:36 AM", "Medium", "Dev", "89"),
-  createData("Abdullah", "April 12, 2022 7:49 AM", "Easy", "Finance", "67"),
-  createData("john smith", "January 13, 2022 10:53 AM", "Easy", "Dev", "60"),
-];
-
 const Leaderboard = () => {
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState();

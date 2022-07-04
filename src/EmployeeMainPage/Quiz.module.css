@@ -91,3 +91,66 @@
   border-radius: 5px;
 
 }
+
+
+.firsthead {
+  width: 100%;
+  color: #489DDA;
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: bolds;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+
+.contentcontainer {
+    padding: 3%;
+    height: 100vh;
+    background-color: white;
+  
+    
+}
+
+.rating{
+  border:solid #ffffff;
+    border-radius: 5px;
+    border-color:rgb(108, 108, 108)9;
+}
+
+.card-group {
+    justify-content: center;
+}
+
+.card-grid, .card {
+    padding: 2px 2px !important;
+    height: 20rem;
+    justify-content: center;
+    margin: 1rem;
+    width: 10rem;
+}
+
+.card-body {
+    background-color: #F6F5F5;
+    margin: 0;
+}
+
+.cardimg,
+.cardimg-top,
+.cardimg-bottom {
+    height: 5rem;
+    max-width: 10%;
+    width: auto;
+    align-content: flex-start;
+}
+
+.card-text {
+    height: fit-content;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    margin-top: 2cm;
+    color: #489DDA;
+    
+}

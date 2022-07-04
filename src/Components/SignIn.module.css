@@ -4,7 +4,10 @@
     background-color: white;
     
 }
-
+.row {
+    display: flex;
+    height: 100%;
+}
 .leftpanel {
   background-color: #489DDA;
 
@@ -29,10 +32,7 @@ box-shadow: 1px 2px 9px #ffffff00;
   box-shadow: 1px 2px 9px #489DDA;
 }
 
-.row {
-    display: flex;
-    height: 100%;
-}
+
 .welcome{
     position: relative;
     color: white;
@@ -99,7 +99,7 @@ box-shadow: 1px 2px 9px #ffffff00;
 
 .forgotpassword{
      margin-left: 1cm;
-    font-size:20px;
+    font-size:10px;
     font-weight: 600;
     color: #489DDA ;
 }

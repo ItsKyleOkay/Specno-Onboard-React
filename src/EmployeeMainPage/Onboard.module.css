@@ -85,3 +85,97 @@
   border-radius: 5px;
 
 }
+
+.leaderboard{
+border-radius: 5px;
+
+}
+
+.firsthead {
+  width: 100%;
+  color: #489DDA;
+  font-weight: bold;
+
+  font-size: 2rem;
+  font-weight: bolds;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.leftpanel {
+  display: block;
+  border-radius: 0.5mm;
+  flex: 8;
+}
+
+.rightpanel {
+ background-color: white;
+ display: block;
+  border: 0.1px;
+border-radius: 0.5mm;
+margin-left: 2cm;
+ flex: 2;
+ 
+}
+
+
+.contentcontainer {
+    padding: 3%;
+    height: 100vh;
+    background-color: white;
+  
+    
+}
+.row {
+    display: flex;
+    height: 100%;
+}
+
+.prizecontainer{
+  padding: 5%;
+    height: 100vh;
+    background-color: white;
+}
+
+.column{
+  display: flex;
+    height: 100%;
+
+
+}
+
+.PrizeHead {
+  font-size: 2rem;
+  color: #489DDA;
+  font-weight: bold;
+}
+
+.boxstyle{
+  border-width: 0.1em;
+    border:solid #ffffff;
+    border-radius: 5px;
+    border-left-color: #28ed19;
+    
+    padding: 1rem;
+  
+}
+
+.box2style{
+  border-width: 0.1em;
+    border:solid #ffffff;
+    border-radius: 5px;
+    border-left-color: #4e19ed;
+    
+    padding: 1rem;
+  
+}
+
+.box3style{
+  border-width: 0.1em;
+    border:solid #ffffff;
+    border-radius: 5px;
+    border-left-color: #edd819;
+    
+    padding: 1rem;
+  
+}

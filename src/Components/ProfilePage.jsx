@@ -19,8 +19,8 @@ const ProfilePage = () => {
       <div className="container d-flex justify-content-between align-items-center">
   
         <div className="logo">
-          <a href="index.html"><img src={Logo} alt="" className="img-fluid" /></a>
-          <h1><a href="index.html">Specno</a></h1>
+          <a href="/profile"><img src={Logo} alt="" className="img-fluid" /></a>
+          <h1><a href="/profile">Specno</a></h1>
         </div>
   
         <nav id="navbar" className="navbar">

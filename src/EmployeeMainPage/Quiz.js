@@ -3,8 +3,6 @@ import { db } from "../firebase";
 import classes from "./Quiz.module.css";
 import firebase from "firebase";
 
-import { Card, CardGroup, Button } from "react-bootstrap";
-
 const Quiz = () => {
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState();
@@ -19,7 +17,7 @@ const Quiz = () => {
   });
   useEffect(() => {
     const getPostsFromFirebase = [];
-    const subscriber = db.collection("users").onSnapshot((querySnapshot) => {
+    const subscriber = db.collection("Content").onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         getPostsFromFirebase.push({
           ...doc.data(), //spread operator
@@ -59,32 +57,14 @@ const Quiz = () => {
           </ul>
         </nav>
       </span>
-      <div>
-        <CardGroup>
-          {posts.map((post) => (
-            <Card className={"card-grid"} key={post}>
-              <Card.Body>
-                <Card.Title>
-                  <strong>{post.Name}</strong>
-                </Card.Title>
-                <Card.Text>
-                  <p>
-                    Level: {post.Level} Department:
-                    {post.Department} Time: {post.Time}
-                  </p>
-                </Card.Text>
-                <Button
-                  className={"btn"}
-                  href="www.google.com"
-                  rel={"noopener noreferrer"}
-                >
-                  Learn More
-                </Button>
-              </Card.Body>
-            </Card>
-          ))}
-        </CardGroup>
-      </div>
+      {posts.map((post) => (
+        <div className={classes.column}>
+          <div className={classes.card}>
+            <h1 className={classes.contentname}>{post.Name}</h1>
+            <h1 className={classes.descr}>{post.Info}</h1>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

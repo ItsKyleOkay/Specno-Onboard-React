@@ -154,3 +154,64 @@
     color: #489DDA;
     
 }
+
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+  
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(4, 25, 253, 0.2); /* this adds the "card" effect */
+  border:solid #f8f8f8;
+  width: 7cm;
+  color: white;
+  border-radius: 5px;
+  padding: 16px;
+  text-align: center;
+  background-color: #489DDA;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    
+  }
+}
+
+.descr{
+  margin-top: 4cm;
+}
+
+.contentname{
+  margin-top: 0.4cm;
+  font-size: 1.5rem;
+  font-weight: bolds;
+}

@@ -145,7 +145,7 @@ margin-left: 2cm;
 }
 
 .PrizeHead {
-  font-size: 2rem;
+  font-size: 1.3rem;
   color: #489DDA;
   font-weight: bold;
 }
@@ -178,4 +178,23 @@ margin-left: 2cm;
     
     padding: 1rem;
   
+}
+.prizes{
+  margin-top: 0.4cm;
+  
+}
+
+.imgfluid{
+   border-width: 0.1em;
+    border:solid #ffffff;
+    border-radius: 30px;
+}
+
+.coursecontent{
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.progresscontent{
+  font-size: 0.8rem;
 }

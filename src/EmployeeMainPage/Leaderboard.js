@@ -15,11 +15,14 @@ import classes from "./Onboard.module.css";
 const Leaderboard = () => {
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState();
+  const [badges, setBadges] = useState([]);
   const [posts, setPosts] = useState([]);
+  const [prizes, setPrizes] = useState([]);
 
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-      setEmail(user.email);
+      setEmail(user.email); //this feature only calls the main fields of data and not other important user data
+      // So I cant call levels, departments, etc
     } else {
       // No user is signed in.
       console.log("There is no logged in user");
@@ -35,7 +38,36 @@ const Leaderboard = () => {
         });
       });
       setPosts(getPostsFromFirebase);
-      console.log(posts);
+      setLoading(false);
+    });
+    return () => userinfo();
+  }, [loading]); // empty dependencies array => useEffect only called once
+
+  useEffect(() => {
+    const getPostsFromFirebase = [];
+    const userinfo = db.collection("Prizes").onSnapshot((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        getPostsFromFirebase.push({
+          ...doc.data(), //spread operator
+          key: doc.id, // `id` given to us by Firebase
+        });
+      });
+      setPrizes(getPostsFromFirebase); //Adding the prizes the firebase has to the leaderboard
+      setLoading(false);
+    });
+    return () => userinfo();
+  }, [loading]); // empty dependencies array => useEffect only called once
+
+  useEffect(() => {
+    const getPostsFromFirebase = [];
+    const userinfo = db.collection("Badges").onSnapshot((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        getPostsFromFirebase.push({
+          ...doc.data(), //spread operator
+          key: doc.id, // `id` given to us by Firebase
+        });
+      });
+      setBadges(getPostsFromFirebase); //Adding the prizes the firebase has to the leaderboard
       setLoading(false);
     });
     return () => userinfo();
@@ -44,6 +76,9 @@ const Leaderboard = () => {
   if (loading) {
     return <h1>loading firebase data...</h1>;
   }
+
+  // The table for the leaderboard with the best of specno and recent activity
+  // The right nav bar of prizes, progress and badges is also included
   return (
     <div>
       <span className={classes.header}>
@@ -68,20 +103,32 @@ const Leaderboard = () => {
           </ul>
         </nav>
       </span>
+
       <div className={classes.contentcontainer}>
         <div className={classes.row}>
           <div className={classes.leftpanel}>
             <div className={classes.leaderboard}>
               <h1 className={classes.firsthead}>Best of specno</h1>
+
               <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <TableHead>
                     <TableRow>
-                      <TableCell>Player Name</TableCell>
-                      <TableCell align="right">Date and Time</TableCell>
-                      <TableCell align="right">Difficulty</TableCell>
-                      <TableCell align="right">Department</TableCell>
-                      <TableCell align="right">Final Score</TableCell>
+                      <TableCell style={{ fontWeight: "bold" }}>
+                        Player Name
+                      </TableCell>
+                      <TableCell align="right" style={{ fontWeight: "bold" }}>
+                        Date and Time
+                      </TableCell>
+                      <TableCell align="right" style={{ fontWeight: "bold" }}>
+                        Difficulty
+                      </TableCell>
+                      <TableCell align="right" style={{ fontWeight: "bold" }}>
+                        Department
+                      </TableCell>
+                      <TableCell align="right" style={{ fontWeight: "bold" }}>
+                        Final Score
+                      </TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -92,13 +139,25 @@ const Leaderboard = () => {
                           "&:last-child td, &:last-child th": { border: 0 },
                         }}
                       >
-                        <TableCell component="th" scope="row">
-                          {row.displayName}
-                        </TableCell>
-                        <TableCell align="right">{row.DateTime}</TableCell>
-                        <TableCell align="right">{row.Difficulty}</TableCell>
-                        <TableCell align="right">{row.Department}</TableCell>
-                        <TableCell align="right">{row.FinalScore}</TableCell>
+                        {row.Department !== "Admin" ? (
+                          <>
+                            <TableCell component="th" scope="row">
+                              {row.displayName}
+                            </TableCell>
+                            <TableCell align="right">{row.DateTime}</TableCell>
+                            <TableCell align="right">
+                              {row.Difficulty}
+                            </TableCell>
+                            <TableCell align="right">
+                              {row.Department}
+                            </TableCell>
+                            <TableCell align="right">
+                              {row.FinalScore}
+                            </TableCell>
+                          </>
+                        ) : (
+                          <div> </div>
+                        )}
                       </TableRow>
                     ))}
                   </TableBody>
@@ -112,11 +171,21 @@ const Leaderboard = () => {
                   <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                       <TableRow>
-                        <TableCell>Player Name</TableCell>
-                        <TableCell align="right">Date and Time</TableCell>
-                        <TableCell align="right">Difficulty</TableCell>
-                        <TableCell align="right">Department</TableCell>
-                        <TableCell align="right">Added Points</TableCell>
+                        <TableCell style={{ fontWeight: "bold" }}>
+                          Player Name
+                        </TableCell>
+                        <TableCell align="right" style={{ fontWeight: "bold" }}>
+                          Date and Time
+                        </TableCell>
+                        <TableCell align="right" style={{ fontWeight: "bold" }}>
+                          Difficulty
+                        </TableCell>
+                        <TableCell align="right" style={{ fontWeight: "bold" }}>
+                          Department
+                        </TableCell>
+                        <TableCell align="right" style={{ fontWeight: "bold" }}>
+                          Added Points
+                        </TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -127,13 +196,27 @@ const Leaderboard = () => {
                             "&:last-child td, &:last-child th": { border: 0 },
                           }}
                         >
-                          <TableCell component="th" scope="row">
-                            {row.displayName}
-                          </TableCell>
-                          <TableCell align="right">{row.DateTime}</TableCell>
-                          <TableCell align="right">{row.Difficulty}</TableCell>
-                          <TableCell align="right">{row.Department}</TableCell>
-                          <TableCell align="right">{row.RecentScore}</TableCell>
+                          {row.Department !== "Admin" ? (
+                            <>
+                              <TableCell component="th" scope="row">
+                                {row.displayName}
+                              </TableCell>
+                              <TableCell align="right">
+                                {row.DateTime}
+                              </TableCell>
+                              <TableCell align="right">
+                                {row.Difficulty}
+                              </TableCell>
+                              <TableCell align="right">
+                                {row.Department}
+                              </TableCell>
+                              <TableCell align="right">
+                                {row.RecentScore}
+                              </TableCell>
+                            </>
+                          ) : (
+                            <div> </div>
+                          )}
                         </TableRow>
                       ))}
                     </TableBody>
@@ -159,23 +242,65 @@ const Leaderboard = () => {
               >
                 <div className={classes.boxstyle}>
                   <div className={classes.PrizeHead}>Top 3 Prizes</div>
-                  <div>Hamburger voucher</div>
-                  <div>Work day off</div>
-                  <div>Choose work theme</div>
+                  <div id="prizes" className={classes.prizes}>
+                    <div className="container" data-aos="fade-up">
+                      <div
+                        className="row"
+                        data-aos="zoom-in"
+                        data-aos-delay="100"
+                      >
+                        {prizes.map((prize) => (
+                          <div className="col-lg-5 col-md-5 d-flex align-items-stretch mt-4 mt-md-0">
+                            <div className="course-item">
+                              <div className={classes.coursecontent}>
+                                <img
+                                  src={prize.src}
+                                  className={classes.imgfluid}
+                                  alt="..."
+                                />
+                                {prize.Name}{" "}
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className={classes.box2style}>
                 <div className={classes.PrizeHead}>Your progress</div>
-                <div>Level: 8</div>
-                <div>Progress: 314 exp gained</div>
-                <div>Rank : #09</div>
+                {posts.map((post) => (
+                  <div className="col-lg-5 col-md-5 d-flex align-items-stretch mt-4 mt-md-0">
+                    <div className={classes.progresscontent}>
+                      {email === post.email ? (
+                        <div>
+                          {" "}
+                          Level {post.Level}
+                          <br></br>
+                          Progress {post.Progress}
+                        </div>
+                      ) : (
+                        <div> </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
 
               <div className={classes.box3style}>
                 <div className={classes.PrizeHead}>Your badges</div>
-                <div>Badge 1</div>
-                <div>Badge 2</div>
-                <div>Badge 3</div>
+                {badges.map((badge) => (
+                  <div className="col-lg-4 col-md-4 d-flex align-items-stretch mt-4 mt-md-0">
+                    <div className={classes.progresscontent}>
+                      <img
+                        src={badge.src}
+                        className={classes.imgfluid}
+                        alt="..."
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

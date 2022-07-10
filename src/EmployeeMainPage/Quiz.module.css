@@ -158,6 +158,7 @@
 
 
 
+
 * {
   box-sizing: border-box;
 }
@@ -212,6 +213,11 @@ body {
 
 .contentname{
   margin-top: 0.4cm;
+  font-size: 1.5rem;
+  font-weight: bolds;
+}
+
+.prizes{
   font-size: 1.5rem;
   font-weight: bolds;
 }

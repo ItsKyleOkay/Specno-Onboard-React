@@ -17,6 +17,7 @@ const Leaderboard = () => {
   const [email, setEmail] = useState();
   const [badges, setBadges] = useState([]);
   const [posts, setPosts] = useState([]);
+  const [leaderboard, setLeaderboard] = useState([]);
   const [prizes, setPrizes] = useState([]);
 
   firebase.auth().onAuthStateChanged(function (user) {
@@ -73,6 +74,23 @@ const Leaderboard = () => {
     return () => userinfo();
   }, [loading]); // empty dependencies array => useEffect only called once
 
+  useEffect(() => {
+    const getPostsFromFirebase = [];
+    const userinfo = db
+      .collection("Leaderboard")
+      .onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          getPostsFromFirebase.push({
+            ...doc.data(), //spread operator
+            key: doc.id, // `id` given to us by Firebase
+          });
+        });
+        setLeaderboard(getPostsFromFirebase); //Adding the prizes the firebase has to the leaderboard
+        setLoading(false);
+      });
+    return () => userinfo();
+  }, [loading]); // empty dependencies array => useEffect only called once
+
   if (loading) {
     return <h1>loading firebase data...</h1>;
   }
@@ -120,9 +138,7 @@ const Leaderboard = () => {
                       <TableCell align="right" style={{ fontWeight: "bold" }}>
                         Date and Time
                       </TableCell>
-                      <TableCell align="right" style={{ fontWeight: "bold" }}>
-                        Difficulty
-                      </TableCell>
+
                       <TableCell align="right" style={{ fontWeight: "bold" }}>
                         Department
                       </TableCell>
@@ -132,7 +148,7 @@ const Leaderboard = () => {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {posts.map((row) => (
+                    {leaderboard.map((row) => (
                       <TableRow
                         key={row.name}
                         sx={{
@@ -145,14 +161,12 @@ const Leaderboard = () => {
                               {row.displayName}
                             </TableCell>
                             <TableCell align="right">{row.DateTime}</TableCell>
-                            <TableCell align="right">
-                              {row.Difficulty}
-                            </TableCell>
+
                             <TableCell align="right">
                               {row.Department}
                             </TableCell>
                             <TableCell align="right">
-                              {row.FinalScore}
+                              {row.finalscore}
                             </TableCell>
                           </>
                         ) : (

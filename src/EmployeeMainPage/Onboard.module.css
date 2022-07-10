@@ -95,11 +95,11 @@ border-radius: 5px;
   width: 100%;
   color: #489DDA;
   font-weight: bold;
-
   font-size: 2rem;
   font-weight: bolds;
   justify-content: space-between;
-  padding: 1rem;
+  margin-bottom: 0.5cm;
+  margin-top:  0.5cm;
 }
 
 .leftpanel {

@@ -6,6 +6,7 @@ import ProfilePage from "./ProfilePage";
 import { UserContext } from "../providers/UserProvider";
 import PasswordReset from "./PasswordReset";
 import ContentQuiz from "../EmployeeMainPage/ContentQuiz";
+import ContentData from "../EmployeeMainPage/ContentData";
 import Quiz from "../EmployeeMainPage/Quiz";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Onboard from "../EmployeeMainPage/Onboard";
@@ -25,6 +26,7 @@ import SearchStudentsAll from "../TeacherMainPage/SearchingStudents/SearchingAll
 import SearchICT from "../TeacherMainPage/SearchingCourses/ICT";
 import SoftSearch from "../TeacherMainPage/SoftSearch";
 import Leaderboard from "../EmployeeMainPage/Leaderboard";
+import Content from "../EmployeeMainPage/ContentQuiz";
 
 function Application() {
   const user = useContext(UserContext);
@@ -36,6 +38,7 @@ function Application() {
       <Route path="/sign-up" element={<Navigate to="/login" />} />
       <Route path="/password-reset" element={<Navigate to="/profile" />} />
       <Route path="/specno-quiz-content" element={<ContentQuiz />} />
+      <Route path="/specno-quiz-content/data" element={<ContentData />} />
       <Route path="/specno-quiz" element={<Quiz />} />
       <Route path="/onboard" element={<Onboard />} />
       <Route path="/leaderboard" element={<Leaderboard />} />

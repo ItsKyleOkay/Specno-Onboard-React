@@ -89,3 +89,10 @@ outline: 5px double rgb(114, 114, 114);
   border-radius: 5px;
 
 }
+
+.Heading{
+  margin-top: 3cm;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #686868;
+}

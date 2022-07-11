@@ -3,14 +3,14 @@ import classes from "../EmployeeMainPage/Content.module.css";
 import firebase from "firebase";
 import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
-import MyPDF from "../Components/InspireAcademyParentAgreement.pdf";
-import storage from "../firebase";
 import Navbar from "../Navigation/Navbar.js";
 import contentPic from "../Styles/img/content.jpg";
 
 const Content = () => {
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState();
+  const [content, setContent] = useState();
+  const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -52,10 +52,19 @@ const Content = () => {
                     <div className="d-flex justify-content-between align-items-center mb-3">
                       <h4>Web Development</h4>
                     </div>
+                    <button
+                      className="d-flex justify-content-between align-items-center mb-3 color Blue"
+                      onClick={() => {
+                        setContent(post.Name);
+                        /* 1. Navigate to the Details route with params */
+                        navigate("/specno-quiz-content/data", {
+                          state: { id: 1, name: post.Name },
+                        });
+                      }}
+                    >
+                      {post.Name}
+                    </button>
 
-                    <h3>
-                      <a href="#">{post.Name}</a>
-                    </h3>
                     <p>{post.Info}</p>
                   </div>
                 </div>
@@ -64,7 +73,6 @@ const Content = () => {
           </div>
         </div>
       </section>
-      <h1>Needs Content code</h1>
     </div>
   );
 };

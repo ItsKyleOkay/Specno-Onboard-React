@@ -21,7 +21,7 @@ const Quiz = () => {
   });
   useEffect(() => {
     const getPostsFromFirebase = [];
-    const subscriber = db.collection("Content").onSnapshot((querySnapshot) => {
+    const subscriber = db.collection("Quiz").onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         getPostsFromFirebase.push({
           ...doc.data(), //spread operator

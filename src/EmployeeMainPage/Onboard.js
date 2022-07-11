@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
 import classes from "./Onboard.module.css";
 import firebase from "firebase";
+import Navbar from "../Navigation/Navbar.js";
 
 const Onboard = () => {
   const [loading, setLoading] = useState(true);
@@ -35,30 +36,8 @@ const Onboard = () => {
   }
   return (
     <div>
-      <span className={classes.header}>
-        <div className={classes.logo}>Specno</div>
-        <nav>
-          <ul>
-            <li>
-              <a href="/profile">Home</a>
-            </li>
-            <li>
-              <a href="/register">About Us</a>
-            </li>
-            <li>
-              <a href="/de-register">Blog</a>
-            </li>
-            <li>
-              <a className={classes.onboard} href="/onboard">
-                Onboard
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </span>
-      <div>
-        <h1>Needs onboard code</h1>
-      </div>
+      <Navbar />
+      <h1>Needs onboard code</h1>
     </div>
   );
 };

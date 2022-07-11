@@ -5,6 +5,7 @@ import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import MyPDF from "../Components/InspireAcademyParentAgreement.pdf";
 import storage from "../firebase";
+import Navbar from "../Navigation/Navbar.js";
 
 const Content = () => {
   const [loading, setLoading] = useState(true);
@@ -38,31 +39,9 @@ const Content = () => {
   }
   return (
     <div>
-      <span className={classes.header}>
-        <div className={classes.logo}>Specno</div>
-        <nav>
-          <ul>
-            <li>
-              <a href="/profile">Home</a>
-            </li>
-            <li>
-              <a href="/specno-quiz-content">Content</a>
-            </li>
-            <li>
-              <a href="/specno-quiz">Quizzes</a>
-            </li>
-            <li>
-              <a href="/specno-blog">Blog</a>
-            </li>
-            <li>
-              <a href="/leaderboard">Leaderboard</a>
-            </li>
-          </ul>
-        </nav>
-      </span>
-      <div>
-        <h1>Needs Content code</h1>
-      </div>
+      <Navbar />
+
+      <h1>Needs Content code</h1>
     </div>
   );
 };

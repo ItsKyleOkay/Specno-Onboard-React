@@ -601,6 +601,7 @@ section {
   transition: all 0.5s;
   z-index: 997;
   transition: all 0.5s;
+  background-color: #489DDA;
 }
 #header.header-scrolled {
   background: rgba(250, 250, 250, 0.8);
@@ -614,6 +615,7 @@ section {
   padding: 4px 6px;
   line-height: 1;
   font-weight: 500;
+  justify-content: center;
 }
 #header .logo h1 a, #header .logo h1 a:hover {
   color: #fff;
@@ -664,6 +666,21 @@ section {
 }
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
   color: #fff;
+}
+.logout{
+  color: rgb(59, 142, 208);
+  justify-content: space-between;
+  margin-left: 1cm;
+  padding: 9px 15px;
+  font-size: 1rem;
+  border-radius: 6px;
+    will-change: background;
+    background-color: rgb(255, 255, 255);
+ 
+}
+
+.logout:hover {
+   transform: scale(1.2);
 }
 .navbar .dropdown ul {
   display: block;

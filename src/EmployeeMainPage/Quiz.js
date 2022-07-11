@@ -5,6 +5,7 @@ import firebase from "firebase";
 import contentPic from "../Styles/img/content.jpg";
 import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
+import Navbar from "../Navigation/Navbar.js";
 
 const Quiz = () => {
   const [loading, setLoading] = useState(true);
@@ -38,28 +39,7 @@ const Quiz = () => {
   }
   return (
     <div>
-      <span className={classes.header}>
-        <div className={classes.logo}>Specno</div>
-        <nav>
-          <ul>
-            <li>
-              <a href="/profile">Home</a>
-            </li>
-            <li>
-              <a href="/specno-quiz-content">Content</a>
-            </li>
-            <li>
-              <a href="/specno-quiz">Quizzes</a>
-            </li>
-            <li>
-              <a href="/specno-blog">Blog</a>
-            </li>
-            <li>
-              <a href="/leaderboard">Leaderboard</a>
-            </li>
-          </ul>
-        </nav>
-      </span>
+      <Navbar />
       <section id="courses" className="courses">
         <div className="container" data-aos="fade-up">
           <div className="row" data-aos="zoom-in" data-aos-delay="100">

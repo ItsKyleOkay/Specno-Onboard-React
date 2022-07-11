@@ -7,6 +7,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import firebase from "firebase";
 import { db } from "../firebase";
+import Navbar from "../Navigation/Navbar.js";
 
 import React, { useState, useEffect } from "react";
 
@@ -99,29 +100,7 @@ const Leaderboard = () => {
   // The right nav bar of prizes, progress and badges is also included
   return (
     <div>
-      <span className={classes.header}>
-        <div className={classes.logo}>Specno</div>
-        <nav>
-          <ul>
-            <li>
-              <a href="/profile">Home</a>
-            </li>
-            <li>
-              <a href="/specno-quiz-content">Content</a>
-            </li>
-            <li>
-              <a href="/specno-quiz">Quizzes</a>
-            </li>
-            <li>
-              <a href="/specno-blog">Blog</a>
-            </li>
-            <li>
-              <a href="/leaderboard">Leaderboard</a>
-            </li>
-          </ul>
-        </nav>
-      </span>
-
+      <Navbar />
       <div className={classes.contentcontainer}>
         <div className={classes.row}>
           <div className={classes.leftpanel}>

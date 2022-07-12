@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "../Styles/img/logo.png";
+import Bell from "../Styles/img/bell.png";
 import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
 import { auth } from "../firebase";
@@ -33,6 +34,11 @@ const Navbar = () => {
             </li>
             <li>
               <a href="/leaderboard">Leaderboard</a>
+            </li>
+            <li>
+              <a href="/leaderboard">
+                <img src={Bell} alt="" className="img-fluid" />
+              </a>
             </li>
             <li>
               <button

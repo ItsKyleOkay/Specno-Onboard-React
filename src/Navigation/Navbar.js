@@ -36,7 +36,7 @@ const Navbar = () => {
               <a href="/leaderboard">Leaderboard</a>
             </li>
             <li>
-              <a href="/leaderboard">
+              <a href="#">
                 <img src={Bell} alt="" className="img-fluid" />
               </a>
             </li>

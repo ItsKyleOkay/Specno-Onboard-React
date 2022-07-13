@@ -672,6 +672,31 @@ section {
  
 }
 
+.quizbtn{
+  color: white;
+  justify-content: space-between;
+  margin-top: 1cm;
+  margin-left: 7cm;
+  padding: 9px 15px;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 6px;
+  background-color: #489DDA;
+ 
+}
+.quizbtn2{
+  color: white;
+  justify-content: space-between;
+  margin-top: 1cm;
+  margin-left: 1.5cm;
+  padding: 9px 15px;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 6px;
+  background-color: #489DDA;
+ 
+}
+
 .logout:hover {
    transform: scale(1.2);
 }

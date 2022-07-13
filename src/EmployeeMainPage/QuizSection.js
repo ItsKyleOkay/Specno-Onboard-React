@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import classes from "../EmployeeMainPage/Content.module.css";
+import classes from "../EmployeeMainPage/Quiz.module.css";
 import firebase from "firebase";
 import { db } from "../firebase";
 import Navbar from "../Navigation/Navbar.js";
 import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
-const ContentData = () => {
+const QuizSection = () => {
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState();
   const [posts, setPosts] = useState([]);
@@ -15,7 +16,7 @@ const ContentData = () => {
 
   useEffect(() => {
     const getPostsFromFirebase = [];
-    const subscriber = db.collection("Content").onSnapshot((querySnapshot) => {
+    const subscriber = db.collection("Quiz").onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         getPostsFromFirebase.push({
           ...doc.data(), //spread operator
@@ -28,19 +29,31 @@ const ContentData = () => {
     return () => subscriber();
   }, [loading]); // empty dependencies array => useEffect only called once
 
-  if (loading) {
-    return <h1>loading firebase data...</h1>;
-  }
   // @ Rafeeq I tried to make it neat and also add date but it being an if statement I wasnt sure how
   return (
     <div>
       <Navbar />
-
-      <h1 className={classes.Heading}> {location.state.name}</h1>
       {posts.map((post) => (
-        <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-          <div className="course-item">
-            {post.Name === location.state.name ? post.Background : <div> </div>}
+        <div className="quiz">
+          <div className={classes.quiz}>
+            {post.Name === location.state.name ? (
+              <div>
+                <div className={classes.progressquiz}>
+                  <ProgressBar now={10} />
+                </div>
+
+                <div className={classes.quizcontent}>
+                  1. {post.Question1}
+                  <br></br>
+                  <img src={post.src} className={classes.imgfluid} alt="..." />
+                </div>
+                <button className="quizbtn2">Skip</button>
+                <button className="quizbtn">Back</button>
+                <button className="quizbtn">Check</button>
+              </div>
+            ) : (
+              <div> </div>
+            )}
           </div>
         </div>
       ))}
@@ -50,4 +63,4 @@ const ContentData = () => {
   );
 };
 
-export default ContentData;
+export default QuizSection;

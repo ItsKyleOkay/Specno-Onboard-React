@@ -6,19 +6,13 @@ import contentPic from "../Styles/img/content.jpg";
 import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
 import Navbar from "../Navigation/Navbar.js";
+import { useNavigate } from "react-router-dom";
 
 const Quiz = () => {
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState();
   const [posts, setPosts] = useState([]);
-  firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-      setEmail(user.email);
-    } else {
-      // No user is signed in.
-      console.log("There is no logged in user");
-    }
-  });
+  const navigate = useNavigate();
   useEffect(() => {
     const getPostsFromFirebase = [];
     const subscriber = db.collection("Quiz").onSnapshot((querySnapshot) => {
@@ -52,9 +46,17 @@ const Quiz = () => {
                       <h4>Web Development</h4>
                     </div>
 
-                    <h3>
-                      <a href="#">{post.Name}</a>
-                    </h3>
+                    <button
+                      className="d-flex justify-content-between align-items-center mb-3 color Blue"
+                      onClick={() => {
+                        /* 1. Navigate to the Details route with params */
+                        navigate("/specno-quiz/data", {
+                          state: { id: 1, name: post.Name },
+                        });
+                      }}
+                    >
+                      {post.Name}
+                    </button>
                     <p>{post.Info}</p>
                   </div>
                 </div>

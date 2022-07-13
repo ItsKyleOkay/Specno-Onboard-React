@@ -12,14 +12,7 @@ const Content = () => {
   const [content, setContent] = useState();
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
-  firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-      setEmail(user.email);
-    } else {
-      // No user is signed in.
-      console.log("There is no logged in user");
-    }
-  });
+
   useEffect(() => {
     const getPostsFromFirebase = [];
     const subscriber = db.collection("Content").onSnapshot((querySnapshot) => {

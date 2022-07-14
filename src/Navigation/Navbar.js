@@ -5,6 +5,7 @@ import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -22,18 +23,16 @@ const Navbar = () => {
         <nav id="navbar" className="navbar">
           <ul>
             <li>
-              <a className="active " href="/profile">
-                Home
-              </a>
+              <NavLink to="/profile">Home</NavLink>
             </li>
             <li>
-              <a href="/specno-quiz-content">Content</a>
+              <NavLink to="/specno-quiz-content">Content</NavLink>
             </li>
             <li>
-              <a href="/specno-quiz">Quizzes</a>
+              <NavLink to="/specno-quiz">Quizzes</NavLink>
             </li>
             <li>
-              <a href="/leaderboard">Leaderboard</a>
+              <NavLink to="/leaderboard">Leaderboard</NavLink>
             </li>
             <li>
               <a href="#">

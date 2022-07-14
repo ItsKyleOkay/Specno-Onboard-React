@@ -123,10 +123,7 @@ margin-left: 2cm;
 .contentcontainer {
     padding: 3%;
     height: 100vh;
-    background-color: white;
-    margin-top: 2cm;
-  
-    
+    background-color: white; 
 }
 .row {
     display: flex;

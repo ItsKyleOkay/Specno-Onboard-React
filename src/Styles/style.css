@@ -31,6 +31,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   position: relative;
 }
 
+
 .text-black {
   color: #000 !important;
 }
@@ -73,10 +74,7 @@ section {
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
-section {
-  padding: 60px 0;
-  overflow: hidden;
-}
+
 
 .section-bg {
   background-color: #f6f7f6;
@@ -657,8 +655,13 @@ section {
   line-height: 0;
   margin-left: 5px;
 }
-.navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
+.navbar a:hover, .navbar .active:focus, .navbar li:hover > a {
   color: #fff;
+}
+
+.navbar .active{
+  color: #fff;
+  font-weight: bold;
 }
 
 
@@ -856,7 +859,7 @@ section {
   display: block;
 }
 
-/*--------------------------------------------------------------
+/*----------------------------------------se----------------------
 # Hero Section
 --------------------------------------------------------------*/
 .hero-section {
@@ -882,7 +885,7 @@ section {
   height: 100vh;
 }
 .hero-section.inner-page {
-  height: 60vh;
+  height: 7vh;
   min-height: 0;
 }
 .hero-section.inner-page .hero-text {
@@ -1012,6 +1015,11 @@ section {
 /*--------------------------------------------------------------
 # Courses
 --------------------------------------------------------------*/
+.courses {
+  padding: 40px 0;
+  overflow: hidden;
+}
+
 .courses .course-item {
   margin-bottom: 1rem;
   border-radius: 5px;

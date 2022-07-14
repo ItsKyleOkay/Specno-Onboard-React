@@ -34,6 +34,8 @@ const Quiz = () => {
   return (
     <div>
       <Navbar />
+      <div className="hero-section inner-page">
+      </div>
       <section id="courses" className="courses">
         <div className="container" data-aos="fade-up">
           <div className="row" data-aos="zoom-in" data-aos-delay="100">

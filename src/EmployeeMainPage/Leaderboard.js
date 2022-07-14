@@ -97,6 +97,8 @@ const Leaderboard = () => {
   return (
     <div>
       <Navbar />
+      <div className="hero-section inner-page">
+      </div>
       <div className={classes.contentcontainer}>
         <div className={classes.row}>
           <div className={classes.leftpanel}>

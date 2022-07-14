@@ -92,10 +92,6 @@ const Leaderboard = () => {
     return () => userinfo();
   }, [loading]); // empty dependencies array => useEffect only called once
 
-  if (loading) {
-    return <h1>loading firebase data...</h1>;
-  }
-
   // The table for the leaderboard with the best of specno and recent activity
   // The right nav bar of prizes, progress and badges is also included
   return (

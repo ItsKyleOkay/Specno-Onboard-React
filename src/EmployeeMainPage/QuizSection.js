@@ -38,18 +38,50 @@ const QuizSection = () => {
           <div className={classes.quiz}>
             {post.Name === location.state.name ? (
               <div>
-                <div className={classes.progressquiz}>
+                <div className="progressquiz">
                   <ProgressBar now={10} />
                 </div>
 
-                <div className={classes.quizcontent}>
-                  1. {post.Question1}
-                  <br></br>
-                  <img src={post.src} className={classes.imgfluid} alt="..." />
+                <div className="quizcontent">
+                  <div className="quizname">
+                    <div
+                      style={{
+                        flex: "9",
+                      }}
+                    >
+                      1. {post.Question1}
+                    </div>
+                    <div
+                      style={{
+                        flex: "1",
+                      }}
+                    >
+                      1/{post.TotalQuestions}
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2 mt-3">
+                    <img
+                      src={post.src}
+                      className={classes.imgfluid}
+                      alt="..."
+                    />
+                    <img
+                      src={post.src}
+                      className={classes.imgfluid}
+                      alt="..."
+                    />
+                    <img
+                      src={post.src}
+                      className={classes.imgfluid}
+                      alt="..."
+                    />
+                  </div>
                 </div>
-                <button className="quizbtn2">Skip</button>
-                <button className="quizbtn">Back</button>
-                <button className="quizbtn">Check</button>
+                <div className="grid grid-cols-3 gap-20 mt-6">
+                  <button className="quizbtn">Skip</button>
+                  <button className="quizbtn">Back</button>
+                  <button className="quizbtn">Check</button>
+                </div>
               </div>
             ) : (
               <div> </div>

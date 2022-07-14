@@ -7,6 +7,7 @@ import Navbar from "../Navigation/Navbar.js";
 import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import Back from "../Styles/img/back.png";
 
 const QuizSection = () => {
   const [loading, setLoading] = useState(true);
@@ -35,13 +36,15 @@ const QuizSection = () => {
       <Navbar />
       {posts.map((post) => (
         <div className="quiz">
-          <div className={classes.quiz}>
+          <div className="quizdiv d-flex justify-content-center">
             {post.Name === location.state.name ? (
               <div>
+              <div className="processback">
+                <img src={Back} alt="" className="img-fluid" />
                 <div className="progressquiz">
                   <ProgressBar now={10} />
                 </div>
-
+              </div>
                 <div className="quizcontent">
                   <div className="quizname">
                     <div
@@ -77,9 +80,8 @@ const QuizSection = () => {
                     />
                   </div>
                 </div>
-                <div className="grid grid-cols-3 gap-20 mt-6">
+                <div className="grid grid-cols-2 gap-20 mt-6">
                   <button className="quizbtn">Skip</button>
-                  <button className="quizbtn">Back</button>
                   <button className="quizbtn">Check</button>
                 </div>
               </div>

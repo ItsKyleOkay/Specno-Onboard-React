@@ -730,6 +730,9 @@ section {
 }
 /* Quiz Layout  */
 
+.quizdiv{
+  padding:50px;
+}
 
 .quizbtn{
   color: white;
@@ -746,22 +749,21 @@ section {
 
 .quizcontent{
   padding: 20px;
-  height: 55vh;
-  margin-left: 4cm;
-  width: 70%;
-  aspect-ratio: 10 / 3;
-  max-width: 991px;
   border-radius: 5px;
   color: white;
   font-size: 1.7rem;
   background-color: #489DDA;
+  margin-top: 3rem;
 }
 
 .progressquiz{
-  margin-left: 4cm;
-  margin-right: 8cm;
-  margin-bottom: 1cm;
-  width: 70%;
+  width: 95%;
+}
+
+.processback{
+  display: flex;
+  justify-content: space-between;
+  height: 1rem;
 }
 
 .quizname{

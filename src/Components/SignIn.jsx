@@ -29,6 +29,7 @@ const SignIn = () => {
     if (user) {
       setEmail(user.email);
       console.log(email);
+      navigate("/profile")
     } else {
       // No user is signed in.
       console.log("There is no logged in user");

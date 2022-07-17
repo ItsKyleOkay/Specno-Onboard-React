@@ -28,9 +28,6 @@ const ContentData = () => {
     return () => subscriber();
   }, [loading]); // empty dependencies array => useEffect only called once
 
-  if (loading) {
-    return <h1>loading firebase data...</h1>;
-  }
   // @ Rafeeq I tried to make it neat and also add date but it being an if statement I wasnt sure how
   return (
     <div>

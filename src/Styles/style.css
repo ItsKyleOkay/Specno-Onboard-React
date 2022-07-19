@@ -1016,7 +1016,7 @@ section {
 # Courses
 --------------------------------------------------------------*/
 .courses {
-  padding: 40px 0;
+  padding: 40px 0 25px 0;
   overflow: hidden;
 }
 

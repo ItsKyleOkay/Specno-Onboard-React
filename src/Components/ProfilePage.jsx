@@ -1,8 +1,5 @@
 import React, { useContext } from "react";
 import { UserContext } from "../providers/UserProvider";
-import { auth } from "../firebase";
-import { useNavigate } from "react-router-dom";
-import Logo from "../Styles/img/logo.png";
 import Rocket from "../Styles/img/rocket.png";
 import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
@@ -10,7 +7,6 @@ import Navbar from "../Navigation/Navbar.js";
 
 const ProfilePage = () => {
   const user = useContext(UserContext);
-  const navigate = useNavigate();
   const { displayName, email } = user;
 
   return (
@@ -22,7 +18,7 @@ const ProfilePage = () => {
             <div className="col-12 hero-text-image">
               <div className="row">
                 <div className="col-lg-8 text-center text-lg-start">
-                  <h1 data-aos="fade-right" data-testid="header">
+                  <h1 data-aos="fade-right">
                     Designing And Building World Class Digital Products
                   </h1>
                   <p
@@ -43,7 +39,6 @@ const ProfilePage = () => {
                     data-aos="fade-right"
                   />
                 </div>
-                <input type="text" data-testid="searchBar"></input>
               </div>
             </div>
           </div>

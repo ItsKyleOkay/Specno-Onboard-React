@@ -27,7 +27,6 @@ const Leaderboard = () => {
       // So I cant call levels, departments, etc
     } else {
       // No user is signed in.
-      console.log("There is no logged in user");
     }
   });
   useEffect(() => {
@@ -97,8 +96,7 @@ const Leaderboard = () => {
   return (
     <div>
       <Navbar />
-      <div className="hero-section inner-page">
-      </div>
+      <div className="hero-section inner-page"></div>
       <div className={classes.contentcontainer}>
         <div className={classes.row}>
           <div className={classes.leftpanel}>

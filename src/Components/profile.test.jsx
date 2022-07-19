@@ -1,17 +1,17 @@
 import * as React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
 
-import ProfilePage from "./ProfilePage";
+import SignIn from "./SignIn";
 
 //test block
 test("Test header", () => {
   // render the component on virtual dom
-  render(<ProfilePage />);
+  render(<SignIn />);
   const headertext = screen.getByTestId("header");
 
   //interact with those elements
 
   expect(headertext).toHaveTextContent(
-    "Designing And Building World Class Digital Products"
+    "Hello! welcome to Specno's Onboarding platform"
   );
 });

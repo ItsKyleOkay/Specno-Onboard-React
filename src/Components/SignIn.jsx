@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import classes from "./SignIn.module.css";
 import firebase from "firebase";
+import { Route } from "react-router-dom";
+import ProfilePage from "./ProfilePage";
+import AdminProfile from "./AdminProfile";
+import PasswordReset from "./PasswordReset";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -29,10 +33,9 @@ const SignIn = () => {
     if (user) {
       setEmail(user.email);
       console.log(email);
-      navigate("/profile")
+      navigate("/profile");
     } else {
       // No user is signed in.
-      console.log("There is no logged in user");
     }
   });
   useEffect(() => {
@@ -50,9 +53,6 @@ const SignIn = () => {
     return () => users();
   }, [loading]); // empty dependencies array => useEffect only called once
 
-  if (loading) {
-    return <h1>Checking information...</h1>;
-  }
   const signInWithEmailAndPasswordHandler = (event, email, password) => {
     event.preventDefault();
     auth
@@ -62,7 +62,6 @@ const SignIn = () => {
         setError(error.message);
         console.error("Error signing in with password and email", error);
       });
-    // ill add what here?
   };
 
   const onChangeHandler = (event) => {
@@ -78,14 +77,14 @@ const SignIn = () => {
     <div className={classes.contentcontainer}>
       <div className={classes.row}>
         <div className={classes.leftpanel}>
-          <h1 className={classes.welcome}>
+          <h1 className={classes.welcome} data-testid="header">
             Hello! welcome to Specno's Onboarding platform
           </h1>
           <img
             src="https://uploads-ssl.webflow.com/5f479f688ac92ece1c89402b/5f74a4cc0b72d66c9c82bc99_Group%2029017.svg"
             loading="lazy"
             alt=""
-            class={classes.rocket}
+            className={classes.rocket}
           ></img>
         </div>
         <div className={classes.rightpanel}>
@@ -105,7 +104,7 @@ const SignIn = () => {
               id="userEmail"
               onChange={(event) => onChangeHandler(event)}
             />
-            <label htmlFor="userPassword" className={classes.headerdetails}>
+            <label htmlFor="password" className={classes.headerdetails}>
               Password:
             </label>
             <input

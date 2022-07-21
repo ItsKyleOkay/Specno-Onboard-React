@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from "react";
-import classes from "../Students.module.css";
+import { db } from "../firebase";
+import classes from "./Employee.module.css";
 import firebase from "firebase";
-import { db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 
-const SearchScience = () => {
+const SoftSearch = () => {
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState();
-
+  const [search, setSearch] = useState();
   const [posts, setPosts] = useState([]);
   const [displayAnswer, setAnswer] = useState();
   const navigate = useNavigate();
-  let Courses = ["Accounting", "Science", "Mathematics"];
 
-  if (displayAnswer === "Science") {
-  }
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       setEmail(user.email);
@@ -41,6 +38,11 @@ const SearchScience = () => {
   if (loading) {
     return <h1>loading firebase data...</h1>;
   }
+  const onChangeHandler = (event) => {
+    const { name, value } = event.currentTarget;
+    setSearch(value);
+  };
+  console.log(search);
   return (
     <div>
       <span className={classes.header}>
@@ -69,54 +71,40 @@ const SearchScience = () => {
         </nav>
       </span>
       <div>
-        {posts.length > 0 ? (
-          posts.map((post) => (
-            <div key={post.key}>
-              <span>
-                {(post.student === true) & (post.Course === "Science") ? (
-                  "Email:" +
-                  "  " +
-                  post.email +
-                  ",  Name:     " +
-                  post.displayName +
-                  ", Centre:     " +
-                  post.centre
-                ) : post.Course2 === "Science" ? (
-                  "Email:" +
-                  "  " +
-                  post.email +
-                  ",  Name:     " +
-                  post.displayName +
-                  ", Centre:     " +
-                  post.centre
-                ) : post.Course3 === "Science" ? (
-                  "Email:" +
-                  "  " +
-                  post.email +
-                  ",  Name:     " +
-                  post.displayName +
-                  ", Centre:     " +
-                  post.centre
-                ) : post.Course4 === "Science" ? (
-                  "Email:" +
-                  "  " +
-                  post.email +
-                  ",  Name:     " +
-                  post.displayName +
-                  ", Centre:     " +
-                  post.centre
-                ) : (
-                  <h1></h1>
-                )}
-              </span>
-            </div>
-          ))
-        ) : (
-          <h1>no answers yet :(</h1>
-        )}
+        <div className={classes.welcome}>
+          <div className={classes.radio}>
+            <h1>Please enter a students email you wish to search for:</h1>
+            <input
+              type="text"
+              className="mt-1 mb-3 p-1 w-full"
+              name="userSearch"
+              placeholder="Enter email here"
+              id="userSearch"
+              onChange={(event) => onChangeHandler(event)}
+            />
+
+            {posts.length > 0 &&
+              posts.map((post) => (
+                <div key={post.key}>
+                  {post.email.includes(search) & (post.student === true) ? (
+                    <span className={classes.Course}>
+                      <div>{post.displayName}</div>
+                      <div>{post.centre}</div>
+                      <div>{post.email}</div>
+                      <div>{post.Course}</div>
+                      <div>{post.Course2}</div>
+                      <div>{post.Course3}</div>
+                      <div>{post.Course4}</div>
+                      <h1>---------------------------------------------</h1>
+                    </span>
+                  ) : null}
+                </div>
+              ))}
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default SearchScience;
+export default SoftSearch;

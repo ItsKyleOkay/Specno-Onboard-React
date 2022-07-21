@@ -1,69 +1,52 @@
 import React, { useContext } from "react";
 import { UserContext } from "../providers/UserProvider";
-import { auth } from "../firebase";
-import RegisterCourse from "../EmployeeMainPage/ContentQuiz";
-import classes from "./AdminProfile.module.css";
-import { useNavigate } from "react-router-dom";
+import Rocket from "../Styles/img/rocket.png";
+import "../Styles/style.css";
+import "../Styles/bootstrap/css/bootstrap.min.css";
+import AdminNavbar from "../Navigation/AdminNavbar.js";
 
-const TeacherProfile = () => {
+const AdminProfile = () => {
   const user = useContext(UserContext);
-  const navigate = useNavigate();
   const { displayName, email } = user;
 
   return (
     <div>
-      <span className={classes.header}>
-        <div className={classes.logo}>Specno</div>
-        <nav>
-          <ul>
-            <li>
-              <a href="/teacher-profile">Home</a>
-            </li>
-            <li>
-              <a href="/students-list">Employees</a>
-            </li>
-            <li>
-              <a href="/search-students">Departments</a>
-            </li>
-            <li>
-              <a href="/search-courses">Quizzes</a>
-            </li>
-            <li>
-              <a href="/reports">Content</a>
-            </li>
-            <li>
-              <a href="/search">Leaderboard</a>
-            </li>
-          </ul>
-        </nav>
-      </span>
-      <div className={classes.welcome}>
-        <h1>Welcome!</h1>
-        <h2>
-          Designing And Building World Class Digital Products Specno Partners
-          With You To Validate, Design And Develop Industry Leading Solutions
-        </h2>
-      </div>
-      <div className="mx-auto w-11/12 md:w-2/4 py-8 px-4 md:px-8">
-        <div className="flex border flex-col items-center md:flex-row md:items-start border-blue-400 px-3 py-4">
-          <div className="border border-blue-300"></div>
-          <div className="md:pl-4">
-            <h2 className="text-2xl font-semibold">{displayName}</h2>
-            <h3 className="italic">{email}</h3>
+      <AdminNavbar />
+      <section className="hero-section" id="hero">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-12 hero-text-image">
+              <div className="row">
+                <div className="col-lg-8 text-center text-lg-start">
+                  <h1 data-aos="fade-right">Admin Account</h1>
+                  <p
+                    className="mb-5"
+                    data-aos="fade-right"
+                    data-aos-delay="100"
+                  >
+                    Specno Partners With You To Validate, Design And Develop
+                    Industry Leading Solutions
+                  </p>
+                </div>
+                <div className="col-lg-8 iphone-wrap">
+                  <img
+                    src={Rocket}
+                    alt="Image"
+                    data-testid="rocketID"
+                    className="phone-1"
+                    data-aos="fade-right"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <button
-          className="w-full py-3 bg-red-600 mt-4 text-white"
-          onClick={() => {
-            auth.signOut();
-            navigate("/login");
-          }}
-        >
-          Sign out
-        </button>
-      </div>
+      </section>
+
+      <script src="../Styles/bootstrap/js/bootstrap.bundle.min.jss"></script>
+      <script src="../Styles/main.js"></script>
     </div>
   );
 };
 
-export default TeacherProfile;
+export default AdminProfile;

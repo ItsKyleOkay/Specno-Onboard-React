@@ -23,17 +23,14 @@ const SignIn = () => {
             ? navigate("/profile")
             : (post.email === email) & (post.employee === false)
             ? navigate("/admin-profile")
-            : console.log("this shouldnt happen")
+            : console.log(email)
         )
       : console.log("error101");
   }
 
-  //eatttting
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       setEmail(user.email);
-      console.log(email);
-      navigate("/profile");
     } else {
       // No user is signed in.
     }
@@ -63,6 +60,8 @@ const SignIn = () => {
         console.error("Error signing in with password and email", error);
       });
   };
+
+  //Could make a popup error when the above console error occurs
 
   const onChangeHandler = (event) => {
     const { name, value } = event.currentTarget;

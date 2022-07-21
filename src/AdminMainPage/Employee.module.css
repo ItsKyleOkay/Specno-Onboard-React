@@ -66,11 +66,21 @@
 .radio:hover{
   color: rgb(0, 0, 0);
 }
+.navdist{
+  margin-top: 4cm;
+  margin-right: 1cm;
+  margin-left: 1cm;
 
+}
 .table {
 width: 700px;
 display: grid;
     grid-template-columns: 2fr 2fr 1fr;
     padding: 8px 0;
     border-bottom: 1px solid #e7e7e7;
+}
+
+.search {
+    width: 30%;
+    margin-bottom: 1cm;
 }

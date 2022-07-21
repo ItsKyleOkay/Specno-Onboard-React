@@ -6,28 +6,15 @@ import ContentData from "../EmployeeMainPage/ContentData";
 import Quiz from "../EmployeeMainPage/Quiz";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Onboard from "../EmployeeMainPage/Onboard";
-import Students from "../TeacherMainPage/Students";
-import AdminProfile from "./AdminProfile";
-import SearchStudents from "../TeacherMainPage/SearchStudents";
-import SearchCourses from "../TeacherMainPage/Courses";
-import Reports from "../TeacherMainPage/Report";
-import SearchAccounting from "../TeacherMainPage/SearchingCourses/Accounting";
-import SearchScience from "../TeacherMainPage/SearchingCourses/Science";
-import SearchStudentsBisho27 from "../TeacherMainPage/SearchingStudents/SearchingBisho27";
-import SearchMaths from "../TeacherMainPage/SearchingCourses/Maths";
-import SearchStudentsBisho25 from "../TeacherMainPage/SearchingStudents/SearchingBisho25";
-import SearchStudentsSoweto from "../TeacherMainPage/SearchingStudents/SearchingSoweto";
-import SearchStudentsKWT from "../TeacherMainPage/SearchingStudents/SearchingKWT";
-import SearchStudentsAll from "../TeacherMainPage/SearchingStudents/SearchingAll";
-import SearchICT from "../TeacherMainPage/SearchingCourses/ICT";
-import SoftSearch from "../TeacherMainPage/SoftSearch";
-import Content from "../EmployeeMainPage/ContentQuiz";
+import Employees from "../AdminMainPage/Employees";
+import SearchStudents from "../AdminMainPage/SearchStudents";
+import SoftSearch from "../AdminMainPage/SoftSearch";
 import PageLoading from "./PageLoading";
 
 //main routes
 const ProfilePage = React.lazy(() => import("./ProfilePage"));
 const Leaderboard = React.lazy(() => import("../EmployeeMainPage/Leaderboard"));
-
+const AdminProfile = React.lazy(() => import("./AdminProfile"));
 const QuizSection = React.lazy(() => import("../EmployeeMainPage/QuizSection"));
 const SignIn = React.lazy(() => import("./SignIn"));
 const SignUp = React.lazy(() => import("./SignUp"));
@@ -71,29 +58,16 @@ function Application() {
           </React.Suspense>
         }
       />
-      <Route path="/students-list" element={<Students />} />
-      <Route path="/admin-profile" element={<AdminProfile />} />
+      <Route
+        path="/admin-profile"
+        element={
+          <React.Suspense fallback={<PageLoading />}>
+            <AdminProfile />
+          </React.Suspense>
+        }
+      />
+      <Route path="/employee-list" element={<Employees />} />
       <Route path="/search-students" element={<SearchStudents />} />
-      <Route path="/search-courses" element={<SearchCourses />} />
-      <Route path="/reports" element={<Reports />} />
-      <Route path="/search-course-accounting" element={<SearchAccounting />} />
-      <Route path="/search-course-science" element={<SearchScience />} />
-      <Route path="/search-course-maths" element={<SearchMaths />} />
-      <Route path="/search-course-ict" element={<SearchICT />} />
-      <Route
-        path="/search-students-bisho27"
-        element={<SearchStudentsBisho27 />}
-      />
-      <Route
-        path="/search-students-bisho25"
-        element={<SearchStudentsBisho25 />}
-      />
-      <Route
-        path="/search-students-soweto"
-        element={<SearchStudentsSoweto />}
-      />
-      <Route path="/search-students-kwt" element={<SearchStudentsKWT />} />
-      <Route path="/search-students-all" element={<SearchStudentsAll />} />
     </Routes>
   ) : (
     // if a user is logged in and if the user === student

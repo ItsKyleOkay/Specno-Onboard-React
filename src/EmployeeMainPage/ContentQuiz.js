@@ -5,6 +5,8 @@ import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navigation/Navbar.js";
 import contentPic from "../Styles/img/content.jpg";
+import "../Styles/style.css";
+import "../Styles/bootstrap/css/bootstrap.min.css";
 
 const Content = () => {
   const [loading, setLoading] = useState(true);
@@ -34,6 +36,15 @@ const Content = () => {
       <div className="hero-section inner-page"></div>
       <section id="courses" className="courses">
         <div className="container" data-aos="fade-up">
+        <div className="col-lg-12 d-flex justify-content-center">
+            <div className="col-lg-12 d-flex tabs" id="tab" >
+              <button className="filter-active">Specno</button>
+              <button>Your Team</button>
+              <button>Your Tools</button>
+              <button>Your Processes</button>
+              <button>Other</button>
+            </div>
+          </div>
           <div className="row" data-aos="zoom-in" data-aos-delay="100">
             {posts.map((post) => (
               <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">

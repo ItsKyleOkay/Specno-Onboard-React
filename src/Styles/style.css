@@ -1016,10 +1016,20 @@ section {
 # Courses
 --------------------------------------------------------------*/
 .courses {
-  padding: 40px 0 25px 0;
+  padding: 60px 0 25px 0;
   overflow: hidden;
 }
 
+.tabs {
+  justify-content: space-between !important; 
+  margin-bottom: 2.5rem;
+  font-size: 14px;
+  width: 60% !important;
+}
+
+.filter-active{
+  font-weight: bold;
+}
 .courses .course-item {
   margin-bottom: 1rem;
   border-radius: 5px;
@@ -1226,3 +1236,4 @@ section {
     background: #5fcf80;
   }
 }
+

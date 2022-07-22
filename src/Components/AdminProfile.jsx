@@ -18,14 +18,14 @@ const AdminProfile = () => {
             <div className="col-12 hero-text-image">
               <div className="row">
                 <div className="col-lg-8 text-center text-lg-start">
-                  <h1 data-aos="fade-right">Admin Account</h1>
+                  <h1 data-aos="fade-right">Welcome, Specno Admin</h1>
                   <p
                     className="mb-5"
                     data-aos="fade-right"
                     data-aos-delay="100"
                   >
-                    Specno Partners With You To Validate, Design And Develop
-                    Industry Leading Solutions
+                    Making sure the onboarding process creates a happy, family
+                    environment for new Specno members.
                   </p>
                 </div>
                 <div className="col-lg-8 iphone-wrap">

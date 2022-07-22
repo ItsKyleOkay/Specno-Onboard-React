@@ -5,11 +5,14 @@ import ContentQuiz from "../EmployeeMainPage/ContentQuiz";
 import ContentData from "../EmployeeMainPage/ContentData";
 import Quiz from "../EmployeeMainPage/Quiz";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Onboard from "../EmployeeMainPage/Onboard";
 import Employees from "../AdminMainPage/Employees";
 import SearchStudents from "../AdminMainPage/SearchStudents";
 import SoftSearch from "../AdminMainPage/SoftSearch";
 import PageLoading from "./PageLoading";
+
+import ContentAdmin from "../AdminMainPage/ContentAdmin";
+import QuizAdmin from "../AdminMainPage/QuizAdmin";
+import LeaderboardAdmin from "../AdminMainPage/LeaderboardAdmin";
 
 //main routes
 const ProfilePage = React.lazy(() => import("./ProfilePage"));
@@ -49,7 +52,6 @@ function Application() {
       <Route path="/specno-quiz-content" element={<ContentQuiz />} />
       <Route path="/specno-quiz-content/data" element={<ContentData />} />
       <Route path="/specno-quiz" element={<Quiz />} />
-      <Route path="/onboard" element={<Onboard />} />
       <Route
         path="/leaderboard"
         element={
@@ -66,6 +68,9 @@ function Application() {
           </React.Suspense>
         }
       />
+      <Route path="/content-admin" element={<ContentAdmin />} />
+      <Route path="/quiz-admin" element={<QuizAdmin />} />
+      <Route path="/leaderboard-admin" element={<LeaderboardAdmin />} />
       <Route path="/employee-list" element={<Employees />} />
       <Route path="/search-students" element={<SearchStudents />} />
     </Routes>

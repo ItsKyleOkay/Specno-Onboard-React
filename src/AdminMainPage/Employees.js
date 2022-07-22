@@ -14,6 +14,7 @@ import TextField from "@mui/material/TextField";
 const Employee = () => {
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     const getPostsFromFirebase = [];
@@ -29,7 +30,7 @@ const Employee = () => {
     });
     return () => userinfo();
   }, [loading]); // empty dependencies array => useEffect only called once
-
+  console.log(filter);
   return (
     <div>
       <AdminNavbar />
@@ -41,6 +42,8 @@ const Employee = () => {
               variant="outlined"
               fullWidth
               label="Search"
+              value={filter}
+              onChange={(event) => setFilter(event.target.value)}
             />
           </div>
 
@@ -52,7 +55,7 @@ const Employee = () => {
                     Employee Name
                   </TableCell>
                   <TableCell align="right" style={{ fontWeight: "bold" }}>
-                    Date and Time
+                    Email
                   </TableCell>
 
                   <TableCell align="right" style={{ fontWeight: "bold" }}>
@@ -60,6 +63,9 @@ const Employee = () => {
                   </TableCell>
                   <TableCell align="right" style={{ fontWeight: "bold" }}>
                     Age
+                  </TableCell>
+                  <TableCell align="right" style={{ fontWeight: "bold" }}>
+                    Final Score
                   </TableCell>
                 </TableRow>
               </TableHead>
@@ -71,15 +77,17 @@ const Employee = () => {
                       "&:last-child td, &:last-child th": { border: 0 },
                     }}
                   >
-                    {row.Department !== "Admin" ? (
+                    {(row.Department !== "Admin") &
+                    row.displayName.includes(filter) ? (
                       <>
                         <TableCell component="th" scope="row">
                           {row.displayName}
                         </TableCell>
-                        <TableCell align="right">{row.DateTime}</TableCell>
+                        <TableCell align="right">{row.email}</TableCell>
 
                         <TableCell align="right">{row.Department}</TableCell>
                         <TableCell align="right">{row.Age}</TableCell>
+                        <TableCell align="right">{row.FinalScore}</TableCell>
                       </>
                     ) : (
                       <div> </div>

@@ -17,7 +17,7 @@ const Navbar = () => {
             <img src={Logo} alt="" className="img-fluid" />
           </a>
           <h1>
-            <a href="/profile">Specno</a>
+            <a href="/admin-profile">Specno</a>
           </h1>
         </div>
         <nav id="navbar" className="navbar">
@@ -29,13 +29,13 @@ const Navbar = () => {
               <NavLink to="/employee-list">Employees</NavLink>
             </li>
             <li>
-              <NavLink to="/specno-quiz-content">Content</NavLink>
+              <NavLink to="/content-admin">Content</NavLink>
             </li>
             <li>
-              <NavLink to="/specno-quiz">Quizzes</NavLink>
+              <NavLink to="/quiz-admin">Quizzes</NavLink>
             </li>
             <li>
-              <NavLink to="/leaderboard">Leaderboard</NavLink>
+              <NavLink to="/leaderboard-admin">Leaderboard</NavLink>
             </li>
             <li>
               <a href="#">

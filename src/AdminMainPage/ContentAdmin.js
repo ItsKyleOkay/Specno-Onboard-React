@@ -61,7 +61,7 @@ const ContentAdmin = () => {
                       onClick={() => {
                         setContent(post.Name);
                         /* 1. Navigate to the Details route with params */
-                        navigate("/specno-quiz-content/data", {
+                        navigate("/content-admin/data", {
                           state: { id: 1, name: post.Name },
                         });
                       }}

@@ -13,6 +13,7 @@ import PageLoading from "./PageLoading";
 import ContentAdmin from "../AdminMainPage/ContentAdmin";
 import QuizAdmin from "../AdminMainPage/QuizAdmin";
 import LeaderboardAdmin from "../AdminMainPage/LeaderboardAdmin";
+import ContentAdminData from "../AdminMainPage/ContentAdminData";
 
 //main routes
 const ProfilePage = React.lazy(() => import("./ProfilePage"));
@@ -73,6 +74,8 @@ function Application() {
       <Route path="/leaderboard-admin" element={<LeaderboardAdmin />} />
       <Route path="/employee-list" element={<Employees />} />
       <Route path="/search-students" element={<SearchStudents />} />
+
+      <Route path="/content-admin/data" element={<ContentAdminData />} />
     </Routes>
   ) : (
     // if a user is logged in and if the user === student

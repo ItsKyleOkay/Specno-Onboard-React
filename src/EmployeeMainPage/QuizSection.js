@@ -52,8 +52,8 @@ const QuizSection = () => {
       <Navbar />
       {posts.map((post) =>
         post.Type === "Image" ? (
-        <div className="quiz">
-          <div className="quizdiv d-flex justify-content-center">
+          <div className="quiz">
+            <div className="quizdiv d-flex justify-content-center">
               <div className="w-75">
                 <div className="processback">
                   <img
@@ -108,11 +108,11 @@ const QuizSection = () => {
                   <button className="quizbtn">Check</button>
                 </div>
               </div>
-              </div>
-              </div>
-            ) : post.Type === "Text" && post.Number === question ? (
-              <div className="quiz">
-              <div className="quizdiv d-flex justify-content-center">
+            </div>
+          </div>
+        ) : post.Type === "Text" && post.Number === question ? (
+          <div className="quiz">
+            <div className="quizdiv d-flex justify-content-center">
               <div className="w-75">
                 <div className="processback">
                   <img
@@ -189,11 +189,11 @@ const QuizSection = () => {
                   <button className="quizbtn">Check</button>
                 </div>
               </div>
-              </div>
-              </div>
-            ) : (
-              <div> </div>
-            ))};
+            </div>
+          </div>
+        ) : (
+          <div> </div>
+        ))};
       <script src="../Styles/bootstrap/js/bootstrap.bundle.min.jss"></script>
       <script src="../Styles/main.js"></script>
     </div>

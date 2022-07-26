@@ -43,15 +43,15 @@ const Content = () => {
           <div className="col-lg-12 d-flex justify-content-center">
             <div className="col-lg-12 d-flex tabs" id="tab">
               <button id="btn" className="filter-active" onClick={() => setAll("everything")} >Specno</button>
-              <button onClick={() => setAll("Sales Phase")}>Your Team</button>
-              <button onClick={() => setAll("Tech StartUp")}>Your Tools</button>
-              <button onClick={() => setAll("About Specno")}>Your Processes</button>
-              <button onClick={() => setAll("MVP Content")}>Other</button>
+              <button onClick={() => setAll("Team")}>Your Team</button>
+              <button onClick={() => setAll("Tools")}>Your Tools</button>
+              <button onClick={() => setAll("Processes")}>Your Processes</button>
+              <button onClick={() => setAll("Other")}>Other</button>
             </div>
           </div>
           <div className="row" data-aos="zoom-in" data-aos-delay="100">
             {posts.map((post) =>
-              all === post.Name ? (
+              all === post.Filter ? (
                 <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
                   <div className="rounded course-item ">
                     <img
@@ -61,7 +61,7 @@ const Content = () => {
                     />
                     <div className="course-content">
                       <div className="d-flex justify-content-between align-items-center mb-3">
-                        <h4>Web Development</h4>
+                        <h4>{post.Filter}</h4>
                       </div>
                       <button
                         className="d-flex justify-content-between align-items-center mb-3 color Blue fw-bold"
@@ -82,35 +82,35 @@ const Content = () => {
                 </div>
               ) : all === "everything" ? (
                 <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
-                <div className="rounded course-item ">
-                  <img
-                    src={contentPic}
-                    className="img-fluid rounded-top"
-                    alt="..."
-                  />
-                  <div className="course-content">
-                    <div className="d-flex justify-content-between align-items-center mb-3">
-                      <h4>Web Development</h4>
-                    </div>
-                    <button
-                      className="d-flex justify-content-between align-items-center mb-3 color Blue fw-bold"
-                      onClick={() => {
-                        setContent(post.Name);
-                        /* 1. Navigate to the Details route with params */
-                        navigate("/specno-quiz-content/data", {
-                          state: { id: 1, name: post.Name },
-                        });
-                      }}
-                    >
-                      {post.Name}
-                    </button>
+                  <div className="rounded course-item ">
+                    <img
+                      src={contentPic}
+                      className="img-fluid rounded-top"
+                      alt="..."
+                    />
+                    <div className="course-content">
+                      <div className="d-flex justify-content-between align-items-center mb-3">
+                        <h4>{post.Filter}</h4>
+                      </div>
+                      <button
+                        className="d-flex justify-content-between align-items-center mb-3 color Blue fw-bold"
+                        onClick={() => {
+                          setContent(post.Name);
+                          /* 1. Navigate to the Details route with params */
+                          navigate("/specno-quiz-content/data", {
+                            state: { id: 1, name: post.Name },
+                          });
+                        }}
+                      >
+                        {post.Name}
+                      </button>
 
-                    <p>{post.Info}</p>
+                      <p>{post.Info}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
               ) : (<div>
-                </div>)
+              </div>)
             )}
           </div>
         </div>

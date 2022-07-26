@@ -687,7 +687,9 @@ section {
   border: 1px solid #999;
   overflow: auto;
 }
- 
+.NotificationImg{
+  margin-left: 1cm;
+}
 .close-icon {
   content: 'x';
   cursor: pointer;
@@ -799,7 +801,13 @@ section {
 .progressquiz{
   width: 95%;
 }
-
+.Questiontxt{
+  background-color: white;
+  font-size: 1.7rem;
+  color: rgb(116, 116, 116);
+  border-radius: 5px;
+  padding: 20px
+}
 .processback{
   display: flex;
   justify-content: space-between;

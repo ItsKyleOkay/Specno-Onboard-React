@@ -773,7 +773,7 @@ section {
 /* Quiz Layout  */
 
 .quizdiv{
-  padding:50px;
+  padding:120px;
 }
 
 .quizbtn{
@@ -787,6 +787,13 @@ section {
   font-size: 1rem;
   border-radius: 6px;
   background-color: #489DDA;
+  transition: transform 0.07s ease-out;
+  box-shadow: 0 6px 0 #2b7eb9;
+}
+
+.quizbtn:active {
+  box-shadow: 0 0 0 #2b7eb9;
+  transform: translateY(6px);
 }
 
 .quizcontent{

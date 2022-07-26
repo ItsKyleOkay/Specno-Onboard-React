@@ -15,7 +15,7 @@ const Content = () => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
 
-  const [all, setAll] = useState(false);
+  const [all, setAll] = useState();
 
   useEffect(() => {
     const getPostsFromFirebase = [];
@@ -28,6 +28,8 @@ const Content = () => {
       });
       setPosts(getPostsFromFirebase);
       setLoading(false);
+      document.getElementById("btn").click();
+      console.log(posts)
     });
     return () => subscriber();
   }, [loading]); // empty dependencies array => useEffect only called once
@@ -40,16 +42,16 @@ const Content = () => {
         <div className="container" data-aos="fade-up">
           <div className="col-lg-12 d-flex justify-content-center">
             <div className="col-lg-12 d-flex tabs" id="tab">
-              <button className="filter-active">Specno</button>
-              <button onClick={() => setAll(!all)}>Your Team</button>
-              <button>Your Tools</button>
-              <button>Your Processes</button>
-              <button>Other</button>
+              <button id="btn" className="filter-active" onClick={() => setAll("everything")} >Specno</button>
+              <button onClick={() => setAll("Sales Phase")}>Your Team</button>
+              <button onClick={() => setAll("Tech StartUp")}>Your Tools</button>
+              <button onClick={() => setAll("About Specno")}>Your Processes</button>
+              <button onClick={() => setAll("MVP Content")}>Other</button>
             </div>
           </div>
           <div className="row" data-aos="zoom-in" data-aos-delay="100">
             {posts.map((post) =>
-              all !== false ? (
+              all === post.Name ? (
                 <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
                   <div className="rounded course-item ">
                     <img
@@ -78,9 +80,37 @@ const Content = () => {
                     </div>
                   </div>
                 </div>
-              ) : (
-                <div> </div>
-              )
+              ) : all === "everything" ? (
+                <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
+                <div className="rounded course-item ">
+                  <img
+                    src={contentPic}
+                    className="img-fluid rounded-top"
+                    alt="..."
+                  />
+                  <div className="course-content">
+                    <div className="d-flex justify-content-between align-items-center mb-3">
+                      <h4>Web Development</h4>
+                    </div>
+                    <button
+                      className="d-flex justify-content-between align-items-center mb-3 color Blue fw-bold"
+                      onClick={() => {
+                        setContent(post.Name);
+                        /* 1. Navigate to the Details route with params */
+                        navigate("/specno-quiz-content/data", {
+                          state: { id: 1, name: post.Name },
+                        });
+                      }}
+                    >
+                      {post.Name}
+                    </button>
+
+                    <p>{post.Info}</p>
+                  </div>
+                </div>
+              </div>
+              ) : (<div>
+                </div>)
             )}
           </div>
         </div>

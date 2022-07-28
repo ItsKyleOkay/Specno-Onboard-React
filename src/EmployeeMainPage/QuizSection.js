@@ -90,17 +90,17 @@ const QuizSection = () => {
                   <div className="grid grid-cols-3 gap-2 mt-3">
                     <img
                       src={post.Answer}
-                      className={classes.imgfluid}
+                      className="quiz-img"
                       alt="..."
                     />
                     <img
                       src={post.Option3}
-                      className={classes.imgfluid}
+                      className="quiz-img"
                       alt="..."
                     />
                     <img
                       src={post.Option2}
-                      className={classes.imgfluid}
+                      className="quiz-img"
                       alt="..."
                     />
                   </div>

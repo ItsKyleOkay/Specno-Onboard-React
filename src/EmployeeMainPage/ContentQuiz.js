@@ -109,8 +109,7 @@ const Content = () => {
                     </div>
                   </div>
                 </div>
-              ) : (<div>
-              </div>)
+              ) : (null)
             )}
           </div>
         </div>

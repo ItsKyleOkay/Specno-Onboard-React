@@ -103,8 +103,7 @@ const Quiz = () => {
                     </div>
                   </div>
                 </div>
-              ) : (<div>
-              </div>)
+              ) : (null)
             )}
           </div>
         </div>

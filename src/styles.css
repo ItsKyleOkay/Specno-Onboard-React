@@ -560,7 +560,7 @@ audio,
 iframe,
 embed,
 object {
-  /* display: block; */
+  display: block;
   vertical-align: middle;
 }
 
@@ -583,7 +583,6 @@ video {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   margin: 1rem;
-  border-radius: 0.25rem;
 }
 
 .btn.btn-primary{

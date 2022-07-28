@@ -19,7 +19,7 @@ const Navbar = () => {
       <div className="container d-flex justify-content-between align-items-center w-full">
         <div className="logo">
           <a href="/profile">
-            <img src={Logo} alt="" className="img-fluid" />
+            <img src={Logo} alt="" className="img-fluid specno-img" />
           </a>
           <h1>
             <a href="/profile">Specno</a>

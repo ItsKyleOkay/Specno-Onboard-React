@@ -1,5 +1,5 @@
 .btn{
-    @apply px-10 py-2 m-4 rounded; 
+    @apply px-10 py-2 m-4; 
 }
 
 .btn.btn-primary{

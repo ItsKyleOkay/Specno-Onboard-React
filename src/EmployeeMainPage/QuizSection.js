@@ -8,6 +8,7 @@ import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Back from "../Styles/img/back.png";
+import { useNavigate } from "react-router-dom";
 
 const QuizSection = () => {
   const [loading, setLoading] = useState(true);
@@ -16,9 +17,10 @@ const QuizSection = () => {
   const [selected, setSelected] = useState(false);
   const [selected2, setSelected2] = useState(false);
   const [selected3, setSelected3] = useState(false);
-  const [totalquestions, setTotalQuestions] = useState(2);
+  const [totalquestions, setTotalQuestions] = useState(3);
   const [question, setQuestion] = useState(1);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const QuestionIncrease = () => {
     if (question > 0 && question < totalquestions) {
@@ -61,11 +63,11 @@ const QuizSection = () => {
                     alt=""
                     className="img-fluid"
                     onClick={() => {
-                      setQuestion(question - 1);
+                      question > 1 ? setQuestion(question - 1) : navigate(-1);
                     }}
                   />
                   <div className="progressquiz">
-                    <ProgressBar now={10} />
+                    <ProgressBar now={(100 / totalquestions) * question} />
                   </div>
                 </div>
                 <div className="quizcontent">
@@ -120,11 +122,11 @@ const QuizSection = () => {
                     alt=""
                     className="img-fluid"
                     onClick={() => {
-                      setQuestion(question - 1);
+                      question > 1 ? setQuestion(question - 1) : navigate(-1);
                     }}
                   />
                   <div className="progressquiz">
-                    <ProgressBar now={10} />
+                    <ProgressBar now={(100 / totalquestions) * question} />
                   </div>
                 </div>
                 <div className="quizcontent">
@@ -193,8 +195,9 @@ const QuizSection = () => {
           </div>
         ) : (
           <div> </div>
-        ))};
-      <script src="../Styles/bootstrap/js/bootstrap.bundle.min.jss"></script>
+        )
+      )}
+      ;<script src="../Styles/bootstrap/js/bootstrap.bundle.min.jss"></script>
       <script src="../Styles/main.js"></script>
     </div>
   );

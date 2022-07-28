@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
-import { useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { auth } from "../firebase";
 import classes from "./SignIn.module.css";
 import firebase from "firebase";
-import { Route } from "react-router-dom";
-import ProfilePage from "./ProfilePage";
-import AdminProfile from "./AdminProfile";
-import PasswordReset from "./PasswordReset";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import home from "./ProfilePage";
+import adminhome from "./AdminProfile";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -15,6 +15,7 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [posts, setPosts] = useState([]);
+
   const navigate = useNavigate();
   function routeUser() {
     posts.length > 0
@@ -76,7 +77,7 @@ const SignIn = () => {
     <div className={classes.contentcontainer}>
       <div className={classes.row}>
         <div className={classes.leftpanel}>
-          <h1 className={classes.welcome} data-testid="header">
+          <h1 className={classes.welcome}>
             Hello! welcome to Specno's Onboarding platform
           </h1>
           <img
@@ -126,12 +127,9 @@ const SignIn = () => {
           </form>
           <p className="text-left ">
             <br />
-            <button
-              onClick={() => navigate("/password-reset")}
-              className={classes.forgotpassword}
-            >
+            <Link className={classes.forgotpassword} to="/password-reset">
               Forgot Password?
-            </button>
+            </Link>
           </p>
         </div>
       </div>

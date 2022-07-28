@@ -18,7 +18,7 @@ const ProfilePage = () => {
             <div className="col-12 hero-text-image">
               <div className="row">
                 <div className="col-lg-8 text-center text-lg-start">
-                  <h1 data-aos="fade-right">
+                  <h1 data-aos="fade-right" data-testid="header">
                     Designing And Building World Class Digital Products
                   </h1>
                   <p

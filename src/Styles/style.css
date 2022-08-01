@@ -1297,3 +1297,46 @@ section {
 .specno-img{
   display: inline !important;
 }
+
+.content-data-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    height: 60vh;
+    background-size: 100%;
+}
+
+.content-data-div{
+  margin-top: 8.5rem;
+}
+
+.content-text-div {
+  /* display: flex; */
+  /* text-align: center; */
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 75%;
+  margin: auto;
+}
+
+.content-data-heading{
+  font-weight: 600;
+  font-family: Poppins, sans-serif;
+  font-size: 36px;
+  line-height: 46px;
+  color: #333;
+  margin-top: 50px !important;
+}
+
+.content-text{
+  font-family: Poppins, sans-serif;
+  color: #333;
+  font-size: 18px;
+  line-height: 36px;
+  font-weight: 300;
+  text-align: left;
+  letter-spacing: -0.03px;
+  white-space: break-spaces
+}
+

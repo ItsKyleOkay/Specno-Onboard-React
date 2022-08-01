@@ -4,6 +4,7 @@ import classes from "../EmployeeMainPage/Content.module.css";
 import firebase from "firebase";
 import { db } from "../firebase";
 import Navbar from "../Navigation/Navbar.js";
+import contentData from "../Styles/img/contentData.png";
 import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
 
@@ -31,17 +32,28 @@ const ContentData = () => {
   return (
     <div>
       <Navbar />
-
-      <h1 className={classes.Heading}> {location.state.name}</h1>
-      {posts.map((post) => (
-        <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-          <div className="course-item">
-            {post.Name === location.state.name ? post.Background : <div> </div>}
+      <div className="content-data-div">
+        <img className="content-data-img d-flex justify-content-center" src={contentData}></img>
+        <div className="content-text-div">
+          <h1 className="d-flex content-data-heading"> {location.state.name}</h1>
+          <br />
+          <hr />
+          <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center mt-4 mt-md-0">
+              <div className="course-item content-text mt-3">
+                {posts.map((post) => (
+                  <React.Fragment>
+                    {post.Name === location.state.name ? post.Background : null}
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
           </div>
+          <br />
+          <script src="../Styles/bootstrap/js/bootstrap.bundle.min.jss"></script>
+          <script src="../Styles/main.js"></script>
         </div>
-      ))}
-      <script src="../Styles/bootstrap/js/bootstrap.bundle.min.jss"></script>
-      <script src="../Styles/main.js"></script>
+      </div>
     </div>
   );
 };

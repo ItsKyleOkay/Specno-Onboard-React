@@ -14,7 +14,6 @@ const Content = () => {
   const [content, setContent] = useState();
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
-
   const [all, setAll] = useState();
 
   useEffect(() => {
@@ -29,11 +28,10 @@ const Content = () => {
       setPosts(getPostsFromFirebase);
       setLoading(false);
       document.getElementById("btn").click();
-      console.log(posts)
     });
     return () => subscriber();
   }, [loading]); // empty dependencies array => useEffect only called once
-  console.log(all);
+
   return (
     <div>
       <Navbar />

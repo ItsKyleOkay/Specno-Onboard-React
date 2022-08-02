@@ -39,6 +39,7 @@ const Quiz = () => {
             <div className="col-lg-12 d-flex tabs" id="tab">
               <button
                 id="btn"
+                data-testid="header"
                 className="filter-active"
                 onClick={() => setAll("everything")}
               >

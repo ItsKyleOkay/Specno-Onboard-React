@@ -51,7 +51,10 @@ const Employee = () => {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell style={{ fontWeight: "bold" }}>
+                  <TableCell
+                    data-testid="header"
+                    style={{ fontWeight: "bold" }}
+                  >
                     Employee Name
                   </TableCell>
                   <TableCell align="right" style={{ fontWeight: "bold" }}>

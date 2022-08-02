@@ -48,7 +48,7 @@ const Content = () => {
               </button>
               <button onClick={() => setAll("Team")}>Your Team</button>
               <button onClick={() => setAll("Tools")}>Your Tools</button>
-              <button onClick={() => setAll("Processes")}>
+              <button data-testid="header" onClick={() => setAll("Processes")}>
                 Your Processes
               </button>
               <button onClick={() => setAll("Other")}>Other</button>

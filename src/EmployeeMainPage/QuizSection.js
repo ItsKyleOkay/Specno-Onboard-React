@@ -22,7 +22,6 @@ const QuizSection = () => {
   const [question, setQuestion] = useState(1);
   const location = useLocation();
   const navigate = useNavigate();
-
   const QuestionIncrease = () => {
     if (question > 0 && question < totalquestions) {
       setQuestion(question + 1);
@@ -36,6 +35,7 @@ const QuizSection = () => {
 
   useEffect(() => {
     const getPostsFromFirebase = [];
+
     const subscriber = db
       .collection("quiz")
       .doc("Dev Team")
@@ -263,6 +263,7 @@ const QuizSection = () => {
                   </button>
                   <button
                     className="quizbtn"
+                    data-testid="header"
                     disabled={CheckAns}
                     onClick={() => {
                       if (answer === choice) {

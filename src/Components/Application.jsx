@@ -7,7 +7,6 @@ import Quiz from "../EmployeeMainPage/Quiz";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Employees from "../AdminMainPage/Employees";
 import SearchStudents from "../AdminMainPage/SearchStudents";
-import SoftSearch from "../AdminMainPage/SoftSearch";
 import PageLoading from "./PageLoading";
 
 import ContentAdmin from "../AdminMainPage/ContentAdmin";
@@ -47,7 +46,6 @@ function Application() {
         }
       />
 
-      <Route path="/search" element={<SoftSearch />} />
       <Route path="/sign-up" element={<Navigate to="/login" />} />
       <Route path="/password-reset" element={<Navigate to="/profile" />} />
       <Route path="/specno-quiz-content" element={<ContentQuiz />} />

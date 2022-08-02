@@ -21,19 +21,30 @@ const Popup = (props) => {
   }, []);
   return (
     <div className="popup-box">
-      <div className="box">
-        <span className="close-icon" onClick={props.handleClose}>
-          x
-        </span>
+    <div className = "box">
+       <span className="close-icon" onClick={props.handleClose}>
+       x
+      </span>
+      <div className = "display">
+        <div className = "cont">
         {posts.map((post) => (
-          <div>
-            {post.Time}
-            <br></br>
+          <div className = "sec new">
+          <div className = "txt">
             {post.Notification}
+            </div>
+            <div class = "txt sub">
+            {post.Time}
+          </div>
           </div>
         ))}
+           
+
+       </div>
       </div>
-    </div>
+   </div>
+   </div>
+
+
   );
 };
 

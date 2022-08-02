@@ -6,6 +6,7 @@ import classes from "./SignIn.module.css";
 import firebase from "firebase";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import signIn from "../Styles/img/sign_in.png"
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -18,12 +19,12 @@ const SignIn = () => {
   function routeUser() {
     posts.length > 0
       ? posts.map((post) =>
-          (post.email === email) & (post.employee === true)
-            ? navigate("/profile")
-            : (post.email === email) & (post.employee === false)
+        (post.email === email) & (post.employee === true)
+          ? navigate("/profile")
+          : (post.email === email) & (post.employee === false)
             ? navigate("/admin-profile")
             : console.log(email)
-        )
+      )
       : console.log("error101");
   }
 
@@ -73,65 +74,67 @@ const SignIn = () => {
   };
   return (
     <div className={classes.contentcontainer}>
-      <div className={classes.row}>
-        <div className={classes.leftpanel}>
-          <h1 className={classes.welcome}>
-            Hello! welcome to Specno's Onboarding platform
-          </h1>
-          <img
-            src="https://uploads-ssl.webflow.com/5f479f688ac92ece1c89402b/5f74a4cc0b72d66c9c82bc99_Group%2029017.svg"
-            loading="lazy"
-            alt=""
-            className={classes.rocket}
-          ></img>
-        </div>
-        <div className={classes.rightpanel}>
-          <h1 className={classes.headingspecno}> Specno </h1>
-          <h2 className={classes.signinhead}>Sign In</h2>
+      <div className="container-fluid">
+        <div className="row no-gutter">
+          <div className={classes.leftpanel}>
+            <div className="d-flex justify-content-center">
+              <h1 className={classes.headingspecno}> Specno </h1>
+            </div>
+            <div className="d-flex justify-content-center">
+              <div>
+                <img
+                  src={signIn}
+                  loading="lazy"
+                  alt=""
+                  className={classes.rocket}
+                ></img>
+              </div>
+            </div>
+            <div className="d-flex justify-content-center">
+              <h1 className={classes.welcome}>
+                Hello! Welcome to Specno's Onboarding platform
+              </h1>
+            </div>
+            <div className="social-menu d-flex justify-content-center">
+              <ul className="social-menu d-flex justify-content-center">
+                <li><a href="https://za.linkedin.com/company/specno" target="blank"><img className="fab fa-github" src="https://uploads-ssl.webflow.com/5f479f688ac92ece1c89402b/5f74a475783567589bee3e35_Group%2029012.svg" /></a></li>
+                <li><a href="https://www.facebook.com/appsbyspecno/" target="blank"><img className="fab fa-instagram" src="https://uploads-ssl.webflow.com/5f479f688ac92ece1c89402b/5f74a49d3d4f0d81a8e996c4_Group%2029014.svg" alt="" /></a></li>
+                <li><a href="https://www.instagram.com/appsbyspecno/" target="blank"><img className="fab fa-linkedin-in" src="https://uploads-ssl.webflow.com/5f479f688ac92ece1c89402b/5f74a49df2351d68ba885266_Group%2029015.svg" alt="" /></a></li>
+                <li><a href="https://twitter.com/appsbyspecno"><img className="fab fa-codepen" src="https://uploads-ssl.webflow.com/5f479f688ac92ece1c89402b/5f74a49e7f04f6feb227f666_Group%2029016.svg" alt="" /></a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="col-md-6 bg-light">
+            <div className="login d-flex align-items-center py-5">
 
-          <form className="">
-            <label htmlFor="userEmail" className={classes.headerdetails}>
-              Email:
-            </label>
-            <input
-              type="email"
-              className={classes.useremail}
-              name="userEmail"
-              value={email}
-              placeholder="E.g: name123@gmail.com"
-              id="userEmail"
-              onChange={(event) => onChangeHandler(event)}
-            />
-            <label htmlFor="password" className={classes.headerdetails}>
-              Password:
-            </label>
-            <input
-              type="password"
-              className={classes.useremail}
-              name="userPassword"
-              value={password}
-              placeholder="Your Password"
-              id="userPassword"
-              onChange={(event) => onChangeHandler(event)}
-            />
-            <button
-              className={classes.buttonSignin}
-              onClick={(event) => {
-                signInWithEmailAndPasswordHandler(event, email, password);
-              }}
-            >
-              Sign in
-            </button>
-          </form>
-          <p className="text-left ">
-            <br />
-            <Link className={classes.forgotpassword} to="/password-reset">
-              Forgot Password?
-            </Link>
-          </p>
+              <div className="container">
+                <div className="row">
+                  <div className="col-lg-10 mx-auto">
+                    <h3 className="display-4 mb-4">Sign In</h3>
+                    <form className="">
+                      <div className="form-group mb-3">
+                        <input id="userEmail" name="userEmail" value={email} type="email" placeholder="Email address" required="" autofocus="" className="form-control rounded-pill border-0 shadow-sm px-4" onChange={(event) => onChangeHandler(event)} />
+                      </div>
+                      <div className="form-group mb-3">
+                        <input id="inputPassword" name="userPassword" value={password} type="password" placeholder="Password" required="" className="form-control rounded-pill border-0 shadow-sm px-4 text-primary" onChange={(event) => onChangeHandler(event)} />
+                      </div>
+                      <button type="submit" className="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" onClick={(event) => { signInWithEmailAndPasswordHandler(event, email, password); }}>Sign in</button>
+                      <p className="text-left ">
+                        <br />
+                        <Link className={classes.forgotpassword} to="/password-reset">
+                          Forgot Password?
+                        </Link>
+                      </p>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
   );
 };
 

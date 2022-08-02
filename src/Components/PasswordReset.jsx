@@ -1,9 +1,7 @@
 import React, { useState, useContext } from "react";
 import { auth } from "../firebase";
-import { UserContext } from "../providers/UserProvider";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import login from "./SignIn";
+import { BrowserRouter, Link } from "react-router-dom";
+
 const PasswordReset = () => {
   const [email, setEmail] = useState("");
   const [emailHasBeenSent, setEmailHasBeenSent] = useState(false);
@@ -69,18 +67,14 @@ const PasswordReset = () => {
             Send me a reset link
           </button>
         </form>
-        <button
-          onClick={() => (
-            <BrowserRouter>
-              <Routes>
-                <Route path="/login" element={<login policyTypes={false} />} />
-              </Routes>
-            </BrowserRouter>
-          )}
-          className="my-2 text-blue-700 hover:text-blue-800 text-center block"
-        >
-          &larr; back to sign in page
-        </button>
+        <BrowserRouter>
+          <Link
+            className="my-2 text-blue-700 hover:text-blue-800 text-center block"
+            to="/login"
+          >
+            &larr; back to sign in page
+          </Link>
+        </BrowserRouter>
       </div>
     </div>
   );

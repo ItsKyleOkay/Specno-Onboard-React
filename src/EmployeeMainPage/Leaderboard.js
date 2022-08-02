@@ -12,6 +12,7 @@ import Navbar from "../Navigation/Navbar.js";
 import React, { useState, useEffect } from "react";
 
 import classes from "./Onboard.module.css";
+import { BrowserRouter } from "react-router-dom";
 
 const Leaderboard = () => {
   const [email, setEmail] = useState();
@@ -90,7 +91,9 @@ const Leaderboard = () => {
   // The right nav bar of prizes, progress and badges is also included
   return (
     <div>
-      <Navbar />
+      <BrowserRouter>
+        <Navbar />
+      </BrowserRouter>
       <div className="hero-section inner-page"></div>
       <div className={classes.contentcontainer}>
         <div className={classes.row}>
@@ -253,7 +256,9 @@ const Leaderboard = () => {
                 </div>
               </div>
               <div className={classes.box2style}>
-                <div className={classes.PrizeHead}>Your progress</div>
+                <div className={classes.PrizeHead} data-testid="header">
+                  Your progress
+                </div>
                 {posts.map((post) => (
                   <div className="col-lg-5 col-md-5 d-flex align-items-stretch mt-4 mt-md-0">
                     <div className={classes.progresscontent}>

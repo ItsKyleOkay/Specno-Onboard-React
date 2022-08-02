@@ -4,13 +4,16 @@ import Rocket from "../Styles/img/rocket.png";
 import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
 import Navbar from "../Navigation/Navbar.js";
+import { BrowserRouter } from "react-router-dom";
 
 const ProfilePage = () => {
   const user = useContext(UserContext);
 
   return (
     <div>
-      <Navbar />
+      <BrowserRouter>
+        <Navbar />
+      </BrowserRouter>
       <section className="hero-section" id="hero">
         <div className="container">
           <div className="row align-items-center">

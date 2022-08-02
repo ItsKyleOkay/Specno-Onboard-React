@@ -7,9 +7,9 @@ import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import Popup from "./popup";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const togglePopup = () => {
     setIsOpen(!isOpen);
@@ -50,7 +50,17 @@ const Navbar = () => {
               </div>
             </li>
             <li>
-              <button
+              <Link to={"/login"}>
+                <button
+                  className="logout"
+                  onClick={() => {
+                    auth.signOut();
+                  }}
+                >
+                  Sign out
+                </button>
+              </Link>
+              {/* <button
                 className="logout"
                 onClick={() => {
                   auth.signOut();
@@ -58,7 +68,7 @@ const Navbar = () => {
                 }}
               >
                 Sign out
-              </button>
+              </button> */}
             </li>
             {isOpen && (
               <Popup

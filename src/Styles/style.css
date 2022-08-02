@@ -1610,7 +1610,7 @@ section {
 .btn-colour {
   background: #489DDA !important;
   color: white !important;
- }
+}
 
 .bg-image {
   background-image: url('https://bootstrapious.com/i/snippets/sn-page-split/bg.jpg');
@@ -1672,9 +1672,14 @@ section {
   /* box-shadow: 0 5px 4px rgba(0, 0, 0, .5); */
 }
 
-
-
 .social-menu ul li a:hover {
   transform: translate(0, -10%);
 }
 
+.light-black {
+  color: rgb(55, 55, 55) !important;
+}
+
+.lighter-black {
+  color: rgb(111, 111, 111) !important;
+}

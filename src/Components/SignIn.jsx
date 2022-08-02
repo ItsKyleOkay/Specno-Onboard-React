@@ -110,7 +110,8 @@ const SignIn = () => {
               <div className="container">
                 <div className="row">
                   <div className="col-lg-10 mx-auto">
-                    <h3 className="display-4 mb-4">Sign In</h3>
+                    <h3 className="light-black display-4 mb-3">Sign In</h3>
+                    <p className="lighter-black h5 mb-4">Please enter your deatils.</p>
                     <form className="">
                       <div className="form-group mb-3">
                         <input id="userEmail" name="userEmail" value={email} type="email" placeholder="Email address" required="" autofocus="" className="form-control rounded-pill border-0 shadow-sm px-4" onChange={(event) => onChangeHandler(event)} />

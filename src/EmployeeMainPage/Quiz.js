@@ -9,7 +9,6 @@ import Navbar from "../Navigation/Navbar.js";
 import { useNavigate } from "react-router-dom";
 
 const Quiz = () => {
-  const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState();
   const [posts, setPosts] = useState([]);
   const [all, setAll] = useState();
@@ -24,11 +23,11 @@ const Quiz = () => {
         });
       });
       setPosts(getPostsFromFirebase);
-      setLoading(false);
+
       document.getElementById("btn").click();
     });
     return () => subscriber();
-  }, [loading]); // empty dependencies array => useEffect only called once
+  }, []); // empty dependencies array => useEffect only called once
 
   return (
     <div>
@@ -38,10 +37,18 @@ const Quiz = () => {
         <div className="container" data-aos="fade-up">
           <div className="col-lg-12 d-flex justify-content-center">
             <div className="col-lg-12 d-flex tabs" id="tab">
-              <button id="btn" className="filter-active" onClick={() => setAll("everything")} >Specno</button>
+              <button
+                id="btn"
+                className="filter-active"
+                onClick={() => setAll("everything")}
+              >
+                Specno
+              </button>
               <button onClick={() => setAll("Team")}>Your Team</button>
               <button onClick={() => setAll("Tools")}>Your Tools</button>
-              <button onClick={() => setAll("Processes")}>Your Processes</button>
+              <button onClick={() => setAll("Processes")}>
+                Your Processes
+              </button>
               <button onClick={() => setAll("Other")}>Other</button>
             </div>
           </div>
@@ -103,7 +110,7 @@ const Quiz = () => {
                     </div>
                   </div>
                 </div>
-              ) : (null)
+              ) : null
             )}
           </div>
         </div>

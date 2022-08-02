@@ -272,12 +272,6 @@ const QuizSection = () => {
                         setQuestion(question - 1);
                         setSelected([false, false, false]);
                       }
-
-                      //   if (answer === questionSelectedValue) {
-                      //     navigate("/profile");
-                      //   } else {
-                      //     navigate("/admin-profile");
-                      //   }
                     }}
                   >
                     Check

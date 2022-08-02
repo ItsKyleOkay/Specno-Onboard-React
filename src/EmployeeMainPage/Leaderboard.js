@@ -14,7 +14,6 @@ import React, { useState, useEffect } from "react";
 import classes from "./Onboard.module.css";
 
 const Leaderboard = () => {
-  const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState();
   const [badges, setBadges] = useState([]);
   const [posts, setPosts] = useState([]);
@@ -39,10 +38,9 @@ const Leaderboard = () => {
         });
       });
       setPosts(getPostsFromFirebase);
-      setLoading(false);
     });
     return () => userinfo();
-  }, [loading]); // empty dependencies array => useEffect only called once
+  }, []); // empty dependencies array => useEffect only called once
 
   useEffect(() => {
     const getPostsFromFirebase = [];
@@ -54,10 +52,9 @@ const Leaderboard = () => {
         });
       });
       setPrizes(getPostsFromFirebase); //Adding the prizes the firebase has to the leaderboard
-      setLoading(false);
     });
     return () => userinfo();
-  }, [loading]); // empty dependencies array => useEffect only called once
+  }, []); // empty dependencies array => useEffect only called once
 
   useEffect(() => {
     const getPostsFromFirebase = [];
@@ -69,10 +66,9 @@ const Leaderboard = () => {
         });
       });
       setBadges(getPostsFromFirebase); //Adding the prizes the firebase has to the leaderboard
-      setLoading(false);
     });
     return () => userinfo();
-  }, [loading]); // empty dependencies array => useEffect only called once
+  }, []); // empty dependencies array => useEffect only called once
 
   useEffect(() => {
     const getPostsFromFirebase = [];
@@ -86,10 +82,9 @@ const Leaderboard = () => {
           });
         });
         setLeaderboard(getPostsFromFirebase); //Adding the prizes the firebase has to the leaderboard
-        setLoading(false);
       });
     return () => userinfo();
-  }, [loading]); // empty dependencies array => useEffect only called once
+  }, []); // empty dependencies array => useEffect only called once
 
   // The table for the leaderboard with the best of specno and recent activity
   // The right nav bar of prizes, progress and badges is also included

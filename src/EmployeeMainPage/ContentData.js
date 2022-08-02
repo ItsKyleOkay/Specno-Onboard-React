@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import classes from "../EmployeeMainPage/Content.module.css";
-import firebase from "firebase";
 import { db } from "../firebase";
 import Navbar from "../Navigation/Navbar.js";
 import contentData from "../Styles/img/contentData.png";
@@ -9,8 +7,6 @@ import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
 
 const ContentData = () => {
-  const [loading, setLoading] = useState(true);
-  const [email, setEmail] = useState();
   const [posts, setPosts] = useState([]);
   const location = useLocation();
 
@@ -24,18 +20,23 @@ const ContentData = () => {
         });
       });
       setPosts(getPostsFromFirebase);
-      setLoading(false);
     });
     return () => subscriber();
-  }, [loading]); // empty dependencies array => useEffect only called once
+  }, []); // empty dependencies array => useEffect only called once
 
   return (
     <div>
       <Navbar />
       <div className="content-data-div">
-        <img className="content-data-img d-flex justify-content-center" src={contentData}></img>
+        <img
+          className="content-data-img d-flex justify-content-center"
+          src={contentData}
+        ></img>
         <div className="content-text-div">
-          <h1 className="d-flex content-data-heading"> {location.state.name}</h1>
+          <h1 className="d-flex content-data-heading">
+            {" "}
+            {location.state.name}
+          </h1>
           <br />
           <hr />
           <div className="d-flex justify-content-center">

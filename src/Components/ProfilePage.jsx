@@ -7,7 +7,6 @@ import Navbar from "../Navigation/Navbar.js";
 
 const ProfilePage = () => {
   const user = useContext(UserContext);
-  const { displayName, email } = user;
 
   return (
     <div>

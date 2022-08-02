@@ -6,8 +6,6 @@ import classes from "./SignIn.module.css";
 import firebase from "firebase";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import home from "./ProfilePage";
-import adminhome from "./AdminProfile";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");

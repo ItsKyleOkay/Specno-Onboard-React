@@ -26,10 +26,9 @@ const Onboard = () => {
         });
       });
       setPosts(getPostsFromFirebase);
-      setLoading(false);
     });
     return () => subscriber();
-  }, [loading]); // empty dependencies array => useEffect only called once
+  }, []); // empty dependencies array => useEffect only called once
 
   if (loading) {
     return <h1>loading firebase data...</h1>;

@@ -9,12 +9,10 @@ import "../Styles/bootstrap/css/bootstrap.min.css";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Back from "../Styles/img/back.png";
 import { useNavigate } from "react-router-dom";
-import Popup from "./popupAnswer";
 
 const QuizSection = () => {
-  const [loading, setLoading] = useState(true);
-  const [email, setEmail] = useState();
   const [answer, setAnswer] = useState();
+  const [choice, setChoice] = useState();
   const [CheckAns, setCheck] = useState(true);
   const [posts, setPosts] = useState([]);
   const [quizinfo, setQuizInfo] = useState([]);
@@ -28,16 +26,13 @@ const QuizSection = () => {
   const QuestionIncrease = () => {
     if (question > 0 && question < totalquestions) {
       setQuestion(question + 1);
+      setSelected([false, false, false]);
     }
+  };
 
-    // if (questionSelectedValue === posts.answer) {
-    //   setDisplayAnswer(false);
-    // }
-  };
-  const [isOpen, setIsOpen] = useState(false);
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  };
+  //On this page the code uses states which store the answer and choices. Once a question is selected will
+  //the answer and choice be added to the state
+  //When the user presses check it will check the answer
 
   useEffect(() => {
     const getPostsFromFirebase = [];
@@ -56,14 +51,13 @@ const QuizSection = () => {
           });
         });
         setPosts(getPostsFromFirebase);
-        setLoading(false);
       });
     return () => subscriber();
-  }, [loading]); // empty dependencies array => useEffect only called once
+  }, []); //Used to make sure it doesnt repeat the useeffect everytime cause multiple reads
 
   useEffect(() => {
     const getPostsFromFirebase = [];
-    const subscriber = db
+    const quizzes = db
       .collection("quiz")
       .doc("Dev Team")
       .collection("Quizzes")
@@ -77,12 +71,13 @@ const QuizSection = () => {
         });
         setQuizInfo(getPostsFromFirebase);
       });
-    return () => subscriber();
-  });
+    return () => quizzes();
+  }, []);
 
-  const onButtonSelected = (position, value) => {
+  const onButtonSelected = (position, value, option) => {
     setquestionSelectedValue(value);
     setAnswer(value);
+    setChoice(option);
     if (position === 0) {
       setSelected([true, false, false]);
       setCheck(false);
@@ -142,25 +137,31 @@ const QuizSection = () => {
                   </div>
                   <div className="grid grid-cols-3 gap-2 mt-3">
                     <img
-                      src={post.Answer}
+                      src={post.Option1}
                       className={isSelected[0] ? "ImageSelected" : "quiz-img"}
                       alt="..."
                       value={post.Answer}
-                      onClick={() => onButtonSelected(0, post.answer)}
+                      onClick={() =>
+                        onButtonSelected(0, post.Answer, post.Option1)
+                      }
                     />
                     <img
                       src={post.Option3}
                       className={isSelected[1] ? "ImageSelected" : "quiz-img"}
                       alt="..."
                       value={post.Answer}
-                      onClick={() => onButtonSelected(1, post.answer)}
+                      onClick={() =>
+                        onButtonSelected(1, post.Answer, post.Option3)
+                      }
                     />
                     <img
                       src={post.Option2}
                       className={isSelected[2] ? "ImageSelected" : "quiz-img"}
                       alt="..."
                       value={post.Answer}
-                      onClick={() => onButtonSelected(2, post.answer)}
+                      onClick={() =>
+                        onButtonSelected(2, post.Answer, post.Option2)
+                      }
                     />
                   </div>
                 </div>
@@ -184,7 +185,6 @@ const QuizSection = () => {
             <div className="quizdiv d-flex justify-content-center">
               <div className="w-75">
                 <div className="processback">
-                  {/* {setAnswer(post.Answer)} */}
                   <img
                     src={Back}
                     alt=""
@@ -221,17 +221,20 @@ const QuizSection = () => {
                       className={
                         isSelected[0] ? "QuestionSelected" : "Questiontxt"
                       }
-                      value={post.Answer}
-                      onClick={() => onButtonSelected(0, post.answer)}
+                      onClick={() =>
+                        onButtonSelected(0, post.Answer, post.Option1)
+                      }
                     >
-                      {post.Answer}
+                      {post.Option1}
                     </button>
                     <button
                       // className="Questiontxt"
                       className={
                         isSelected[1] ? "QuestionSelected" : "Questiontxt"
                       }
-                      onClick={() => onButtonSelected(1, post.answer)}
+                      onClick={() =>
+                        onButtonSelected(1, post.Answer, post.Option3)
+                      }
                     >
                       {post.Option3}
                     </button>
@@ -239,7 +242,9 @@ const QuizSection = () => {
                       className={
                         isSelected[2] ? "QuestionSelected" : "Questiontxt"
                       }
-                      onClick={() => onButtonSelected(2, post.answer)}
+                      onClick={() =>
+                        onButtonSelected(2, post.Answer, post.Option2)
+                      }
                     >
                       {post.Option2}
                     </button>
@@ -260,7 +265,13 @@ const QuizSection = () => {
                     className="quizbtn"
                     disabled={CheckAns}
                     onClick={() => {
-                      togglePopup();
+                      if (answer === choice) {
+                        setQuestion(question + 1);
+                        setSelected([false, false, false]);
+                      } else if (answer !== choice) {
+                        setQuestion(question - 1);
+                        setSelected([false, false, false]);
+                      }
 
                       //   if (answer === questionSelectedValue) {
                       //     navigate("/profile");
@@ -274,18 +285,6 @@ const QuizSection = () => {
                 </div>
               </div>
             </div>
-            {isOpen && (
-              <Popup
-                content={
-                  <>
-                    <b>Notifications</b>
-                    <p>Notifications that need your attention:</p>
-                    <button>Test button</button>
-                  </>
-                }
-                handleClose={togglePopup}
-              />
-            )}
           </div>
         ) : null
       )}

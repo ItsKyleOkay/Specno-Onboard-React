@@ -91,9 +91,8 @@ const Leaderboard = () => {
   // The right nav bar of prizes, progress and badges is also included
   return (
     <div>
-      <BrowserRouter>
-        <Navbar />
-      </BrowserRouter>
+      <Navbar />
+
       <div className="hero-section inner-page"></div>
       <div className={classes.contentcontainer}>
         <div className={classes.row}>

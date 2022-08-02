@@ -4,7 +4,7 @@ import Bell from "../Styles/img/bell.png";
 import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
 import { auth } from "../firebase";
-import { useNavigate } from "react-router-dom";
+import { BrowserRouter, useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import Popup from "./popup";
 import { Link } from "react-router-dom";
@@ -60,6 +60,7 @@ const Navbar = () => {
                   Sign out
                 </button>
               </Link>
+
               {/* <button
                 className="logout"
                 onClick={() => {

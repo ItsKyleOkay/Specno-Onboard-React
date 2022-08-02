@@ -11,9 +11,7 @@ const ProfilePage = () => {
 
   return (
     <div>
-      <BrowserRouter>
-        <Navbar />
-      </BrowserRouter>
+      <Navbar />
       <section className="hero-section" id="hero">
         <div className="container">
           <div className="row align-items-center">

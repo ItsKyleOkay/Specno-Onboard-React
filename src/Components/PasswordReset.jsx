@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { auth } from "../firebase";
-import { BrowserRouter, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Link } from "react-router-dom";
+import { Router } from "@reach/router";
 
 const PasswordReset = () => {
   const [email, setEmail] = useState("");
@@ -67,14 +68,13 @@ const PasswordReset = () => {
             Send me a reset link
           </button>
         </form>
-        <BrowserRouter>
-          <Link
-            className="my-2 text-blue-700 hover:text-blue-800 text-center block"
-            to="/login"
-          >
-            &larr; back to sign in page
-          </Link>
-        </BrowserRouter>
+
+        <Link
+          className="my-2 text-blue-700 hover:text-blue-800 text-center block"
+          to="/login"
+        >
+          &larr; back to sign in page
+        </Link>
       </div>
     </div>
   );

@@ -4,11 +4,11 @@ import UserProvider from "./providers/UserProvider";
 import { BrowserRouter } from "react-router-dom";
 function App() {
   return (
-    <UserProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <UserProvider>
         <Application />
-      </BrowserRouter>
-    </UserProvider>
+      </UserProvider>
+    </BrowserRouter>
   );
 }
 

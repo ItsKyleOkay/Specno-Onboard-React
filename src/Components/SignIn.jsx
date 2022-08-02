@@ -97,10 +97,10 @@ const SignIn = () => {
             </div>
             <div className="social-menu d-flex justify-content-center">
               <ul className="social-menu d-flex justify-content-center">
-                <li><a href="https://za.linkedin.com/company/specno" target="blank"><img className="fab fa-github" src="https://uploads-ssl.webflow.com/5f479f688ac92ece1c89402b/5f74a475783567589bee3e35_Group%2029012.svg" /></a></li>
-                <li><a href="https://www.facebook.com/appsbyspecno/" target="blank"><img className="fab fa-instagram" src="https://uploads-ssl.webflow.com/5f479f688ac92ece1c89402b/5f74a49d3d4f0d81a8e996c4_Group%2029014.svg" alt="" /></a></li>
-                <li><a href="https://www.instagram.com/appsbyspecno/" target="blank"><img className="fab fa-linkedin-in" src="https://uploads-ssl.webflow.com/5f479f688ac92ece1c89402b/5f74a49df2351d68ba885266_Group%2029015.svg" alt="" /></a></li>
-                <li><a href="https://twitter.com/appsbyspecno"><img className="fab fa-codepen" src="https://uploads-ssl.webflow.com/5f479f688ac92ece1c89402b/5f74a49e7f04f6feb227f666_Group%2029016.svg" alt="" /></a></li>
+                <li><a href="https://za.linkedin.com/company/specno" target="blank"><img src="https://uploads-ssl.webflow.com/5f479f688ac92ece1c89402b/5f74a475783567589bee3e35_Group%2029012.svg" /></a></li>
+                <li><a href="https://www.facebook.com/appsbyspecno/" target="blank"><img src="https://uploads-ssl.webflow.com/5f479f688ac92ece1c89402b/5f74a49d3d4f0d81a8e996c4_Group%2029014.svg" alt="" /></a></li>
+                <li><a href="https://www.instagram.com/appsbyspecno/" target="blank"><img src="https://uploads-ssl.webflow.com/5f479f688ac92ece1c89402b/5f74a49df2351d68ba885266_Group%2029015.svg" alt="" /></a></li>
+                <li><a href="https://twitter.com/appsbyspecno"><img src="https://uploads-ssl.webflow.com/5f479f688ac92ece1c89402b/5f74a49e7f04f6feb227f666_Group%2029016.svg" alt="" /></a></li>
               </ul>
             </div>
           </div>

@@ -1607,6 +1607,11 @@ section {
   min-height: 100vh;
 }
 
+.btn-colour {
+  background: #489DDA !important;
+  color: white !important;
+ }
+
 .bg-image {
   background-image: url('https://bootstrapious.com/i/snippets/sn-page-split/bg.jpg');
   background-size: cover;

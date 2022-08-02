@@ -118,7 +118,7 @@ const SignIn = () => {
                       <div className="form-group mb-3">
                         <input id="inputPassword" name="userPassword" value={password} type="password" placeholder="Password" required="" className="form-control rounded-pill border-0 shadow-sm px-4 text-primary" onChange={(event) => onChangeHandler(event)} />
                       </div>
-                      <button type="submit" className="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" onClick={(event) => { signInWithEmailAndPasswordHandler(event, email, password); }}>Sign in</button>
+                      <button type="submit" className="btn-colour btn btn-block text-uppercase mb-2 rounded-pill shadow-sm" onClick={(event) => { signInWithEmailAndPasswordHandler(event, email, password); }}>Sign in</button>
                       <p className="text-left ">
                         <br />
                         <Link className={classes.forgotpassword} to="/password-reset">

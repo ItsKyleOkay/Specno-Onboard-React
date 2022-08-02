@@ -71,18 +71,7 @@ const Navbar = () => {
                 Sign out
               </button> */}
             </li>
-            {isOpen && (
-              <Popup
-                content={
-                  <>
-                    <b>Notifications</b>
-                    <p>Notifications that need your attention:</p>
-                    <button>Test button</button>
-                  </>
-                }
-                handleClose={togglePopup}
-              />
-            )}
+            {isOpen && <Popup handleClose={togglePopup} />}
           </ul>
           <i className="bi bi-list mobile-nav-toggle"></i>
         </nav>

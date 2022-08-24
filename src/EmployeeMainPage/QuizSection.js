@@ -9,6 +9,7 @@ import "../Styles/bootstrap/css/bootstrap.min.css";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Back from "../Styles/img/back.png";
 import { useNavigate } from "react-router-dom";
+import Popup from "./popupWrong";
 
 const QuizSection = () => {
   const [answer, setAnswer] = useState();
@@ -28,7 +29,30 @@ const QuizSection = () => {
       setSelected([false, false, false]);
     }
   };
+  const [isOpen, setIsOpen] = useState(false);
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
+  if (question === 0) {
+    setQuestion(1);
+  }
+  console.log(totalquestions);
 
+  // if (question === totalquestions + 1) {
+  //   setQuestion(totalquestions);
+  // }
+  //code above creates a loop, I will change it at a later stage to make it display the end results
+  // if (
+  //   isSelected[0] === false &&
+  //   isSelected[1] === false &&
+  //   isSelected[2] === false
+  // ) {
+  //   console.log("There is nothing selected");
+  //   setCheckAct(false);
+  // } else {
+  //   console.log("Selected");
+  //   setCheckAct(true);
+  // }
   //On this page the code uses states which store the answer and choices. Once a question is selected will
   //the answer and choice be added to the state
   //When the user presses check it will check the answer
@@ -89,6 +113,7 @@ const QuizSection = () => {
       setCheck(false);
     }
   };
+
   //adding the selected in a array and then checking if the position is a number to change another array
   return (
     <div>
@@ -250,33 +275,47 @@ const QuizSection = () => {
                     </button>
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-20 mt-6">
-                  <button
-                    className="quizbtn"
-                    onClick={() => {
-                      QuestionIncrease();
-                      setSelected([false, false, false]);
-                      setCheck(true);
-                    }}
-                  >
-                    Skip
-                  </button>
-                  <button
-                    className="quizbtn"
-                    data-testid="header"
-                    disabled={CheckAns}
-                    onClick={() => {
-                      if (answer === choice) {
-                        setQuestion(question + 1);
+                <div className="containerbuttons">
+                  <div className="grid grid-cols-2 gap-20">
+                    <button
+                      className="quizbtn"
+                      onClick={() => {
+                        QuestionIncrease();
                         setSelected([false, false, false]);
-                      } else if (answer !== choice) {
-                        setQuestion(question - 1);
-                        setSelected([false, false, false]);
-                      }
-                    }}
-                  >
-                    Check
-                  </button>
+                        setCheck(true);
+                      }}
+                    >
+                      Skip
+                    </button>
+                    <button
+                      style={{
+                        color: CheckAns ? "#504f4f" : "white",
+                        backgroundColor: CheckAns ? "#E5E5E5" : "#489DDA",
+                        boxShadow: CheckAns
+                          ? "0 6px 0 #E5E5E5"
+                          : "0 6px 0 #2b7eb9",
+                      }}
+                      className="quizbtn"
+                      data-testid="header"
+                      disabled={CheckAns}
+                      onClick={() => {
+                        if (answer === choice) {
+                          setQuestion(question + 1);
+                          setSelected([false, false, false]);
+                          setCheck(true);
+                        } else if (answer !== choice) {
+                          togglePopup();
+                          setSelected([false, false, false]);
+                          setCheck(true);
+                        }
+                      }}
+                    >
+                      Check
+                    </button>
+                    {isOpen && (
+                      <Popup name={question} handleClose={togglePopup} />
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

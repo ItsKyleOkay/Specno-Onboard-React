@@ -871,15 +871,21 @@ section {
 }
 
 .Continuebtn{
-  color: black;
+  color: white;
   justify-content: space-between;
-  margin-top: 1cm;
   padding: 9px 15px;
   font-size: 1rem;
   border-radius: 6px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(246, 113, 113);
   margin-right: 0.5cm;
-  float: right
+  float: right;
+  transition: transform 0.07s ease-out;
+  box-shadow: 0 6px 0 #ff0101;
+}
+
+.Continuebtn:active {
+  box-shadow: 0 0 0 #ff0101;
+  transform: translateY(6px);
 }
 .logout {
   color: rgb(59, 142, 208);
@@ -1029,7 +1035,7 @@ section {
   background-color: #9ED2F8;
   border-width: 2px;
   border-radius: 5px;
-  border-color: blue;
+  border-color: #2b7eb9;
   padding: 20px;
   font-size: 1.7rem;
 }
@@ -1830,6 +1836,11 @@ section {
   font-size: 1.25rem;
   color: #000;
 }
+.txt-wrong{
+  font-weight: bold;
+  font-size: 1.9rem;
+  color: #ef5257;
+}
 
 .sub{
   font-size: 1rem;
@@ -1845,6 +1856,7 @@ section {
 .new-wrong{
   display: flex;
   border-width: 3px;
+  border-color: white;
   background-color: #FFDFE0;
 }
 

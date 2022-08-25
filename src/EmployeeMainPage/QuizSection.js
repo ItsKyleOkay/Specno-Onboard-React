@@ -10,11 +10,14 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import Back from "../Styles/img/back.png";
 import { useNavigate } from "react-router-dom";
 import Popup from "./popupWrong";
+import Incorrect from "../Styles/img/incorrect-pic.png";
 
 const QuizSection = () => {
   const [answer, setAnswer] = useState();
   const [choice, setChoice] = useState();
   const [CheckAns, setCheck] = useState(true);
+  const [skip, setSkip] = useState(false);
+  const [answerWrong, setAnswerWrong] = useState(false);
   const [posts, setPosts] = useState([]);
   const [quizinfo, setQuizInfo] = useState([]);
   const [isSelected, setSelected] = useState([false, false, false]);
@@ -36,7 +39,6 @@ const QuizSection = () => {
   if (question === 0) {
     setQuestion(1);
   }
-  console.log(totalquestions);
 
   // if (question === totalquestions + 1) {
   //   setQuestion(totalquestions);
@@ -218,6 +220,8 @@ const QuizSection = () => {
                       question > 1 ? setQuestion(question - 1) : navigate(-1);
                       setSelected([false, false, false]);
                       setCheck(true);
+                      setSkip(false);
+                      setAnswerWrong(false);
                     }}
                   />
                   <div className="progressquiz">
@@ -278,11 +282,19 @@ const QuizSection = () => {
                 <div className="containerbuttons">
                   <div className="grid grid-cols-2 gap-20">
                     <button
+                      style={{
+                        color: skip ? "#504f4f" : "white",
+                        backgroundColor: skip ? "#E5E5E5" : "#489DDA",
+                        boxShadow: skip ? "0 6px 0 #E5E5E5" : "0 6px 0 #2b7eb9",
+                      }}
                       className="quizbtn"
+                      disabled={skip}
                       onClick={() => {
                         QuestionIncrease();
                         setSelected([false, false, false]);
                         setCheck(true);
+                        setSkip(false);
+                        setAnswerWrong(false);
                       }}
                     >
                       Skip
@@ -301,12 +313,16 @@ const QuizSection = () => {
                       onClick={() => {
                         if (answer === choice) {
                           setQuestion(question + 1);
+                          setAnswerWrong(false);
                           setSelected([false, false, false]);
                           setCheck(true);
+                          setSkip(false);
                         } else if (answer !== choice) {
-                          togglePopup();
+                          //togglePopup();
+                          setAnswerWrong(true);
                           setSelected([false, false, false]);
                           setCheck(true);
+                          setSkip(true);
                         }
                       }}
                     >
@@ -317,6 +333,39 @@ const QuizSection = () => {
                     )}
                   </div>
                 </div>
+                {answerWrong && (
+                  <form action="">
+                    <div className="new-wrong">
+                      <div
+                        style={{
+                          flex: "2",
+                        }}
+                        className="logo"
+                      >
+                        <img src={Incorrect} alt="" className="img-fluid" />
+                      </div>
+                      <div
+                        style={{
+                          flex: "8",
+                        }}
+                      >
+                        <div className="txt-wrong">Correct solution: </div>
+                        <div class="txt sub">{post.Answer}</div>
+
+                        <button
+                          className="Continuebtn"
+                          onClick={() => {
+                            setAnswerWrong(false);
+                            setQuestion(question + 1);
+                            setSkip(false);
+                          }}
+                        >
+                          Continue
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                )}
               </div>
             </div>
           </div>

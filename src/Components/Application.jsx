@@ -23,6 +23,9 @@ const QuizSection = React.lazy(() => import("../EmployeeMainPage/QuizSection"));
 const SignIn = React.lazy(() => import("./SignIn"));
 const SignUp = React.lazy(() => import("./SignUp"));
 
+const FinishedQuiz = React.lazy(() =>
+  import("../EmployeeMainPage/FinishedQuiz")
+);
 const PasswordReset = React.lazy(() => import("./PasswordReset"));
 
 function Application() {
@@ -69,6 +72,7 @@ function Application() {
           </React.Suspense>
         }
       />
+
       <Route path="/content-admin" element={<ContentAdmin />} />
       <Route path="/quiz-admin" element={<QuizAdmin />} />
       <Route path="/leaderboard-admin" element={<LeaderboardAdmin />} />
@@ -76,6 +80,15 @@ function Application() {
       <Route path="/search-students" element={<SearchStudents />} />
 
       <Route path="/content-admin/data" element={<ContentAdminData />} />
+
+      <Route
+        path="/specno-quiz/data/complete"
+        element={
+          <React.Suspense fallback={<PageLoading />}>
+            <FinishedQuiz />
+          </React.Suspense>
+        }
+      />
     </Routes>
   ) : (
     // if a user is logged in and if the user === student

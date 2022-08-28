@@ -33,7 +33,7 @@ h6,
 }
 
 .container {
-  z-index: 2;
+  z-index: 1;
   position: relative;
 }
 
@@ -823,6 +823,17 @@ section {
   border: 1px solid #999;
   overflow: auto;
 }
+.boxWrong {
+  position: relative;
+  width: 60%;
+  margin-left:20vw;
+  height: 40vh;
+  max-height: 70vh;
+  margin-top: calc(100vh - 65vh - 20px);
+  border-radius: 4px;
+  /* padding: 20px; */
+  overflow: auto;
+}
 
 .NotificationImg {
   margin-left: 1cm;
@@ -842,6 +853,46 @@ section {
   text-align: center;
   border: 1px solid #999;
   font-size: 20px;
+}
+.close-icon-wrong {
+  content: 'x';
+  cursor: pointer;
+  position: fixed;
+  right: calc(20% - 30px);
+  top: calc(100vh - 65vh - 33px);
+  background: #ededed;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid #999;
+  font-size: 20px;
+}
+
+.Continuebtn{
+  color: white;
+  justify-content: space-between;
+  text-decoration-line: underline;
+  font-size: 1.5rem;
+  border-radius: 6px;
+  margin-top: 50%;
+  margin-right: 0.5cm;
+  float: right;
+  color: #a9383c;
+}
+
+.Continuebtnright{
+  color: white;
+  justify-content: space-between;
+  padding: 9px 15px;
+  font-size: 1rem;
+  border-radius: 6px;
+  background-color: rgb(112, 239, 90);
+  margin-right: 0.5cm;
+  float: right;
+  transition: transform 0.07s ease-out;
+  box-shadow: 0 6px 0 #34ff01;
 }
 
 .logout {
@@ -928,20 +979,34 @@ section {
 .quizdiv {
   padding: 120px;
 }
-
-.quizbtn {
-  color: white;
-  justify-content: space-between;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9px 15px;
+.containerbuttons{
+  
+  padding: 10px;
   font-weight: bold;
   font-size: 1rem;
   border-radius: 6px;
-  background-color: #489DDA;
-  transition: transform 0.07s ease-out;
-  box-shadow: 0 6px 0 #2b7eb9;
+  margin-top: 1cm;
+}
+.quizbtn {
+  color: #489DDA;
+  display: inline-flex;
+  align-items: center;
+  justify-content: right;
+  font-size: 1rem;
+  margin-right: 1cm;
+}
+
+.filtertab{
+  border-radius: 60px;
+}
+.quizbtnskip{
+  color: #489DDA;
+  justify-content: space-between;
+  display: inline-flex;
+  align-items: center;
+  justify-content: left;
+  font-size: 1rem;
+  margin-left: 1cm;
 }
 
 .quizbtn:active {
@@ -953,21 +1018,30 @@ section {
   padding: 20px;
   border-radius: 5px;
   color: white;
-  font-size: 1.7rem;
+  font-size: 1.2rem;
   background-color: #489DDA;
   margin-top: 3rem;
 }
-
+.questionnumber{
+  color: rgb(224, 222, 222);
+  font-size: 1rem;
+}
 .progressquiz {
   width: 95%;
 }
 
+.bg-progress-quiz{
+  background-color: #2b7eb9!important;
+  border-radius: 20px;
+}
+
 .Questiontxt {
   background-color: white;
-  font-size: 1.7rem;
-  color: rgb(116, 116, 116);
-  border-radius: 5px;
-  padding: 20px
+  font-size: 1.2rem;
+  color: #489DDA;
+  border-radius: 10px;
+  padding: 5px;
+  margin-right: 30px;
 }
 
 .processback {
@@ -982,23 +1056,36 @@ section {
 }
 
 .QuestionSelected {
-  background-color: #9ED2F8;
+  background-color: #d4eafb;
   border-width: 2px;
-  border-radius: 5px;
-  border-color: blue;
-  padding: 20px;
-  font-size: 1.7rem;
+  border-radius: 10px;
+  border-color: #2b7eb9;
+  color: #489DDA;
+  padding: 4px;
+  font-size: 1.2rem;
+  margin-right: 30px;
 }
 
 .ImageSelected {
   background-color: #9ED2F8;
-  border-width: 4px;
-  border-radius: 5px;
-  border-color: blue;
+  border-width: 2px;
+  border-radius: 20px;
+  
+  border-color: #2b7eb9;
   max-width: 100%;
   height: 100% !important;
 }
 
+
+/* Quiz Finished layout */
+
+
+
+.finishedquiz{
+  font-size: 2rem;
+  color: black;
+  margin-top: 5cm;
+}
 /**
 * Mobile Navigation 
 */
@@ -1550,6 +1637,7 @@ section {
 .quiz-img {
   max-width: 100%;
   height: 100% !important;
+  border-radius: 20px;
 }
 
 .specno-img {
@@ -1786,16 +1874,49 @@ section {
   font-size: 1.25rem;
   color: #000;
 }
+.txt-wrong{
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #a9383c;
+}
 
+
+.txt-right{
+  font-weight: bold;
+  font-size: 1.9rem;
+  color: #20f80c;
+}
 .sub{
   font-size: 1rem;
   color: grey;
 }
 
+.sub-wrong{
+  font-size: 1rem;
+  color:  #a9383c;
+}
+
+.sub-right{
+  font-size: 1rem;
+  color: rgb(7, 220, 74);
+}
 .new{
   border-style: none none solid none;
   border-color: #489DDA;
   border-width: 3px;
+}
+
+.new-wrong{
+  display: flex;
+  border-width: 3px;
+  border-radius: 20px;
+  background-color: #F8DECD;
+}
+.new-right{
+  display: flex;
+  border-width: 3px;
+  border-color: white;
+  background-color: #cffabf;
 }
 
 .sec:hover{

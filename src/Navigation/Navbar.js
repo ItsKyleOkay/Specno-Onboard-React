@@ -31,7 +31,7 @@ const Navbar = () => {
               <NavLink to="/profile">Home</NavLink>
             </li>
             <li>
-              <NavLink to="/specno-quiz-content">Content</NavLink>
+              <NavLink to="/specno-quiz-content">Resources</NavLink>
             </li>
             <li>
               <NavLink to="/specno-quiz">Quizzes</NavLink>

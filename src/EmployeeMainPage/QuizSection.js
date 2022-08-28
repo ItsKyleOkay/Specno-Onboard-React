@@ -9,8 +9,7 @@ import "../Styles/bootstrap/css/bootstrap.min.css";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Back from "../Styles/img/back.png";
 import { useNavigate } from "react-router-dom";
-import Popup from "./popupWrong";
-import Incorrect from "../Styles/img/incorrect-pic.png";
+import Incorrect from "../Styles/img/thumbs-down.png";
 
 const QuizSection = () => {
   const [answer, setAnswer] = useState();
@@ -18,11 +17,12 @@ const QuizSection = () => {
   const [CheckAns, setCheck] = useState(true);
   const [skip, setSkip] = useState(false);
   const [answerWrong, setAnswerWrong] = useState(false);
+  const [answerRight, setAnswerRight] = useState(false);
+  const [show, setShow] = useState(false);
   const [posts, setPosts] = useState([]);
   const [quizinfo, setQuizInfo] = useState([]);
   const [isSelected, setSelected] = useState([false, false, false]);
   const [totalquestions, setTotalQuestions] = useState(0);
-  const [questionSelectedValue, setquestionSelectedValue] = useState(0);
   const [question, setQuestion] = useState(1);
   const location = useLocation();
   const navigate = useNavigate();
@@ -101,7 +101,6 @@ const QuizSection = () => {
   }, []);
 
   const onButtonSelected = (position, value, option) => {
-    setquestionSelectedValue(value);
     setAnswer(value);
     setChoice(option);
     if (position === 0) {
@@ -142,7 +141,10 @@ const QuizSection = () => {
                     }}
                   />
                   <div className="progressquiz">
-                    <ProgressBar now={(100 / totalquestions) * question} />
+                    <ProgressBar
+                      now={(100 / totalquestions) * question}
+                      variant="progress-quiz"
+                    />
                   </div>
                 </div>
                 <div className="quizcontent">
@@ -210,7 +212,7 @@ const QuizSection = () => {
         ) : post.Type === "Text" && post.Number === question ? (
           <div className="quiz">
             <div className="quizdiv d-flex justify-content-center">
-              <div className="w-75">
+              <div className="w-50">
                 <div className="processback">
                   <img
                     src={Back}
@@ -222,30 +224,36 @@ const QuizSection = () => {
                       setCheck(true);
                       setSkip(false);
                       setAnswerWrong(false);
+                      setAnswerRight(false);
+                      setShow(false);
                     }}
                   />
                   <div className="progressquiz">
-                    <ProgressBar now={(100 / totalquestions) * question} />
+                    <ProgressBar
+                      now={(100 / totalquestions) * question}
+                      variant="progress-quiz"
+                    />
                   </div>
                 </div>
                 <div className="quizcontent">
+                  <div className="questionnumber">
+                    Question {question}/{totalquestions}
+                  </div>
                   <div className="quizname">
                     <div
                       style={{
                         flex: "9",
                       }}
                     >
-                      {question}. {post.Question}
+                      {post.Question}
                     </div>
                     <div
                       style={{
                         flex: "1",
                       }}
-                    >
-                      {question}/{post.TotalQuestions}
-                    </div>
+                    ></div>
                   </div>
-                  <div className="grid grid-cols-3 gap-2 mt-3">
+                  <div className="grid grid-cols-0 row-3 gap-6 mt-3 font-size 1.2rem">
                     <button
                       className={
                         isSelected[0] ? "QuestionSelected" : "Questiontxt"
@@ -254,7 +262,7 @@ const QuizSection = () => {
                         onButtonSelected(0, post.Answer, post.Option1)
                       }
                     >
-                      {post.Option1}
+                      1. {post.Option1}
                     </button>
                     <button
                       // className="Questiontxt"
@@ -265,7 +273,7 @@ const QuizSection = () => {
                         onButtonSelected(1, post.Answer, post.Option3)
                       }
                     >
-                      {post.Option3}
+                      2. {post.Option3}
                     </button>
                     <button
                       className={
@@ -275,64 +283,64 @@ const QuizSection = () => {
                         onButtonSelected(2, post.Answer, post.Option2)
                       }
                     >
-                      {post.Option2}
+                      3. {post.Option2}
                     </button>
                   </div>
                 </div>
-                <div className="containerbuttons">
-                  <div className="grid grid-cols-2 gap-20">
-                    <button
-                      style={{
-                        color: skip ? "#504f4f" : "white",
-                        backgroundColor: skip ? "#E5E5E5" : "#489DDA",
-                        boxShadow: skip ? "0 6px 0 #E5E5E5" : "0 6px 0 #2b7eb9",
-                      }}
-                      className="quizbtn"
-                      disabled={skip}
-                      onClick={() => {
-                        QuestionIncrease();
-                        setSelected([false, false, false]);
-                        setCheck(true);
-                        setSkip(false);
-                        setAnswerWrong(false);
-                      }}
-                    >
-                      Skip
-                    </button>
-                    <button
-                      style={{
-                        color: CheckAns ? "#504f4f" : "white",
-                        backgroundColor: CheckAns ? "#E5E5E5" : "#489DDA",
-                        boxShadow: CheckAns
-                          ? "0 6px 0 #E5E5E5"
-                          : "0 6px 0 #2b7eb9",
-                      }}
-                      className="quizbtn"
-                      data-testid="header"
-                      disabled={CheckAns}
-                      onClick={() => {
-                        if (answer === choice) {
-                          setQuestion(question + 1);
-                          setAnswerWrong(false);
+                {show ? <br></br> : null}
+                {!show ? (
+                  <div className="containerbuttons">
+                    <div className="grid grid-cols-2 ">
+                      <button
+                        className="quizbtnskip"
+                        disabled={skip}
+                        onClick={() => {
+                          QuestionIncrease();
                           setSelected([false, false, false]);
                           setCheck(true);
                           setSkip(false);
-                        } else if (answer !== choice) {
-                          //togglePopup();
-                          setAnswerWrong(true);
-                          setSelected([false, false, false]);
-                          setCheck(true);
-                          setSkip(true);
-                        }
-                      }}
-                    >
-                      Check
-                    </button>
-                    {isOpen && (
-                      <Popup name={question} handleClose={togglePopup} />
-                    )}
+                          setAnswerWrong(false);
+                          setAnswerRight(false);
+                        }}
+                      >
+                        Skip
+                      </button>
+
+                      <button
+                        style={{
+                          color: CheckAns ? "#489DDA" : "#489DDA",
+                          textDecorationLine: CheckAns ? "none" : "underline",
+                        }}
+                        className="quizbtn"
+                        data-testid="header"
+                        disabled={CheckAns}
+                        onClick={() => {
+                          if (answer === choice) {
+                            QuestionIncrease();
+                            setAnswerWrong(false);
+                            setSelected([false, false, false]);
+                            setCheck(true);
+                            setSkip(false);
+                            if (question === totalquestions) {
+                              navigate("/specno-quiz/data/complete", {
+                                state: { id: 1, name: post.Name },
+                              });
+                            }
+                          } else if (answer !== choice) {
+                            setShow((s) => !s);
+                            setAnswerWrong(true);
+                            setAnswerRight(false);
+                            setSelected([false, false, false]);
+                            setCheck(true);
+                            setSkip(true);
+                          }
+                        }}
+                      >
+                        Next
+                      </button>
+                    </div>
                   </div>
-                </div>
+                ) : null}
                 {answerWrong && (
                   <form action="">
                     <div className="new-wrong">
@@ -346,18 +354,28 @@ const QuizSection = () => {
                       </div>
                       <div
                         style={{
-                          flex: "8",
+                          flex: "6",
                         }}
                       >
-                        <div className="txt-wrong">Correct solution: </div>
-                        <div class="txt sub">{post.Answer}</div>
-
+                        <div className="txt-wrong">Oops,Not quite </div>
+                        <div class="txt sub-wrong">
+                          {" "}
+                          Correct Answer is: {<br></br>} {post.Answer}
+                        </div>
+                      </div>
+                      <div
+                        style={{
+                          flex: "2",
+                        }}
+                      >
                         <button
                           className="Continuebtn"
                           onClick={() => {
-                            setAnswerWrong(false);
-                            setQuestion(question + 1);
                             setSkip(false);
+                            setAnswerWrong(false);
+                            setAnswerRight(false);
+                            setQuestion(question + 1);
+                            setShow(!show);
                           }}
                         >
                           Continue
@@ -366,6 +384,44 @@ const QuizSection = () => {
                     </div>
                   </form>
                 )}
+                {/* {answerRight && (
+                  <form action="">
+                    <div className="new-right">
+                      <div
+                        style={{
+                          flex: "2",
+                        }}
+                        className="logo"
+                      >
+                        <img src={correct} alt="" className="img-fluid" />
+                      </div>
+                      <div
+                        style={{
+                          flex: "8",
+                        }}
+                      >
+                        <div className="txt-right">Well done! </div>
+                        <div class="txt sub-right">{post.Answer}</div>
+                        <button
+                          className="Continuebtnright"
+                          onClick={() => {
+                            setQuestion(question + 1);
+                            if (question === totalquestions) {
+                              navigate("/specno-quiz/data/complete", {
+                                state: { id: 1, name: post.Name },
+                              });
+                            }
+                            setAnswerWrong(false);
+                            setAnswerRight(false);
+                            setSkip(false);
+                          }}
+                        >
+                          Continue
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                )} */}
               </div>
             </div>
           </div>

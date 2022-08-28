@@ -8,6 +8,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Employees from "../AdminMainPage/Employees";
 import SearchStudents from "../AdminMainPage/SearchStudents";
 import PageLoading from "./PageLoading";
+import EditProfile from "./EditProfile"; 
 
 import ContentAdmin from "../AdminMainPage/ContentAdmin";
 import QuizAdmin from "../AdminMainPage/QuizAdmin";
@@ -51,6 +52,7 @@ function Application() {
       <Route path="/specno-quiz-content" element={<ContentQuiz />} />
       <Route path="/specno-quiz-content/data" element={<ContentData />} />
       <Route path="/specno-quiz" element={<Quiz />} />
+      <Route path="/edit-profile" element={<EditProfile />} />
       <Route
         path="/leaderboard"
         element={

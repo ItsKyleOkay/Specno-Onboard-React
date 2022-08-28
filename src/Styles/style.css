@@ -1926,3 +1926,7 @@ section {
 .incorrect {
   background-color: red;
 }
+
+.incorrect-img {
+  border-radius: 20px !important;
+}

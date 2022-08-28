@@ -287,7 +287,7 @@ const QuizSection = () => {
                         }}
                         className="logo"
                       >
-                        <img src={Incorrect} alt="" className="img-fluid" />
+                        <img src={Incorrect} alt="" className="img-fluid incorrect-img" />
                       </div>
                       <div
                         style={{

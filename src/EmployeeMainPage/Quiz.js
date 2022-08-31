@@ -103,10 +103,17 @@ const Quiz = () => {
                       src={contentPic}
                       className="img-fluid rounded-top"
                       alt="..."
+                      style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        /* 1. Navigate to the Details route with params */
+                        navigate("/specno-quiz/data", {
+                          state: { id: 1, name: post.Name },
+                        });
+                      }}
                     />
                     <div className="course-content">
                       <div className="d-flex justify-content-between align-items-center mb-3">
-                        <h4>{post.Filter}</h4>
+                        <h4 className="filtertab">{post.Filter}</h4>
                       </div>
 
                       <button
@@ -131,6 +138,13 @@ const Quiz = () => {
                       src={contentPic}
                       className="img-fluid rounded-top"
                       alt="..."
+                      style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        /* 1. Navigate to the Details route with params */
+                        navigate("/specno-quiz/data", {
+                          state: { id: 1, name: post.Name },
+                        });
+                      }}
                     />
                     <div className="course-content">
                       <div className="d-flex justify-content-between align-items-center mb-3">

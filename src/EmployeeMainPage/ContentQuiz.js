@@ -104,7 +104,15 @@ const Content = () => {
                     <img
                       src={contentPic}
                       className="img-fluid rounded-top"
+                      style={{ cursor: "pointer" }}
                       alt="..."
+                      onClick={() => {
+                        setContent(post.Name);
+                        /* 1. Navigate to the Details route with params */
+                        navigate("/specno-quiz-content/data", {
+                          state: { id: 1, name: post.Name },
+                        });
+                      }}
                     />
                     <div className="course-content">
                       <div className="d-flex justify-content-between align-items-center mb-3">
@@ -134,6 +142,14 @@ const Content = () => {
                       src={contentPic}
                       className="img-fluid rounded-top"
                       alt="..."
+                      style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        setContent(post.Name);
+                        /* 1. Navigate to the Details route with params */
+                        navigate("/specno-quiz-content/data", {
+                          state: { id: 1, name: post.Name },
+                        });
+                      }}
                     />
                     <div className="course-content">
                       <div className="d-flex justify-content-between align-items-center mb-3">

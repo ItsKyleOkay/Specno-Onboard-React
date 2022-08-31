@@ -37,34 +37,56 @@ const QuizAdmin = () => {
         <div className="container" data-aos="fade-up">
           <div className="col-lg-12 d-flex justify-content-center">
             <div className="col-lg-12 d-flex tabs" id="tab">
-            <button
-                style={all === "everything" ? { fontWeight: "600" } : {fontWeight: "400"}} 
+              <button
+                style={
+                  all === "everything"
+                    ? { fontWeight: "600" }
+                    : { fontWeight: "400" }
+                }
                 id="btn"
                 className="filter-active"
-                onClick={() => {setAll("everything")}}
+                onClick={() => {
+                  setAll("everything");
+                }}
               >
                 Specno
               </button>
-              <button 
-                style={all === "Team" ? { fontWeight: "700" } : {fontWeight: "400"}}  
-                onClick={() => {setAll("Team")}}
+              <button
+                style={
+                  all === "Team" ? { fontWeight: "700" } : { fontWeight: "400" }
+                }
+                onClick={() => {
+                  setAll("Team");
+                }}
               >
                 Your Team
               </button>
-              <button 
-                style={all === "Tools" ? { fontWeight: "600" } : {fontWeight: "400"}} 
+              <button
+                style={
+                  all === "Tools"
+                    ? { fontWeight: "600" }
+                    : { fontWeight: "400" }
+                }
                 onClick={() => setAll("Tools")}
               >
                 Your Tools
               </button>
-              <button 
-                style={all === "Processes" ? { fontWeight: "600" } : {fontWeight: "400"}} 
+              <button
+                style={
+                  all === "Processes"
+                    ? { fontWeight: "600" }
+                    : { fontWeight: "400" }
+                }
                 onClick={() => setAll("Processes")}
               >
                 Your Processes
               </button>
-              <button 
-                style={all === "Other" ? { fontWeight: "600" } : {fontWeight: "400"}} 
+              <button
+                style={
+                  all === "Other"
+                    ? { fontWeight: "600" }
+                    : { fontWeight: "400" }
+                }
                 onClick={() => setAll("Other")}
               >
                 Other
@@ -80,10 +102,17 @@ const QuizAdmin = () => {
                       src={contentPic}
                       className="img-fluid rounded-top"
                       alt="..."
+                      style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        /* 1. Navigate to the Details route with params */
+                        navigate("/specno-quiz/data", {
+                          state: { id: 1, name: post.Name },
+                        });
+                      }}
                     />
                     <div className="course-content">
                       <div className="d-flex justify-content-between align-items-center mb-3">
-                        <h4>{post.Filter}</h4>
+                        <h4 className="filtertab">{post.Filter}</h4>
                       </div>
 
                       <button
@@ -108,10 +137,17 @@ const QuizAdmin = () => {
                       src={contentPic}
                       className="img-fluid rounded-top"
                       alt="..."
+                      style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        /* 1. Navigate to the Details route with params */
+                        navigate("/specno-quiz/data", {
+                          state: { id: 1, name: post.Name },
+                        });
+                      }}
                     />
                     <div className="course-content">
                       <div className="d-flex justify-content-between align-items-center mb-3">
-                        <h4>{post.Filter}</h4>
+                        <h4 className="filtertab">{post.Filter}</h4>
                       </div>
 
                       <button
@@ -129,7 +165,7 @@ const QuizAdmin = () => {
                     </div>
                   </div>
                 </div>
-              ) : (null)
+              ) : null
             )}
           </div>
         </div>

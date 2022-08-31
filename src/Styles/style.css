@@ -1084,7 +1084,35 @@ section {
 .finishedquiz{
   font-size: 2rem;
   color: black;
-  margin-top: 5cm;
+   min-height: 10vh;
+}
+
+.Finished1{
+  font-size: 1.5rem;
+  color: #489DDA;
+  font-weight: bold;
+  margin-top: 0.75cm;
+  text-align: center;
+}
+
+.Lessonxp{
+  font-size: 1rem;
+  color: gray;
+  margin-top: 0.75cm;
+  text-align: center;
+}
+
+.Lessonxp2{
+  text-align: center;
+}
+.quizbtnfinish{
+  background: #489DDA !important;
+  border-radius: 10px;
+  color: white !important;
+  justify-content: space-between;
+  font-size: 1rem;  
+  margin-top: 0.75cm;
+  width: 50%;
 }
 /**
 * Mobile Navigation 
@@ -1912,6 +1940,23 @@ section {
   border-radius: 20px;
   background-color: #F8DECD;
 }
+
+.wrong-pass{
+  
+  border-radius: 10px;
+  background-color: #FFDBE3;
+  margin-bottom: 0.50cm;
+  text-align: center;
+  padding: 15px 10px;
+}
+.txt-wrong-pass{
+  
+  font-size: 1.2rem;
+  color:  #CF1D37;
+  text-align: center;
+  
+}
+
 .new-right{
   display: flex;
   border-width: 3px;

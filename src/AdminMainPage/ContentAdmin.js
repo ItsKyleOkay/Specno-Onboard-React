@@ -141,8 +141,8 @@ const ContentAdmin = () => {
                       alt="..."
                       style={{ cursor: "pointer" }}
                       onClick={() => {
-                        /* 1. Navigate to the Details route with params */
-                        navigate("/specno-quiz/data", {
+                        setContent(post.Name);
+                        navigate("/specno-quiz-content/data/admin", {
                           state: { id: 1, name: post.Name },
                         });
                       }}
@@ -156,7 +156,7 @@ const ContentAdmin = () => {
                         onClick={() => {
                           setContent(post.Name);
                           /* 1. Navigate to the Details route with params */
-                          navigate("/specno-quiz-content/data", {
+                          navigate("/specno-quiz-content/data/admin", {
                             state: { id: 1, name: post.Name },
                           });
                         }}

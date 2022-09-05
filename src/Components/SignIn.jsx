@@ -179,8 +179,8 @@ const SignIn = () => {
                       {issueAlert === true ? (
                         <div className="wrong-pass">
                           <div className="txt-wrong-pass">
-                            Oops, Your password is incorrect or this account
-                            doesnt exist.{" "}
+                            Oops, Your password or email is incorrect please try
+                            again.{" "}
                           </div>
 
                           <div

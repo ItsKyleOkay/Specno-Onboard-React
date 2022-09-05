@@ -3,12 +3,15 @@ import UserProvider from "../providers/UserProvider";
 import { UserContext } from "../providers/UserProvider";
 import ContentQuiz from "../EmployeeMainPage/ContentQuiz";
 import ContentData from "../EmployeeMainPage/ContentData";
+import ContentDataAdmin from "../AdminMainPage/ContentDataAdmin";
+import ContentDataAdminEdit from "../AdminMainPage/ContentDataAdminEdit";
+
 import Quiz from "../EmployeeMainPage/Quiz";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Employees from "../AdminMainPage/Employees";
 import SearchStudents from "../AdminMainPage/SearchStudents";
 import PageLoading from "./PageLoading";
-import EditProfile from "./EditProfile"; 
+import EditProfile from "./EditProfile";
 
 import ContentAdmin from "../AdminMainPage/ContentAdmin";
 import QuizAdmin from "../AdminMainPage/QuizAdmin";
@@ -49,11 +52,19 @@ function Application() {
           </React.Suspense>
         }
       />
-
       <Route path="/sign-up" element={<Navigate to="/login" />} />
       <Route path="/password-reset" element={<Navigate to="/profile" />} />
       <Route path="/specno-quiz-content" element={<ContentQuiz />} />
       <Route path="/specno-quiz-content/data" element={<ContentData />} />
+      <Route
+        path="/specno-quiz-content/data/admin"
+        element={<ContentDataAdmin />}
+      />
+      <Route
+        path="/specno-quiz-content/data/admin/edit"
+        element={<ContentDataAdminEdit />}
+      />
+
       <Route path="/specno-quiz" element={<Quiz />} />
       <Route path="/edit-profile" element={<EditProfile />} />
       <Route
@@ -72,15 +83,12 @@ function Application() {
           </React.Suspense>
         }
       />
-
       <Route path="/content-admin" element={<ContentAdmin />} />
       <Route path="/quiz-admin" element={<QuizAdmin />} />
       <Route path="/leaderboard-admin" element={<LeaderboardAdmin />} />
       <Route path="/employee-list" element={<Employees />} />
       <Route path="/search-students" element={<SearchStudents />} />
-
       <Route path="/content-admin/data" element={<ContentAdminData />} />
-
       <Route
         path="/specno-quiz/data/complete"
         element={

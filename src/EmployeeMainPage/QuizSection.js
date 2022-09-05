@@ -22,6 +22,9 @@ const QuizSection = () => {
   const [posts, setPosts] = useState([]);
   const [quizinfo, setQuizInfo] = useState([]);
   const [isSelected, setSelected] = useState([false, false, false]);
+
+  const [isSkipped, setSkipped] = useState([]);
+
   const [totalquestions, setTotalQuestions] = useState(0);
   const [question, setQuestion] = useState(1);
   const location = useLocation();
@@ -32,6 +35,7 @@ const QuizSection = () => {
       setSelected([false, false, false]);
     }
   };
+
   const [isOpen, setIsOpen] = useState(false);
   const togglePopup = () => {
     setIsOpen(!isOpen);
@@ -40,6 +44,23 @@ const QuizSection = () => {
     setQuestion(1);
   }
 
+  var uniqueIds = [];
+  var remainingArr = [];
+
+  const uniqueQuiz = isSkipped.filter((element) => {
+    const isDuplicate = uniqueIds.includes(element);
+
+    if (!isDuplicate) {
+      uniqueIds.push(element);
+      return true;
+    }
+
+    return false;
+  });
+
+  console.log(uniqueQuiz);
+
+  //console.log(isSkipped);
   //On this page the code uses states which store the answer and choices. Once a question is selected will
   //the answer and choice be added to the state
   //When the user presses check it will check the answer
@@ -131,6 +152,10 @@ const QuizSection = () => {
                       setAnswerWrong(false);
                       setAnswerRight(false);
                       setShow(false);
+                      uniqueIds.splice(question - 1);
+                      remainingArr = uniqueIds;
+
+                      console.log(remainingArr);
                     }}
                   />
                   <div className="progressquiz">
@@ -238,6 +263,11 @@ const QuizSection = () => {
                           setSkip(false);
                           setAnswerWrong(false);
                           setAnswerRight(false);
+
+                          setSkipped((isSkipped) => [
+                            ...isSkipped,
+                            post.Number,
+                          ]);
                         }}
                       >
                         Skip
@@ -287,7 +317,11 @@ const QuizSection = () => {
                         }}
                         className="logo"
                       >
-                        <img src={Incorrect} alt="" className="img-fluid incorrect-img" />
+                        <img
+                          src={Incorrect}
+                          alt=""
+                          className="img-fluid incorrect-img"
+                        />
                       </div>
                       <div
                         style={{
@@ -295,7 +329,7 @@ const QuizSection = () => {
                         }}
                       >
                         <div className="txt-wrong">Oops,Not quite </div>
-                        <div class="txt sub-wrong">
+                        <div className="txt sub-wrong">
                           {" "}
                           Correct Answer is: {<br></br>} {post.Answer}
                         </div>

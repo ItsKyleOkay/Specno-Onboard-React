@@ -999,6 +999,15 @@ section {
 .filtertab{
   border-radius: 60px;
 }
+
+.filtertabDone{
+  border-radius: 60px;
+  font-size: 14px;
+  background: #20f732;
+  padding: 7px 14px;
+  color: #fff;
+  margin: 0;
+}
 .quizbtnskip{
   color: #489DDA;
   justify-content: space-between;
@@ -1009,11 +1018,37 @@ section {
   margin-left: 1cm;
 }
 
+.backgroundInput{
+  width: 100%;
+  margin-top: 0.50cm;
+  text-size-adjust: 80%;
+  font-size: 18px;
+  padding: 2px 5px;
+  outline-color: #2b7eb9;
+  border-top-color: black;
+
+}
 .quizbtn:active {
   box-shadow: 0 0 0 #2b7eb9;
   transform: translateY(6px);
 }
 
+.contentAdd{
+  background-color: #489DDA!important;
+  align-content: center;
+  color: white;
+  border-radius: 10px;
+  padding: 7px 14px;
+  font-size: 1.2rem;
+  height: 50%;
+}
+
+.contentAddHeading{
+align-content: center;
+  color: black;
+  border-radius: 10px;
+  font-size: 1.7rem;
+}
 .quizcontent {
   padding: 20px;
   border-radius: 5px;
@@ -1050,10 +1085,16 @@ section {
   height: 1rem;
 }
 
-.quizname {
+.quizname2 {
   display: flex;
 
 }
+
+.quizname2 {
+  display: flex;
+  margin-top: 1cm;
+}
+
 
 .QuestionSelected {
   background-color: #d4eafb;

@@ -203,7 +203,7 @@ const Quiz = () => {
                             (post1.employee === true) ? (
                             <div key={index}>
                               {post1.Done.includes(post.Name) ? (
-                                <h5 className="filtertabDone">Done</h5>
+                                <h5 className="filtertabDone">Passed</h5>
                               ) : null}
                             </div>
                           ) : null;

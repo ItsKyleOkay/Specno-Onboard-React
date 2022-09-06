@@ -29,6 +29,7 @@ const SignUp = React.lazy(() => import("./SignUp"));
 const FinishedQuiz = React.lazy(() =>
   import("../EmployeeMainPage/FinishedQuiz")
 );
+const FailedQuiz = React.lazy(() => import("../EmployeeMainPage/FailedQuiz"));
 const PasswordReset = React.lazy(() => import("./PasswordReset"));
 
 function Application() {
@@ -94,6 +95,14 @@ function Application() {
         element={
           <React.Suspense fallback={<PageLoading />}>
             <FinishedQuiz />
+          </React.Suspense>
+        }
+      />
+      <Route
+        path="/specno-quiz/data/fail"
+        element={
+          <React.Suspense fallback={<PageLoading />}>
+            <FailedQuiz />
           </React.Suspense>
         }
       />

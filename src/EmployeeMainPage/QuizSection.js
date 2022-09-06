@@ -22,8 +22,11 @@ const QuizSection = () => {
   const [posts, setPosts] = useState([]);
   const [quizinfo, setQuizInfo] = useState([]);
   const [isSelected, setSelected] = useState([false, false, false]);
+  const [score, setScore] = useState(0);
+  const [combo, setCombo] = useState(1);
 
-  const [isSkipped, setSkipped] = useState([]);
+  //const [isSkipped, setSkipped] = useState([]);
+  var holder = "<";
 
   const [totalquestions, setTotalQuestions] = useState(0);
   const [question, setQuestion] = useState(1);
@@ -43,22 +46,18 @@ const QuizSection = () => {
   if (question === 0) {
     setQuestion(1);
   }
+  console.log(score);
 
-  var uniqueIds = [];
-  var remainingArr = [];
+  // const uniqueQuiz = isSkipped.filter((element) => {
+  //   const isDuplicate = uniqueIds.includes(element);
 
-  const uniqueQuiz = isSkipped.filter((element) => {
-    const isDuplicate = uniqueIds.includes(element);
+  //   if (!isDuplicate) {
+  //     uniqueIds.push(element);
+  //     return true;
+  //   }
 
-    if (!isDuplicate) {
-      uniqueIds.push(element);
-      return true;
-    }
-
-    return false;
-  });
-
-  console.log(uniqueQuiz);
+  //   return false;
+  // });
 
   //console.log(isSkipped);
   //On this page the code uses states which store the answer and choices. Once a question is selected will
@@ -124,7 +123,10 @@ const QuizSection = () => {
     }
   };
 
-  //adding the selected in a array and then checking if the position is a number to change another array
+  function increaseScore() {
+    setScore(score + 5);
+  }
+
   return (
     <div>
       <Navbar />
@@ -140,24 +142,25 @@ const QuizSection = () => {
             <div className="quizdiv d-flex justify-content-center">
               <div className="w-50">
                 <div className="processback">
-                  <img
-                    src={Back}
-                    alt=""
-                    className="img-fluid"
+                  <button
+                    disabled={answerWrong}
+                    className="back-arrow"
                     onClick={() => {
-                      question > 1 ? setQuestion(question - 1) : navigate(-1);
-                      setSelected([false, false, false]);
-                      setCheck(true);
-                      setSkip(false);
-                      setAnswerWrong(false);
-                      setAnswerRight(false);
-                      setShow(false);
-                      uniqueIds.splice(question - 1);
-                      remainingArr = uniqueIds;
-
-                      console.log(remainingArr);
+                      // question > 1 ? setQuestion(question - 1) : navigate(-1);
+                      // setSelected([false, false, false]);
+                      // setCheck(true);
+                      // setSkip(false);
+                      // setAnswerWrong(false);
+                      // setAnswerRight(false);
+                      // setShow(false);
+                      // uniqueIds.splice(question - 1);
+                      // remainingArr = uniqueIds;
+                      navigate("/specno-quiz");
                     }}
-                  />
+                  >
+                    {holder}
+                  </button>
+
                   <div className="progressquiz">
                     <ProgressBar
                       now={(100 / totalquestions) * question}
@@ -252,8 +255,7 @@ const QuizSection = () => {
                 {show ? <br></br> : null}
                 {!show ? (
                   <div className="containerbuttons">
-                    <div className="grid grid-cols-2 ">
-                      <button
+                    {/* <button
                         className="quizbtnskip"
                         disabled={skip}
                         onClick={() => {
@@ -271,41 +273,67 @@ const QuizSection = () => {
                         }}
                       >
                         Skip
-                      </button>
+                      </button> */}
 
-                      <button
-                        style={{
-                          color: CheckAns ? "#489DDA" : "#489DDA",
-                          textDecorationLine: CheckAns ? "none" : "underline",
-                        }}
-                        className="quizbtn"
-                        data-testid="header"
-                        disabled={CheckAns}
-                        onClick={() => {
-                          if (answer === choice) {
-                            QuestionIncrease();
-                            setAnswerWrong(false);
-                            setSelected([false, false, false]);
-                            setCheck(true);
-                            setSkip(false);
-                            if (question === totalquestions) {
+                    <button
+                      style={{
+                        color: CheckAns ? "#489DDA" : "#489DDA",
+                        textDecorationLine: CheckAns ? "none" : "underline",
+                      }}
+                      className="quizbtn"
+                      data-testid="header"
+                      disabled={CheckAns}
+                      onClick={() => {
+                        if (answer === choice) {
+                          increaseScore();
+                          setCombo(combo + 1);
+                          //increase point score
+                          QuestionIncrease();
+                          setAnswerWrong(false);
+                          setSelected([false, false, false]);
+                          setCheck(true);
+                          setSkip(false);
+
+                          if (question === totalquestions) {
+                            increaseScore();
+                            setCombo(combo + 1);
+                            var valpercent = totalquestions * 5;
+                            var scorepercent = ((score + 5) * 100) / valpercent;
+                            if (scorepercent > 49) {
                               navigate("/specno-quiz/data/complete", {
-                                state: { id: 1, name: post.Name },
+                                state: {
+                                  id: 1,
+                                  name: post.Name,
+                                  score: score,
+                                  combo: combo,
+                                  percent: scorepercent,
+                                },
+                              });
+                            } else {
+                              navigate("/specno-quiz/data/fail", {
+                                state: {
+                                  id: 1,
+                                  name: post.Name,
+                                  score: score,
+                                  combo: 0,
+                                  percent: scorepercent,
+                                },
                               });
                             }
-                          } else if (answer !== choice) {
-                            setShow((s) => !s);
-                            setAnswerWrong(true);
-                            setAnswerRight(false);
-                            setSelected([false, false, false]);
-                            setCheck(true);
-                            setSkip(true);
                           }
-                        }}
-                      >
-                        Next
-                      </button>
-                    </div>
+                        } else if (answer !== choice) {
+                          setShow((s) => !s);
+                          setCombo(1);
+                          setAnswerWrong(true);
+                          setAnswerRight(false);
+                          setSelected([false, false, false]);
+                          setCheck(true);
+                          setSkip(true);
+                        }
+                      }}
+                    >
+                      Next
+                    </button>
                   </div>
                 ) : null}
                 {answerWrong && (
@@ -345,8 +373,33 @@ const QuizSection = () => {
                             setSkip(false);
                             setAnswerWrong(false);
                             setAnswerRight(false);
-                            setQuestion(question + 1);
+                            QuestionIncrease();
                             setShow(!show);
+                            if (question === totalquestions) {
+                              var valpercent = totalquestions * 5;
+                              var scorepercent = (score * 100) / valpercent;
+                              if (scorepercent > 50) {
+                                navigate("/specno-quiz/data/complete", {
+                                  state: {
+                                    id: 1,
+                                    name: post.Name,
+                                    score: score,
+                                    combo: combo,
+                                    percent: scorepercent,
+                                  },
+                                });
+                              } else {
+                                navigate("/specno-quiz/data/fail", {
+                                  state: {
+                                    id: 1,
+                                    name: post.Name,
+                                    score: score,
+                                    combo: 0,
+                                    percent: scorepercent,
+                                  },
+                                });
+                              }
+                            }
                           }}
                         >
                           Continue

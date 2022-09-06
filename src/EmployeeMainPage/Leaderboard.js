@@ -266,7 +266,7 @@ const Leaderboard = () => {
                           {" "}
                           Level {post.Level}
                           <br></br>
-                          Progress {post.Progress}
+                          {post.FinalScore} XP
                         </div>
                       ) : (
                         <div> </div>

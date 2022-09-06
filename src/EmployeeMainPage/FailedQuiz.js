@@ -57,19 +57,24 @@ const FinishedQuiz = () => {
     return () => quizzes();
   }, []);
 
-  function AddChanges(finalxp, totalxp) {
-    console.log(finalxp, totalxp);
+  function AddChanges(totalxp) {
     navigate("/specno-quiz");
-    var final = finalxp + totalxp;
-    if (finalxp !== "") {
+    var final = totalxp - 10;
+    if ((totalxp) => 6) {
       firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
           FinalScore: final,
-          RecentScore: finalxp,
+        });
+      });
+    } else {
+      firebase.auth().onAuthStateChanged(function (user) {
+        db.collection("users").doc(user.uid).update({
+          FinalScore: 0,
         });
       });
     }
   }
+  //bug control
   return (
     <div>
       <div>
@@ -98,27 +103,19 @@ const FinishedQuiz = () => {
                       Your original score: {post1.FinalScore}{" "}
                     </div>
 
-                    <div className="Lessonxp">
-                      Lesson Complete! {location.state.score} XP
-                    </div>
+                    <div className="Lessonxp">Lesson incomplete -10XP</div>
                     <div className="Lessonxp">
                       Combo bonus! {location.state.combo} XP
                     </div>
                     <div className="Finished1">
-                      Your new score is{" "}
-                      {location.state.score +
-                        location.state.combo +
-                        post1.FinalScore}{" "}
-                      XP today
+                      Your new score is {post1.FinalScore - 10} XP, please do
+                      the quiz again
                     </div>
                     <div className="Lessonxp2">
                       <button
                         className="quizbtnfinish"
                         onClick={() => {
-                          AddChanges(
-                            location.state.score + location.state.combo,
-                            post1.FinalScore
-                          );
+                          AddChanges(post1.FinalScore);
                         }}
                       >
                         Finish

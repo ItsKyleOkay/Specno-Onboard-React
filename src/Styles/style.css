@@ -986,6 +986,8 @@ section {
   font-size: 1rem;
   border-radius: 6px;
   margin-top: 1cm;
+  display: flex;
+  justify-content: right;
 }
 .quizbtn {
   color: #489DDA;
@@ -994,6 +996,7 @@ section {
   justify-content: right;
   font-size: 1rem;
   margin-right: 1cm;
+  
 }
 
 .filtertab{
@@ -1132,14 +1135,14 @@ align-content: center;
   font-size: 1.5rem;
   color: #489DDA;
   font-weight: bold;
-  margin-top: 0.75cm;
+  margin-top: 0.35cm;
   text-align: center;
 }
 
 .Lessonxp{
   font-size: 1rem;
   color: gray;
-  margin-top: 0.75cm;
+  margin-top: 0.35cm;
   text-align: center;
 }
 
@@ -2003,6 +2006,11 @@ align-content: center;
   border-width: 3px;
   border-color: white;
   background-color: #cffabf;
+}
+
+.back-arrow{
+  margin-bottom: 10px;
+  display: inline-flex;
 }
 
 .sec:hover{

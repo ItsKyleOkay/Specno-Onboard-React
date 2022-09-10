@@ -58,7 +58,6 @@ const FinishedQuiz = () => {
   }, []);
 
   function AddChanges(finalxp, totalxp) {
-    console.log(finalxp, totalxp);
     navigate("/specno-quiz");
     var final = finalxp + totalxp;
     if (finalxp !== "") {
@@ -70,6 +69,7 @@ const FinishedQuiz = () => {
       });
     }
   }
+
   return (
     <div>
       <div>

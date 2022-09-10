@@ -154,7 +154,7 @@ const QuizAdmin = () => {
                         className="d-flex justify-content-between align-items-center mb-3 color Blue fw-bold"
                         onClick={() => {
                           /* 1. Navigate to the Details route with params */
-                          navigate("/specno-quiz/data", {
+                          navigate("/specno-quiz/data/admin/edit", {
                             state: { id: 1, name: post.Name },
                           });
                         }}

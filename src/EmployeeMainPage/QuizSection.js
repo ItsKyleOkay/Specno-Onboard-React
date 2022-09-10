@@ -20,6 +20,8 @@ const QuizSection = () => {
   const [answerRight, setAnswerRight] = useState(false);
   const [show, setShow] = useState(false);
   const [posts, setPosts] = useState([]);
+
+  const [quizName, setName] = useState();
   const [quizinfo, setQuizInfo] = useState([]);
   const [isSelected, setSelected] = useState([false, false, false]);
   const [score, setScore] = useState(0);
@@ -46,7 +48,6 @@ const QuizSection = () => {
   if (question === 0) {
     setQuestion(1);
   }
-  console.log(score);
 
   // const uniqueQuiz = isSkipped.filter((element) => {
   //   const isDuplicate = uniqueIds.includes(element);
@@ -133,7 +134,7 @@ const QuizSection = () => {
       {quizinfo.map((post2) =>
         (post2.Name === location.state.name) &
         (post2.Questions !== totalquestions)
-          ? setTotalQuestions(post2.Questions)
+          ? (setTotalQuestions(post2.Questions), setName(post2.Name))
           : null
       )}
       {posts.map((post) =>
@@ -303,7 +304,7 @@ const QuizSection = () => {
                               navigate("/specno-quiz/data/complete", {
                                 state: {
                                   id: 1,
-                                  name: post.Name,
+                                  name: quizName,
                                   score: score,
                                   combo: combo,
                                   percent: scorepercent,
@@ -313,7 +314,7 @@ const QuizSection = () => {
                               navigate("/specno-quiz/data/fail", {
                                 state: {
                                   id: 1,
-                                  name: post.Name,
+                                  name: quizName,
                                   score: score,
                                   combo: 0,
                                   percent: scorepercent,
@@ -382,7 +383,7 @@ const QuizSection = () => {
                                 navigate("/specno-quiz/data/complete", {
                                   state: {
                                     id: 1,
-                                    name: post.Name,
+                                    name: quizName,
                                     score: score,
                                     combo: combo,
                                     percent: scorepercent,
@@ -392,7 +393,7 @@ const QuizSection = () => {
                                 navigate("/specno-quiz/data/fail", {
                                   state: {
                                     id: 1,
-                                    name: post.Name,
+                                    name: quizName,
                                     score: score,
                                     combo: 0,
                                     percent: scorepercent,

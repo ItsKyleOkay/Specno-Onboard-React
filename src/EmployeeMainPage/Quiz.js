@@ -204,6 +204,8 @@ const Quiz = () => {
                             <div key={index}>
                               {post1.Done.includes(post.Name) ? (
                                 <h5 className="filtertabDone">Passed</h5>
+                              ) : post1.failed.includes(post.Name) ? (
+                                <h5 className="filtertabFailed">Try again</h5>
                               ) : null}
                             </div>
                           ) : null;

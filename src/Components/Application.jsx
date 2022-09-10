@@ -6,6 +6,8 @@ import ContentData from "../EmployeeMainPage/ContentData";
 import ContentDataAdmin from "../AdminMainPage/ContentDataAdmin";
 import ContentDataAdminEdit from "../AdminMainPage/ContentDataAdminEdit";
 
+import QuizDataAdmin from "../AdminMainPage/QuizDataAdminEdit";
+
 import Quiz from "../EmployeeMainPage/Quiz";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Employees from "../AdminMainPage/Employees";
@@ -65,6 +67,8 @@ function Application() {
         path="/specno-quiz-content/data/admin/edit"
         element={<ContentDataAdminEdit />}
       />
+
+      <Route path="/specno-quiz/data/admin/edit" element={<QuizDataAdmin />} />
 
       <Route path="/specno-quiz" element={<Quiz />} />
       <Route path="/edit-profile" element={<EditProfile />} />

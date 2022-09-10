@@ -1008,9 +1008,12 @@ section {
   font-size: 14px;
   background: #20f732;
   padding: 7px 14px;
+  
   color: #fff;
   margin: 0;
 }
+
+
 .quizbtnskip{
   color: #489DDA;
   justify-content: space-between;
@@ -1036,7 +1039,7 @@ section {
   transform: translateY(6px);
 }
 
-.contentAdd{
+.contentAddSave{
   background-color: #489DDA!important;
   align-content: center;
   color: white;
@@ -1044,6 +1047,19 @@ section {
   padding: 7px 14px;
   font-size: 1.2rem;
   height: 50%;
+  width: 15%;
+}
+
+.contentAddSave2{
+  background-color: #489DDA!important;
+  align-content: center;
+  color: white;
+  border-radius: 10px;
+  padding: 7px 14px;
+  font-size: 1.2rem;
+  height: 50%;
+  width: 15%;
+  margin-left: 30px;
 }
 
 .contentAddHeading{

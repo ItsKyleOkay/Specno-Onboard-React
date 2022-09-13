@@ -1948,14 +1948,21 @@ align-content: center;
 
 .sec{
   padding: 15px 10px;
-  background-color: #F4F4F4;
+  background-color: #489DDA;
   transition: 0.5s;
+}
+
+.blue-back {
+  background-color: #489DDA !important;
 }
 
 .profCont{
   padding-left: 15px;
 }
 
+.txt-white{
+  color: #ffffff !important;
+}
 
 .txt{
   vertical-align: top;
@@ -1990,7 +1997,7 @@ align-content: center;
 }
 .new{
   border-style: none none solid none;
-  border-color: #489DDA;
+  border-color: #ffffff;
   border-width: 3px;
 }
 
@@ -2030,7 +2037,7 @@ align-content: center;
 }
 
 .sec:hover{
-  background-color: #BFBFBF;
+  background-color: #2b7eb9;
 }
 
 .incorrect {

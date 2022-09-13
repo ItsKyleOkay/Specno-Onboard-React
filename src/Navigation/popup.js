@@ -21,7 +21,7 @@ const Popup = (props) => {
   }, []);
   return (
     <div className="popup-box">
-    <div className = "box">
+    <div className = "box blue-back">
        <span className="close-icon" onClick={props.handleClose}>
        x
       </span>
@@ -29,10 +29,10 @@ const Popup = (props) => {
         <div className = "cont">
         {posts.map((post) => (
           <div className = "sec new">
-          <div className = "txt">
+          <div className = "txt-white">
             {post.Notification}
             </div>
-            <div class = "txt sub">
+            <div class = "txt-white sub">
             {post.Time}
           </div>
           </div>

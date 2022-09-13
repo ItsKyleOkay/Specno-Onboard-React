@@ -1,4 +1,3 @@
-
 import Navbar from "../Navigation/Navbar.js";
 import React, { useContext, useState } from 'react';
 import { UserContext } from "../providers/UserProvider";
@@ -6,6 +5,7 @@ import { db, storage } from "../firebase";
 import firebase from "firebase";
 import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
 
 function EditProfile() {
 
@@ -16,6 +16,7 @@ function EditProfile() {
     uploadFiles(file);
   };
 
+  const navigate = useNavigate();
   const user = useContext(UserContext);
   const [currentUser, setCurrentUser] = useState(user);
   const [displayName, setDisplayName] = useState(currentUser.displayName);
@@ -160,7 +161,8 @@ function EditProfile() {
                             <div className="col d-flex justify-content-end">
                               <button
                                 className="btn-colour btn btn-block text-uppercase mb-2 rounded-pill shadow-sm"
-                                onClick={() => AddChanges(displayName, email, bio)}
+                                onClick={() => {AddChanges(displayName, email, bio);
+                                  navigate("/profile"); }}
                               >
                                 Save Changes
                               </button>

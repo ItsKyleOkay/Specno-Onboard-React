@@ -1482,7 +1482,7 @@ align-content: center;
 .courses .course-item {
   margin-bottom: 1rem;
   border-radius: 5px;
-  border: 1px solid #d7d6d6;
+  outline: 1px solid #d7d6d6;
 }
 
 .courses .course-content {

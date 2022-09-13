@@ -2,6 +2,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import { functions } from "firebase";
+import "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCjmANmhZ9veHYI-oetvaw1-Xhv7VJMrbI",
@@ -17,8 +18,7 @@ firebase.initializeApp(firebaseConfig);
 export const db = firebase.firestore();
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
-var storage = firebase.storage();
-export default storage;
+export const storage = firebase.storage();
 
 export const generateUserDocument = async (
   user,

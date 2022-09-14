@@ -34,7 +34,7 @@ const ProfilePage = () => {
                     <button
                   className="edit-profile"
                   onClick={() => {
-                    navigate("/profile");
+                    navigate("/edit-profile");
                   }}
                 >
                   Edit your profile 

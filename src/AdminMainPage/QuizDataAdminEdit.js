@@ -32,9 +32,9 @@ const ContentDataAdminEdit = () => {
 
   const [QuestionFilter, setQuestionFilter] = useState("Question1");
   const [QuestionFilterNum, setQuestionFilterNum] = useState(1);
-  var randomVal = 1;
+
   console.log(TotalQuestions);
-  console.log(TotalQuestions3);
+  console.log(QuestionFilterNum);
   const QuestionIncrease = () => {
     if (QuestionFilterNum < TotalQuestions) {
       setQuestionFilterNum(QuestionFilterNum + 1);
@@ -117,21 +117,6 @@ const ContentDataAdminEdit = () => {
   }, []);
 
   function addQuestion(QuestionNum) {
-    console.log(QuestionNum);
-    db.collection("quiz")
-      .doc("Dev Team")
-      .collection("Quizzes")
-      .doc(location.state.name)
-      .update({
-        Questions: TotalQuestions3,
-      })
-      .then(() => {
-        console.error("Updated question total");
-      })
-      .catch((error) => {
-        console.error("Error adding document: ", error);
-      });
-
     db.collection("quiz")
       .doc("Dev Team")
       .collection("Quizzes")
@@ -156,7 +141,23 @@ const ContentDataAdminEdit = () => {
       .catch((error) => {
         console.error("Error adding document: ", error);
       });
+    db.collection("quiz")
+      .doc("Dev Team")
+      .collection("Quizzes")
+      .doc(location.state.name)
+      .update({
+        Questions: TotalQuestions3,
+      })
+      .then(() => {
+        console.error("Updated question total");
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
   }
+
+  console.log(QuestionFilter);
   function AddChanges(
     Option1,
     Option2,
@@ -168,6 +169,7 @@ const ContentDataAdminEdit = () => {
     TotalQuestions,
     Question
   ) {
+    navigate(-1);
     if (Option1 !== "") {
       firebase.auth().onAuthStateChanged(function (user) {
         db.collection("quiz")

@@ -35,6 +35,7 @@ const ContentDataAdminEdit = () => {
   }, []); // empty dependencies array => useEffect only called once
 
   function AddChanges(background, info, youtube) {
+    navigate(-1);
     if (background !== "") {
       firebase.auth().onAuthStateChanged(function (user) {
         db.collection("Content").doc(location.state.name).update({

@@ -45,6 +45,11 @@ const ContentData = () => {
                 {posts.map((post) => (
                   <React.Fragment>
                     {post.Name === location.state.name ? post.Background : null}
+                    <br></br>
+                    <br></br>
+                    {post.Name === location.state.name
+                      ? post.YoutubeLink
+                      : null}
                   </React.Fragment>
                 ))}
               </div>

@@ -33,9 +33,15 @@ const ContentAdminData = () => {
     <div>
       <AdminNavbar />
       <div className="content-data-div">
-        <img className="content-data-img d-flex justify-content-center" src={contentData}></img>
+        <img
+          className="content-data-img d-flex justify-content-center"
+          src={contentData}
+        ></img>
         <div className="content-text-div">
-          <h1 className="d-flex content-data-heading"> {location.state.name}</h1>
+          <h1 className="d-flex content-data-heading">
+            {" "}
+            {location.state.name}
+          </h1>
           <br />
           <hr />
           <div className="d-flex justify-content-center">
@@ -44,6 +50,11 @@ const ContentAdminData = () => {
                 {posts.map((post) => (
                   <React.Fragment>
                     {post.Name === location.state.name ? post.Background : null}
+                    <br></br>
+                    <br></br>
+                    {post.Name === location.state.name
+                      ? post.YoutubeLink
+                      : null}
                   </React.Fragment>
                 ))}
               </div>
@@ -57,6 +68,5 @@ const ContentAdminData = () => {
     </div>
   );
 };
-
 
 export default ContentAdminData;

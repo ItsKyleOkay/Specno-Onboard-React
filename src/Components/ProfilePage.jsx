@@ -5,9 +5,11 @@ import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
 import Navbar from "../Navigation/Navbar.js";
 import { BrowserRouter } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
   const user = useContext(UserContext);
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -28,7 +30,17 @@ const ProfilePage = () => {
                   >
                     Specno Partners With You To Validate, Design And Develop
                     Industry Leading Solutions
+                    <br />
+                    <button
+                  className="edit-profile"
+                  onClick={() => {
+                    navigate("/profile");
+                  }}
+                >
+                  Edit your profile 
+                </button>
                   </p>
+
                 </div>
                 <div className="col-lg-8 iphone-wrap">
                   <img

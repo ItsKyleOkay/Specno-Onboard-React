@@ -39,7 +39,7 @@ function EditProfile() {
   };
 
   const uploadFiles = (file) => {
-    const uploadTask = storage.ref(`Profile Picture/${currentUser.uid + file.name}`).put(file);
+    const uploadTask = storage.ref(currentUser.uid + ".jpg").put(file);
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -53,8 +53,7 @@ function EditProfile() {
       (error) => console.log(error),
       () => {
         storage
-          .ref("Profile Picture")
-          .child(currentUser.uid + file.name)
+          .ref(currentUser.uid + ".jpg")
           .getDownloadURL()
           .then((url) => {
             console.log(url);
@@ -109,7 +108,6 @@ function EditProfile() {
                             </div>
                           </div>
                           <div className="text-center text-sm-right">
-                            <div className="text-muted"><small>Joined {joinDate}</small></div>
                           </div>
                         </div>
                       </div>
@@ -182,3 +180,6 @@ function EditProfile() {
   );
 }
 export default EditProfile;
+
+
+

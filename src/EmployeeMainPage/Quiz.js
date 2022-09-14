@@ -138,7 +138,7 @@ const Quiz = () => {
             {posts.map((post) => {
               return all === post.Filter ? (
                 <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
-                  <div className="rounded course-item">
+                  <div className="rounded course-item shadow">
                     <img
                       src={contentPic}
                       className="img-fluid rounded-top"
@@ -182,7 +182,7 @@ const Quiz = () => {
                 </div>
               ) : all === "everything" ? (
                 <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
-                  <div className="rounded course-item">
+                  <div className="rounded course-item shadow">
                     <img
                       src={contentPic}
                       className="img-fluid rounded-top"

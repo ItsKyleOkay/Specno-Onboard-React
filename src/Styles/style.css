@@ -2071,3 +2071,18 @@ align-content: center;
 .incorrect-img {
   border-radius: 20px !important;
 }
+
+/* input[type="file"]{
+  display: none;
+}
+
+label{
+ color: rgb(0, 0, 0);
+ height: 60px;
+ width: 250px; 
+} */
+
+.shadow2 {
+  box-shadow: 0 5px 10px rgb(154 160 185 / 5%), 0 15px 40px rgb(166 173 201 / 20%);
+}
+

@@ -57,7 +57,7 @@ const ContentData = () => {
                 });
               }}
             >
-              Add+
+              Edit
             </button>
           </div>
           <br />

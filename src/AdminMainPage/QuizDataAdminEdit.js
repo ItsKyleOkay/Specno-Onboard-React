@@ -20,24 +20,27 @@ const ContentDataAdminEdit = () => {
   const [Option2, setOption2] = useState("");
   const [Option3, setOption3] = useState("");
   const [Answer, setAnswer] = useState("");
-  const [Time, setTime] = useState("");
+  const [Time, setTime] = useState(1);
   const [Type, setType] = useState("");
   const [Number, setNumber] = useState(1);
+  const [Number2, setNumber2] = useState(1);
   const [TotalQuestions, setTotalQuestions] = useState(1);
+  const [TotalQuestions3, setTotalQuestions3] = useState(1);
+  const [TotalQuestions2, setTotalQuestions2] = useState();
   const [Question, setQuestion] = useState("");
   const [quizinfo, setQuizInfo] = useState([]);
 
   const [QuestionFilter, setQuestionFilter] = useState("Question1");
   const [QuestionFilterNum, setQuestionFilterNum] = useState(1);
-
+  var randomVal = 1;
+  console.log(TotalQuestions);
+  console.log(TotalQuestions3);
   const QuestionIncrease = () => {
     if (QuestionFilterNum < TotalQuestions) {
       setQuestionFilterNum(QuestionFilterNum + 1);
       return QuestionFilterNum;
     }
   };
-
-  console.log(QuestionFilter);
   useEffect(() => {
     const getPostsFromFirebase = [];
     const quizzes = db
@@ -58,6 +61,42 @@ const ContentDataAdminEdit = () => {
     return () => quizzes();
   }, []); // empty dependencies array => useEffect only called once
 
+  if (TotalQuestions2 === 0) {
+    db.collection("quiz")
+      .doc("Dev Team")
+      .collection("Quizzes")
+      .doc(location.state.name)
+      .collection("Questions")
+      .doc("Question1")
+      .set({
+        Answer: "",
+        Number: 1,
+        Option1: "",
+        Option2: "",
+        Option3: "",
+        Points: 1,
+        Question: "",
+        Time: 0,
+        TotalQuestions: 1,
+        Type: "Text",
+      })
+      .then(() => {
+        console.error("Added new question ");
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("quiz")
+        .doc("Dev Team")
+        .collection("Quizzes")
+        .doc(location.state.name)
+        .collection("Questions")
+        .update({
+          Questions: 1,
+        });
+    });
+  }
   useEffect(() => {
     const getPostsFromFirebase = [];
     const quizzes = db
@@ -76,6 +115,48 @@ const ContentDataAdminEdit = () => {
       });
     return () => quizzes();
   }, []);
+
+  function addQuestion(QuestionNum) {
+    console.log(QuestionNum);
+    db.collection("quiz")
+      .doc("Dev Team")
+      .collection("Quizzes")
+      .doc(location.state.name)
+      .update({
+        Questions: TotalQuestions3,
+      })
+      .then(() => {
+        console.error("Updated question total");
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
+
+    db.collection("quiz")
+      .doc("Dev Team")
+      .collection("Quizzes")
+      .doc(location.state.name)
+      .collection("Questions")
+      .doc(QuestionNum)
+      .set({
+        Answer: "",
+        Number: TotalQuestions3,
+        Option1: "",
+        Option2: "",
+        Option3: "",
+        Points: 1,
+        Question: "",
+        Time: 0,
+        TotalQuestions: TotalQuestions3,
+        Type: "Text",
+      })
+      .then(() => {
+        console.error("Added new question ");
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
+  }
   function AddChanges(
     Option1,
     Option2,
@@ -148,7 +229,7 @@ const ContentDataAdminEdit = () => {
           .collection("Questions")
           .doc(QuestionFilter)
           .update({
-            Time: Time,
+            Time: parseInt(Time),
           });
       });
     }
@@ -174,7 +255,7 @@ const ContentDataAdminEdit = () => {
           .collection("Questions")
           .doc(QuestionFilter)
           .update({
-            Number: Number,
+            Number: parseInt(Number),
           });
       });
     }
@@ -187,7 +268,7 @@ const ContentDataAdminEdit = () => {
           .collection("Questions")
           .doc(QuestionFilter)
           .update({
-            TotalQuestions: TotalQuestions,
+            TotalQuestions: parseInt(TotalQuestions),
           });
       });
     }
@@ -213,7 +294,10 @@ const ContentDataAdminEdit = () => {
       {quizinfo.map((post2) =>
         (post2.Name === location.state.name) &
         (post2.Questions !== TotalQuestions)
-          ? (setTotalQuestions(post2.Questions), setName(post2.Name))
+          ? (setTotalQuestions(post2.Questions),
+            setName(post2.Name),
+            setTotalQuestions2(post2.Questions),
+            setTotalQuestions3(post2.Questions + 1))
           : null
       )}
       <div className="content-data-div">
@@ -235,6 +319,15 @@ const ContentDataAdminEdit = () => {
               style={{
                 flex: "1",
               }}
+              onClick={() => addQuestion("Question" + TotalQuestions3)}
+            >
+              Add
+            </button>
+            <button
+              className="contentAddSave2"
+              style={{
+                flex: "1",
+              }}
               onClick={() => setQuestionFilter("Question" + QuestionIncrease())}
             >
               Next
@@ -252,7 +345,7 @@ const ContentDataAdminEdit = () => {
                     <TextField
                       id="outlined-multiline-flexible"
                       multiline
-                      maxRows={6}
+                      maxRows={1}
                       label="Question Number"
                       defaultValue={post.Number}
                       className="backgroundInput"
@@ -263,7 +356,7 @@ const ContentDataAdminEdit = () => {
                     <TextField
                       id="outlined-multiline-flexible"
                       multiline
-                      maxRows={6}
+                      maxRows={2}
                       label="Question"
                       defaultValue={post.Question}
                       className="backgroundInput"
@@ -274,7 +367,7 @@ const ContentDataAdminEdit = () => {
                     <TextField
                       id="outlined-multiline-flexible"
                       multiline
-                      maxRows={6}
+                      maxRows={2}
                       label="Option 1"
                       defaultValue={post.Option1}
                       className="backgroundInput"
@@ -285,7 +378,7 @@ const ContentDataAdminEdit = () => {
                     <TextField
                       id="outlined-multiline-flexible"
                       multiline
-                      maxRows={6}
+                      maxRows={2}
                       label="Option 2"
                       defaultValue={post.Option2}
                       className="backgroundInput"
@@ -296,7 +389,7 @@ const ContentDataAdminEdit = () => {
                     <TextField
                       id="outlined-multiline-flexible"
                       multiline
-                      maxRows={6}
+                      maxRows={2}
                       label="Option 3"
                       defaultValue={post.Option3}
                       className="backgroundInput"
@@ -318,7 +411,7 @@ const ContentDataAdminEdit = () => {
                     <TextField
                       id="outlined-multiline-flexible"
                       multiline
-                      maxRows={6}
+                      maxRows={1}
                       label="Total Questions"
                       defaultValue={post.TotalQuestions}
                       className="backgroundInput"
@@ -329,7 +422,7 @@ const ContentDataAdminEdit = () => {
                     <TextField
                       id="outlined-multiline-flexible"
                       multiline
-                      maxRows={6}
+                      maxRows={1}
                       label="Time limit"
                       defaultValue={post.Time}
                       className="backgroundInput"
@@ -340,7 +433,7 @@ const ContentDataAdminEdit = () => {
                     <TextField
                       id="outlined-multiline-flexible"
                       multiline
-                      maxRows={6}
+                      maxRows={1}
                       label="Type, Text or Image"
                       defaultValue={post.Type}
                       className="backgroundInput"

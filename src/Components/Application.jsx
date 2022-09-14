@@ -19,6 +19,8 @@ import ContentAdmin from "../AdminMainPage/ContentAdmin";
 import QuizAdmin from "../AdminMainPage/QuizAdmin";
 import LeaderboardAdmin from "../AdminMainPage/LeaderboardAdmin";
 import ContentAdminData from "../AdminMainPage/ContentAdminData";
+import NewContentAdmin from "../AdminMainPage/NewContentAdmin";
+import NewQuizAdmin from "../AdminMainPage/NewQuizAdmin";
 
 //main routes
 const ProfilePage = React.lazy(() => import("./ProfilePage"));
@@ -94,6 +96,10 @@ function Application() {
       <Route path="/employee-list" element={<Employees />} />
       <Route path="/search-students" element={<SearchStudents />} />
       <Route path="/content-admin/data" element={<ContentAdminData />} />
+
+      <Route path="/content-admin/new/edit" element={<NewContentAdmin />} />
+      <Route path="/quiz-admin/new/edit" element={<NewQuizAdmin />} />
+
       <Route
         path="/specno-quiz/data/complete"
         element={

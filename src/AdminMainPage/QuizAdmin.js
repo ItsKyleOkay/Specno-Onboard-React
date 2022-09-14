@@ -15,17 +15,21 @@ const QuizAdmin = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const getPostsFromFirebase = [];
-    const subscriber = db.collection("Quiz").onSnapshot((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        getPostsFromFirebase.push({
-          ...doc.data(), //spread operator
-          key: doc.id, // `id` given to us by Firebase
+    const subscriber = db
+      .collection("quiz")
+      .doc("Dev Team")
+      .collection("Quizzes")
+      .onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          getPostsFromFirebase.push({
+            ...doc.data(), //spread operator
+            key: doc.id, // `id` given to us by Firebase
+          });
         });
+        setPosts(getPostsFromFirebase);
+        setLoading(false);
+        document.getElementById("btn").click();
       });
-      setPosts(getPostsFromFirebase);
-      setLoading(false);
-      document.getElementById("btn").click();
-    });
     return () => subscriber();
   }, [loading]); // empty dependencies array => useEffect only called once
 
@@ -91,12 +95,20 @@ const QuizAdmin = () => {
               >
                 Other
               </button>
+              <button
+                className="AddingQuiz"
+                onClick={() => {
+                  navigate("/quiz-admin/new/edit");
+                }}
+              >
+                Add
+              </button>
             </div>
           </div>
           <div className="row" data-aos="zoom-in" data-aos-delay="100">
             {posts.map((post) =>
               all === post.Filter ? (
-                <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
+                <div className="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
                   <div className="rounded course-item">
                     <img
                       src={contentPic}
@@ -131,7 +143,7 @@ const QuizAdmin = () => {
                   </div>
                 </div>
               ) : all === "everything" ? (
-                <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
+                <div className="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
                   <div className="rounded course-item">
                     <img
                       src={contentPic}

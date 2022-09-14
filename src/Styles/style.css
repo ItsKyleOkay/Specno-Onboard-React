@@ -1034,9 +1034,29 @@ section {
   border-top-color: black;
 
 }
+
+.AddingQuiz{
+background-color: #489DDA!important;
+  align-content: center;
+  color: white;
+  border-radius: 10px;
+  padding: 2px 20px;
+  font-size: 1.2rem;
+}
 .quizbtn:active {
   box-shadow: 0 0 0 #2b7eb9;
   transform: translateY(6px);
+}
+
+.contentAdd{
+  background-color: #489DDA!important;
+  align-content: center;
+  color: white;
+  border-radius: 10px;
+  padding: 7px 14px;
+  font-size: 1.2rem;
+  height: 50%;
+  width: 15%;
 }
 
 .contentAddSave{
@@ -1482,7 +1502,7 @@ align-content: center;
 .courses .course-item {
   margin-bottom: 1rem;
   border-radius: 5px;
-  outline: 1px solid #d7d6d6;
+  border: 1px solid #d7d6d6;
 }
 
 .courses .course-content {
@@ -1948,21 +1968,14 @@ align-content: center;
 
 .sec{
   padding: 15px 10px;
-  background-color: #489DDA;
+  background-color: #F4F4F4;
   transition: 0.5s;
-}
-
-.blue-back {
-  background-color: #489DDA !important;
 }
 
 .profCont{
   padding-left: 15px;
 }
 
-.txt-white{
-  color: #ffffff !important;
-}
 
 .txt{
   vertical-align: top;
@@ -1989,6 +2002,18 @@ align-content: center;
 .sub-wrong{
   font-size: 1rem;
   color:  #a9383c;
+  width: 50%;
+}
+
+.sub-wrong-add{
+  font-size: 1rem;
+  color:  #a9383c;
+  margin-left: 20px;
+}
+.new-wrong-add{
+  border-radius: 10px;
+  background-color: #F8DECD;
+  margin-bottom: 20px;
 }
 
 .sub-right{
@@ -1997,13 +2022,12 @@ align-content: center;
 }
 .new{
   border-style: none none solid none;
-  border-color: #ffffff;
+  border-color: #489DDA;
   border-width: 3px;
 }
 
 .new-wrong{
   display: flex;
-  border-width: 3px;
   border-radius: 20px;
   background-color: #F8DECD;
 }
@@ -2037,7 +2061,7 @@ align-content: center;
 }
 
 .sec:hover{
-  background-color: #2b7eb9;
+  background-color: #BFBFBF;
 }
 
 .incorrect {

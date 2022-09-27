@@ -13,6 +13,7 @@ import Incorrect from "../Styles/img/thumbs-down.png";
 
 const QuizSection = () => {
   const [answer, setAnswer] = useState();
+  const [badge, setBadge] = useState("1");
   const [choice, setChoice] = useState();
   const [CheckAns, setCheck] = useState(true);
   const [skip, setSkip] = useState(false);
@@ -22,13 +23,17 @@ const QuizSection = () => {
   const [posts, setPosts] = useState([]);
 
   const [quizName, setName] = useState();
+
   const [quizinfo, setQuizInfo] = useState([]);
   const [isSelected, setSelected] = useState([false, false, false]);
   const [score, setScore] = useState(0);
   const [combo, setCombo] = useState(1);
 
+  var positionAns = 0;
+
   //const [isSkipped, setSkipped] = useState([]);
   var holder = "<";
+  //it didnt like having < in jsx so we put it in a variable
 
   const [totalquestions, setTotalQuestions] = useState(0);
   const [question, setQuestion] = useState(1);
@@ -41,14 +46,26 @@ const QuizSection = () => {
     }
   };
 
-  const [isOpen, setIsOpen] = useState(false);
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  };
   if (question === 0) {
     setQuestion(1);
   }
 
+  if (badge !== "") {
+    var combostring = combo.toString();
+    if (badge.includes(combostring)) {
+      console.log("Combo badge already achieved");
+    } else {
+      firebase.auth().onAuthStateChanged(function (user) {
+        db.collection("users")
+          .doc(user.uid)
+          .update({
+            FinalScore: 0,
+            Badge: badge + "," + combo,
+          });
+      });
+      //update here
+    }
+  }
   // const uniqueQuiz = isSkipped.filter((element) => {
   //   const isDuplicate = uniqueIds.includes(element);
 
@@ -60,7 +77,6 @@ const QuizSection = () => {
   //   return false;
   // });
 
-  //console.log(isSkipped);
   //On this page the code uses states which store the answer and choices. Once a question is selected will
   //the answer and choice be added to the state
   //When the user presses check it will check the answer
@@ -108,6 +124,21 @@ const QuizSection = () => {
       });
     return () => quizzes();
   }, []);
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(function (user) {
+      const quizzesdone = db
+        .collection("users")
+        .doc(user.uid)
+        .get()
+        .then((doc) => {
+          if (doc && doc.exists) {
+            setBadge(doc.data().Badge);
+          }
+        });
+      return () => quizzesdone();
+    });
+  });
 
   const onButtonSelected = (position, value, option) => {
     setAnswer(value);
@@ -256,26 +287,6 @@ const QuizSection = () => {
                 {show ? <br></br> : null}
                 {!show ? (
                   <div className="containerbuttons">
-                    {/* <button
-                        className="quizbtnskip"
-                        disabled={skip}
-                        onClick={() => {
-                          QuestionIncrease();
-                          setSelected([false, false, false]);
-                          setCheck(true);
-                          setSkip(false);
-                          setAnswerWrong(false);
-                          setAnswerRight(false);
-
-                          setSkipped((isSkipped) => [
-                            ...isSkipped,
-                            post.Number,
-                          ]);
-                        }}
-                      >
-                        Skip
-                      </button> */}
-
                     <button
                       style={{
                         color: CheckAns ? "#489DDA" : "#489DDA",
@@ -358,10 +369,24 @@ const QuizSection = () => {
                         }}
                       >
                         <div className="txt-wrong">Oops,Not quite </div>
-                        <div className="txt sub-wrong">
-                          {" "}
-                          Correct Answer is: {<br></br>} {post.Answer}
-                        </div>
+                        {post.Type === "Text" && post.Number === question ? (
+                          <div className="txt sub-wrong">
+                            {" "}
+                            Correct Answer is: {<br></br>} {post.Answer}
+                          </div>
+                        ) : (
+                          <div className="txt sub-wrong">
+                            {" "}
+                            Correct Answer is image{" "}
+                            {post.Answer === post.Option1
+                              ? (positionAns = 1)
+                              : post.Answer === post.Option2
+                              ? (positionAns = 2)
+                              : post.Answer === post.Option3
+                              ? (positionAns = 3)
+                              : null}
+                          </div>
+                        )}
                       </div>
                       <div
                         style={{

@@ -17,6 +17,7 @@ import { BrowserRouter } from "react-router-dom";
 const Leaderboard = () => {
   const [email, setEmail] = useState();
   const [badges, setBadges] = useState([]);
+  const [badge2, setBadge] = useState("1");
   const [posts, setPosts] = useState([]);
   const [leaderboard, setLeaderboard] = useState([]);
   const [prizes, setPrizes] = useState([]);
@@ -56,6 +57,21 @@ const Leaderboard = () => {
     });
     return () => userinfo();
   }, []); // empty dependencies array => useEffect only called once
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(function (user) {
+      const quizzesdone = db
+        .collection("users")
+        .doc(user.uid)
+        .get()
+        .then((doc) => {
+          if (doc && doc.exists) {
+            setBadge(doc.data().Badge);
+          }
+        });
+      return () => quizzesdone();
+    });
+  });
 
   useEffect(() => {
     const getPostsFromFirebase = [];
@@ -278,17 +294,27 @@ const Leaderboard = () => {
 
               <div className={classes.box3style}>
                 <div className={classes.PrizeHead}>Your badges</div>
-                {badges.map((badge) => (
-                  <div className="col-lg-4 col-md-4 d-flex align-items-stretch mt-4 mt-md-0">
-                    <div className={classes.progresscontent}>
-                      <img
-                        src={badge.src}
-                        className={classes.imgfluid}
-                        alt="..."
-                      />
+                {badges.map((badge) =>
+                  badge2.includes(badge.Name) ? (
+                    <div className="col-lg-3 col-md-2 d-flex align-items-stretch mt-4 mt-md-0">
+                      <div className={classes.progresscontent}>
+                        <div
+                          style={{
+                            display: "grid",
+                            gridTemplateColumns: "repeat(1, 3fr)",
+                            gridGap: 10,
+                          }}
+                        >
+                          <img
+                            src={badge.src}
+                            className={classes.imgfluid}
+                            alt="..."
+                          />
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ) : null
+                )}
               </div>
             </div>
           </div>

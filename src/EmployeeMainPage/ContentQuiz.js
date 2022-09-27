@@ -99,7 +99,7 @@ const Content = () => {
           <div className="row" data-aos="zoom-in" data-aos-delay="100">
             {posts.map((post) =>
               all === post.Filter ? (
-                <div className=" col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
+                <div className=" col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
                   <div className="rounded course-item shadow">
                     <img
                       src={contentPic}

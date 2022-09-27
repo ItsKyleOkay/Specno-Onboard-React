@@ -11,9 +11,14 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };
+  function Logout() {
+    auth.signOut();
+    navigate("/login");
+  }
   return (
     <header id="header" className="fixed-top d-flex align-items-center;">
       <div className="container d-flex justify-content-between align-items-center w-full">
@@ -50,16 +55,15 @@ const Navbar = () => {
               </div>
             </li>
             <li>
-              <Link to={"/login"}>
-                <button
-                  className="logout"
-                  onClick={() => {
-                    auth.signOut();
-                  }}
-                >
-                  Sign out
-                </button>
-              </Link>
+              <button
+                className="logout"
+                onClick={() => {
+                  Logout();
+                  auth.signOut();
+                }}
+              >
+                Sign out
+              </button>
 
               {/* <button
                 className="logout"

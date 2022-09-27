@@ -12,10 +12,9 @@ const FinishedQuiz = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [users, setUsers] = useState([]);
-  const [Totalxp, setTotalXp] = useState(0);
   const [donequizzes, setDone] = useState();
   const [failedquizzes, setFailed] = useState();
-
+  const [passedquizzes, setPassed] = useState();
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       setEmail(user.email);
@@ -82,7 +81,26 @@ const FinishedQuiz = () => {
         .get()
         .then((doc) => {
           if (doc && doc.exists) {
-            setFailed({ failed: doc.data().failed });
+            setFailed(doc.data().failed);
+          }
+        });
+      return () => quizzesdone();
+    });
+  });
+
+  var finalfail = "";
+  var finalpass = "";
+  var newFail;
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(function (user) {
+      const quizzesdone = db
+        .collection("users")
+        .doc(user.uid)
+        .get()
+        .then((doc) => {
+          if (doc && doc.exists) {
+            setPassed(doc.data().Done);
           }
         });
       return () => quizzesdone();
@@ -90,36 +108,62 @@ const FinishedQuiz = () => {
   });
 
   function AddChanges(totalxp) {
+    if (failedquizzes.includes(location.state.name)) {
+      finalfail = failedquizzes;
+    } else {
+      finalfail = failedquizzes + " " + location.state.name;
+    }
+    console.log(finalfail);
     navigate("/specno-quiz");
     var final = totalxp - 10;
-    if ((totalxp) => 6) {
-      firebase.auth().onAuthStateChanged(function (user) {
-        db.collection("users").doc(user.uid).update({
-          FinalScore: final,
-          failed: location.state.name,
+    if (passedquizzes.includes(location.state.name)) {
+      if ((totalxp) => 6) {
+        firebase.auth().onAuthStateChanged(function (user) {
+          db.collection("users").doc(user.uid).update({
+            FinalScore: final,
+          });
         });
-      });
+      } else {
+        firebase.auth().onAuthStateChanged(function (user) {
+          db.collection("users").doc(user.uid).update({
+            FinalScore: 0,
+          });
+        });
+      }
+      if (failedquizzes.includes(passedquizzes)) {
+        newFail = failedquizzes.replaceAll(passedquizzes, "");
+        console.log(newFail);
+      }
     } else {
-      firebase.auth().onAuthStateChanged(function (user) {
-        db.collection("users").doc(user.uid).update({
-          FinalScore: 0,
-          failed: location.state.name,
+      if ((totalxp) => 6) {
+        firebase.auth().onAuthStateChanged(function (user) {
+          db.collection("users").doc(user.uid).update({
+            FinalScore: final,
+            failed: finalfail,
+          });
         });
-      });
+      } else {
+        firebase.auth().onAuthStateChanged(function (user) {
+          db.collection("users").doc(user.uid).update({
+            FinalScore: 0,
+            failed: finalfail,
+          });
+        });
+      }
+      if (failedquizzes.includes(passedquizzes)) {
+        newFail = failedquizzes.replaceAll(passedquizzes, "");
+        console.log(newFail);
+      }
     }
   }
 
   //bug control
   return (
     <div>
-      <div>
-        <Navbar />
-      </div>
-      <div className="hero-section inner-page"></div>
       {users.map((post1, index) => {
         return (post1.email === email) & (post1.employee === true) ? (
           <div key={index}>
-            <section id="courses" className="courses">
+            <section id="courses" className="courses2">
               <div className="container" data-aos="fade-up">
                 <div className="col-lg-12 d-flex justify-content-center">
                   <div className=" col-lg-4 col-md-6 mt-4 mt-md-0 rounded">

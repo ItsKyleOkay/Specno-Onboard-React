@@ -898,7 +898,7 @@ section {
 .logout {
   color: rgb(59, 142, 208);
   justify-content: space-between;
-  margin-left: 1cm;
+  margin-left: 40px;
   padding: 9px 15px;
   font-size: 1rem;
   border-radius: 6px;
@@ -1008,11 +1008,18 @@ section {
   font-size: 14px;
   background: #20f732;
   padding: 7px 14px;
-  
   color: #fff;
   margin: 0;
 }
 
+.filtertabFailed{
+border-radius: 60px;
+  font-size: 14px;
+  background: #aaa2fe;
+  padding: 7px 14px;
+  color: #fff;
+  margin: 0;
+}
 
 .quizbtnskip{
   color: #489DDA;
@@ -1193,6 +1200,7 @@ align-content: center;
   font-size: 1rem;  
   margin-top: 0.75cm;
   width: 50%;
+  text-align: center;
 }
 /**
 * Mobile Navigation 
@@ -1485,6 +1493,11 @@ align-content: center;
 --------------------------------------------------------------*/
 .courses {
   padding: 60px 0 25px 0;
+  overflow: hidden;
+}
+
+.courses2 {
+  padding: 30px 0 25px 0;
   overflow: hidden;
 }
 

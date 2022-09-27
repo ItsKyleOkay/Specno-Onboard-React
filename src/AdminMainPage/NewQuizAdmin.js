@@ -63,11 +63,11 @@ const NewQuizAdmin = () => {
           <div className="quizname2">
             <h1
               className="contentAddHeading"
+              data-testid="header"
               style={{
                 flex: "8",
               }}
             >
-              {" "}
               New Quiz
             </h1>
 
@@ -143,17 +143,6 @@ const NewQuizAdmin = () => {
                 Create Content
               </button>
             </div>
-
-            {/* //   <React.Fragment>
-              //     {post.Name === location.state.name ? post.Background : null}
-              //   </React.Fragment>
-              //   <form>
-              //     <label>
-              //       Name:
-              //       <input type="text" name="name" />
-              //     </label>
-              //     <input type="submit" value="Submit" />
-              //   </form> */}
           </div>
         </div>
         <br />

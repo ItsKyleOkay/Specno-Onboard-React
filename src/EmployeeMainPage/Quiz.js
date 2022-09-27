@@ -137,7 +137,7 @@ const Quiz = () => {
           <div className="row" data-aos="zoom-in" data-aos-delay="100">
             {posts.map((post) => {
               return all === post.Filter ? (
-                <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
+                <div className="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
                   <div className="rounded course-item shadow">
                     <img
                       src={contentPic}
@@ -158,7 +158,11 @@ const Quiz = () => {
                           return (post1.email === email) &
                             (post1.employee === true) ? (
                             <div key={index}>
-                              <h2>Task: {post1.Done}</h2>
+                              {post1.Done.includes(post.Name) ? (
+                                <h5 className="filtertabDone">Passed</h5>
+                              ) : post1.failed.includes(post.Name) ? (
+                                <h5 className="filtertabFailed">Try again</h5>
+                              ) : null}
                             </div>
                           ) : null;
                         })}
@@ -181,7 +185,7 @@ const Quiz = () => {
                   </div>
                 </div>
               ) : all === "everything" ? (
-                <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
+                <div className="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
                   <div className="rounded course-item shadow">
                     <img
                       src={contentPic}

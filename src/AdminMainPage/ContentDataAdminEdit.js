@@ -75,6 +75,7 @@ const ContentDataAdminEdit = () => {
               {location.state.name}
             </h1>
             <button
+              data-testid="header"
               className="contentAdd"
               style={{
                 flex: "1",

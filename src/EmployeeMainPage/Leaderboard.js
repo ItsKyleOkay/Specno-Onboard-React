@@ -128,15 +128,12 @@ const Leaderboard = () => {
                       </TableCell>
 
                       <TableCell align="right" style={{ fontWeight: "bold" }}>
-                        Department
-                      </TableCell>
-                      <TableCell align="right" style={{ fontWeight: "bold" }}>
                         Final Score
                       </TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {leaderboard.map((row) => (
+                    {posts.map((row) => (
                       <TableRow
                         key={row.name}
                         sx={{
@@ -148,18 +145,15 @@ const Leaderboard = () => {
                             <TableCell component="th" scope="row">
                               {row.displayName}
                             </TableCell>
-                            <TableCell align="right">{row.DateTime}</TableCell>
 
                             <TableCell align="right">
                               {row.Department}
                             </TableCell>
                             <TableCell align="right">
-                              {row.finalscore}
+                              {row.FinalScore}
                             </TableCell>
                           </>
-                        ) : (
-                          <div> </div>
-                        )}
+                        ) : null}
                       </TableRow>
                     ))}
                   </TableBody>
@@ -216,9 +210,7 @@ const Leaderboard = () => {
                                 {row.RecentScore}
                               </TableCell>
                             </>
-                          ) : (
-                            <div> </div>
-                          )}
+                          ) : null}
                         </TableRow>
                       ))}
                     </TableBody>

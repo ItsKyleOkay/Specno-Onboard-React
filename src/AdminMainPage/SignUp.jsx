@@ -4,20 +4,30 @@ import { useNavigate } from "react-router-dom";
 import firebase from "firebase";
 import Popup from "reactjs-popup";
 
-const SignUp = () => {
+const AddEmployee = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [teacherpassword, setTeacherPassword] = useState();
   const [employee, setEmployee] = useState(true);
   const [Age, setAge] = useState();
   const [Department, setDepartment] = useState("");
-  const [ID, setID] = useState("");
   const [isChecked, setIsChecked] = useState(true);
   const [displayName, setDisplayName] = useState("");
+  const [DateTime, setDate] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  console.log(isChecked);
-  console.log(employee);
+
+  var failed = "";
+  var Done = "";
+  var Bio = "";
+  var Level = 1;
+  var RecentScore = 0;
+  var Progress = 0;
+  var FinalScore = 0;
+  var Badge = "1";
+  var ID = "";
+  var Difficulty = "";
+
   const createUserWithEmailAndPasswordHandler = async (
     event,
     email,
@@ -35,16 +45,27 @@ const SignUp = () => {
         { employee },
         { Age },
         { Department },
-        { ID }
+        { DateTime },
+        { failed },
+        { Done },
+        { Bio },
+        { Level },
+        { RecentScore },
+        { Progress },
+        { FinalScore },
+        { Badge },
+        { ID },
+        { Difficulty }
       );
-      isChecked ? navigate("/profile") : navigate("/teacher-profile");
+      isChecked ? navigate("/profile") : navigate("/admin-profile");
     } catch (error) {
-      setError("Error Signing up with email and password");
+      setError("The email or password doesnt meet requirements");
     }
     // firebase functions of creating a users account
     setEmail("");
     setPassword("");
     setDisplayName("");
+    setDate("");
     setEmployee(false);
   };
   const createTeacherWithEmailAndPasswordHandler = async (email, password) => {
@@ -62,21 +83,32 @@ const SignUp = () => {
         { employee },
         { Age },
         { Department },
-        { ID }
+        { DateTime },
+        { failed },
+        { Bio },
+        { Level },
+        { RecentScore },
+        { Progress },
+        { FinalScore },
+        { Badge },
+        { ID },
+        { Difficulty }
       );
-      navigate("/teacher-profile");
+      navigate("/admin-profile");
     } catch (error) {
-      setError("Error Signing up with email and password");
+      setError("Please make sure that every field has a value");
     }
     // firebase functions of creating a users account
     setEmail("");
     setPassword("");
     setDisplayName("");
+    setDate("");
     setEmployee(false);
+    //Dont even know why I did this with the states. I think I just wanted each state to get empty once a user is added #unnecessary
   };
 
   function CheckPassword() {
-    if (teacherpassword === "123inspireacademy#") {
+    if (teacherpassword === "123Specno#") {
       createTeacherWithEmailAndPasswordHandler(email, password);
     }
   }
@@ -86,6 +118,8 @@ const SignUp = () => {
       setEmail(value);
     } else if (name === "userPassword") {
       setPassword(value);
+    } else if (name === "date") {
+      setDate(value);
     } else if (name === "displayName") {
       setDisplayName(value);
     } else if (name === "userDepartment") {
@@ -101,19 +135,15 @@ const SignUp = () => {
       setEmployee(isChecked);
     }
   };
+  //Honestly, the code on this page was mostly my old code and took long unnecessary lengths to do things
   // instead of creating new css classes I just added it to the jsx code
   return (
     <div className="mt-8">
       <h1 className="text-3xl mb-2 text-center font-bold">Sign Up</h1>
       <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
-        {error !== null && (
-          <div className="py-4 bg-red-600 w-full text-white text-center mb-3">
-            {error}
-          </div>
-        )}
         <form className="">
           <label htmlFor="displayName" className="block">
-            Display Name:
+            Full name:
           </label>
           <input
             type="text"
@@ -134,6 +164,18 @@ const SignUp = () => {
             value={email}
             placeholder="E.g: example123@gmail.com"
             id="userEmail"
+            onChange={(event) => onChangeHandler(event)}
+          />
+          <label htmlFor="date" className="block">
+            Date:
+          </label>
+          <input
+            type="text"
+            className="my-1 p-1 w-full "
+            name="date"
+            value={DateTime}
+            placeholder="28 Sep 2022"
+            id="date"
             onChange={(event) => onChangeHandler(event)}
           />
           <label htmlFor="userPassword" className="block">
@@ -185,28 +227,38 @@ const SignUp = () => {
                 onChange={(event) => onChangeHandler(event)}
               />
             }
-            position="left"
+            position="right"
           >
-            <div>Teacher please enter the password</div>
+            <div className=" ml-20  p-1 w-full">
+              Admin please enter the password
+            </div>
             <input
               type="text"
-              className="mt-1 mb-3 p-1 w-full"
+              className="mt-1 ml-20 mb-1 p-1 w-full"
               name="teacherpassword"
               defaultValue={teacherpassword}
-              placeholder="Teacher Password"
+              placeholder="Admin Password"
               id="teacherpassword"
               onChange={(event) => onChangeHandler(event)}
             />
-            <button
-              onClick={CheckPassword}
-              className="bg-blue-300 hover:bg-blue-500 py-2 text-white"
-            >
+            <button onClick={CheckPassword} className="AddUser2">
               Check
             </button>
           </Popup>
           Employee
+          <br></br>
+          <br></br>
+          {error !== null && <div className="wrong-info">{error}</div>}
           <button
-            className="bg-green-400 hover:bg-green-500 w-full py-2 text-white"
+            className="AddUser"
+            onClick={() => {
+              navigate("/employee-list");
+            }}
+          >
+            Back
+          </button>
+          <button
+            className="AddUser"
             onClick={(event) => {
               createUserWithEmailAndPasswordHandler(event, email, password);
             }}
@@ -214,19 +266,9 @@ const SignUp = () => {
             Sign up
           </button>
         </form>
-
-        <p className="text-center my-3">
-          Already have an account?
-          <button
-            onClick={() => navigate("/login")}
-            className="text-blue-500 hover:text-blue-600"
-          >
-            Sign in here
-          </button>
-        </p>
       </div>
     </div>
   );
 };
 
-export default SignUp;
+export default AddEmployee;

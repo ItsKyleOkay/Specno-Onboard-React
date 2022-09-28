@@ -894,7 +894,47 @@ section {
   transition: transform 0.07s ease-out;
   box-shadow: 0 6px 0 #34ff01;
 }
+.AddUser {
+  color: rgb(245, 250, 253);
+  justify-content: space-between;
+  margin-left: 40px;
+  width: 40%;
+  font-size: 1rem;
+  border-radius: 6px;
+  background-color:  #489DDA;
+}
 
+.AddUser2 {
+  color: rgb(245, 250, 253);
+  justify-content: space-between;
+  margin-left: 80px;
+  width: 40%;
+  font-size: 1rem;
+  border-radius: 6px;
+  background-color:  #489DDA;
+}
+
+.wrong-info {
+  color: #a9383c;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  font-size: 1rem;
+  border-radius: 6px;
+ border-radius: 13px;
+  background-color: #F8DECD;
+  display: flex;
+  margin-bottom: 20px;
+  height: 5vh;
+  align-content: center;
+}
+
+
+.SearchEmployee{
+ width: 50%;
+  margin-bottom: 70px;
+  display: flex;
+}
 .logout {
   color: rgb(59, 142, 208);
   justify-content: space-between;

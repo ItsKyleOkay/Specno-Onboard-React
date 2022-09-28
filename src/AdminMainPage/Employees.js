@@ -10,11 +10,13 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
+import { useNavigate } from "react-router-dom";
 
 const Employee = () => {
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
   const [filter, setFilter] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getPostsFromFirebase = [];
@@ -30,13 +32,12 @@ const Employee = () => {
     });
     return () => userinfo();
   }, [loading]); // empty dependencies array => useEffect only called once
-  console.log(filter);
   return (
     <div>
       <AdminNavbar />
       <div>
         <div className={classes.navdist}>
-          <div className={classes.search}>
+          <div className="SearchEmployee">
             <TextField
               id="outlined-basic"
               variant="outlined"
@@ -45,6 +46,14 @@ const Employee = () => {
               value={filter}
               onChange={(event) => setFilter(event.target.value)}
             />
+            <button
+              className="AddUser"
+              onClick={() => {
+                navigate("/add-employee");
+              }}
+            >
+              Add Employee
+            </button>
           </div>
 
           <TableContainer component={Paper}>
@@ -81,7 +90,9 @@ const Employee = () => {
                     }}
                   >
                     {(row.Department !== "Admin") &
-                    row.displayName.includes(filter) ? (
+                    row.displayName
+                      .toLowerCase()
+                      .includes(filter.toLowerCase()) ? (
                       <>
                         <TableCell component="th" scope="row">
                           {row.displayName}
@@ -92,9 +103,7 @@ const Employee = () => {
                         <TableCell align="right">{row.Age}</TableCell>
                         <TableCell align="right">{row.FinalScore}</TableCell>
                       </>
-                    ) : (
-                      <div> </div>
-                    )}
+                    ) : null}
                   </TableRow>
                 ))}
               </TableBody>

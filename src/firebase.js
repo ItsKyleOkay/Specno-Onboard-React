@@ -24,10 +24,19 @@ export const generateUserDocument = async (
   user,
   additionalData,
   employee,
-  Centre,
   Age,
   Department,
-  ID
+  DateTime,
+  failed,
+  Done,
+  Bio,
+  Level,
+  RecentScore,
+  Progress,
+  FinalScore,
+  Badge,
+  ID,
+  Difficulty
 ) => {
   if (!user) return;
 
@@ -43,10 +52,19 @@ export const generateUserDocument = async (
         photoURL,
         ...additionalData,
         ...employee,
-        ...Centre,
         ...Age,
         ...Department,
+        ...DateTime,
+        ...failed,
+        ...Done,
+        ...Bio,
+        ...Level,
+        ...RecentScore,
+        ...Progress,
+        ...FinalScore,
+        ...Badge,
         ...ID,
+        ...Difficulty,
       });
     } catch (error) {
       console.error("Error creating user document", error);

@@ -28,7 +28,7 @@ const Leaderboard = React.lazy(() => import("../EmployeeMainPage/Leaderboard"));
 const AdminProfile = React.lazy(() => import("./AdminProfile"));
 const QuizSection = React.lazy(() => import("../EmployeeMainPage/QuizSection"));
 const SignIn = React.lazy(() => import("./SignIn"));
-const SignUp = React.lazy(() => import("./SignUp"));
+const AddEmployee = React.lazy(() => import("../AdminMainPage/SignUp"));
 
 const FinishedQuiz = React.lazy(() =>
   import("../EmployeeMainPage/FinishedQuiz")
@@ -57,7 +57,7 @@ function Application() {
           </React.Suspense>
         }
       />
-      <Route path="/sign-up" element={<Navigate to="/login" />} />
+
       <Route path="/password-reset" element={<Navigate to="/profile" />} />
       <Route path="/specno-quiz-content" element={<ContentQuiz />} />
       <Route path="/specno-quiz-content/data" element={<ContentData />} />
@@ -69,9 +69,7 @@ function Application() {
         path="/specno-quiz-content/data/admin/edit"
         element={<ContentDataAdminEdit />}
       />
-
       <Route path="/specno-quiz/data/admin/edit" element={<QuizDataAdmin />} />
-
       <Route path="/specno-quiz" element={<Quiz />} />
       <Route path="/edit-profile" element={<EditProfile />} />
       <Route
@@ -96,10 +94,8 @@ function Application() {
       <Route path="/employee-list" element={<Employees />} />
       <Route path="/search-students" element={<SearchStudents />} />
       <Route path="/content-admin/data" element={<ContentAdminData />} />
-
       <Route path="/content-admin/new/edit" element={<NewContentAdmin />} />
       <Route path="/quiz-admin/new/edit" element={<NewQuizAdmin />} />
-
       <Route
         path="/specno-quiz/data/complete"
         element={
@@ -116,6 +112,14 @@ function Application() {
           </React.Suspense>
         }
       />
+      <Route
+        path="/add-employee"
+        element={
+          <React.Suspense fallback={<PageLoading />}>
+            <AddEmployee />
+          </React.Suspense>
+        }
+      />
     </Routes>
   ) : (
     // if a user is logged in and if the user === student
@@ -123,15 +127,6 @@ function Application() {
     // sign up feature was removed but just here incase someone wants to add again for testing purposes
     <Routes>
       <Route path="/" element={<Navigate to="/login" />} />
-      <Route
-        path="/sign-up"
-        element={
-          <React.Suspense fallback={<PageLoading />}>
-            <SignUp />
-          </React.Suspense>
-        }
-      />
-
       <Route
         path="/login"
         element={

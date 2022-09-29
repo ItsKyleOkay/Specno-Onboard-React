@@ -15,6 +15,8 @@ const FinishedQuiz = () => {
   const [donequizzes, setDone] = useState();
   const [failedquizzes, setFailed] = useState();
   const [passedquizzes, setPassed] = useState();
+
+  var final = 0;
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       setEmail(user.email);
@@ -113,11 +115,15 @@ const FinishedQuiz = () => {
     } else {
       finalfail = failedquizzes + " " + location.state.name;
     }
-    console.log(finalfail);
+
     navigate("/specno-quiz");
-    var final = totalxp - 10;
+    if (totalxp >= 10) {
+      final = totalxp - 10;
+    } else {
+      final = 0;
+    }
     if (passedquizzes.includes(location.state.name)) {
-      if ((totalxp) => 6) {
+      if ((totalxp) => 10) {
         firebase.auth().onAuthStateChanged(function (user) {
           db.collection("users").doc(user.uid).update({
             FinalScore: final,
@@ -132,7 +138,6 @@ const FinishedQuiz = () => {
       }
       if (failedquizzes.includes(passedquizzes)) {
         newFail = failedquizzes.replaceAll(passedquizzes, "");
-        console.log(newFail);
       }
     } else {
       if ((totalxp) => 6) {
@@ -152,7 +157,6 @@ const FinishedQuiz = () => {
       }
       if (failedquizzes.includes(passedquizzes)) {
         newFail = failedquizzes.replaceAll(passedquizzes, "");
-        console.log(newFail);
       }
     }
   }
@@ -181,7 +185,6 @@ const FinishedQuiz = () => {
                       {" "}
                       Your original score: {post1.FinalScore}{" "}
                     </div>
-
                     <div className="Lessonxp">Lesson incomplete -10XP</div>
                     <div className="Lessonxp">
                       Combo bonus! {location.state.combo} XP
@@ -194,11 +197,16 @@ const FinishedQuiz = () => {
                         </div>;
                       }
                     })} */}
-
-                    <div className="Finished1">
-                      Your new score is {post1.FinalScore - 10} XP, please do
-                      the quiz again
-                    </div>
+                    {post1.FinalScore >= 6 ? (
+                      <div className="Finished1">
+                        Your new score is {post1.FinalScore - 10} XP, please do
+                        the quiz again
+                      </div>
+                    ) : (
+                      <div className="Finished1">
+                        Your new score is {0} XP, please do the quiz again
+                      </div>
+                    )}
                     <div className="Lessonxp2">
                       <button
                         className="quizbtnfinish"

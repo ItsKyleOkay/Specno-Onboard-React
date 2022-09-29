@@ -53,7 +53,7 @@ const QuizSection = () => {
   if (badge !== "") {
     var combostring = combo.toString();
     if (badge.includes(combostring)) {
-      console.log("Combo badge already achieved");
+      var count = 1;
     } else {
       firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users")

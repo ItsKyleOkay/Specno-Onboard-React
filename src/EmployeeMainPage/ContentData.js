@@ -37,19 +37,29 @@ const ContentData = () => {
             {" "}
             {location.state.name}
           </h1>
-          <br />
+
           <hr />
           <div className="d-flex justify-content-center">
-            <div className="d-flex justify-content-center mt-4 mt-md-0">
+            <div className="d-flex justify-content-center mt-2 mt-md-0">
               <div className="course-item content-text mt-3">
                 {posts.map((post) => (
                   <React.Fragment>
                     {post.Name === location.state.name ? post.Background : null}
-                    <br></br>
-                    <br></br>
-                    {post.Name === location.state.name
-                      ? post.YoutubeLink
-                      : null}
+
+                    {post.Name === location.state.name ? (
+                      <div>{post.YoutubeLink} </div>
+                    ) : null}
+                    {post.Name === location.state.name ? (
+                      <div className="embed-responsive embed-responsive-16by9">
+                        <iframe
+                          class="embed-responsive-item"
+                          src={post.YoutubeLink}
+                          allowfullscreen
+                          width="560"
+                          height="315"
+                        ></iframe>
+                      </div>
+                    ) : null}
                   </React.Fragment>
                 ))}
               </div>

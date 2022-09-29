@@ -229,21 +229,23 @@ const AddEmployee = () => {
             }
             position="right"
           >
-            <div className=" ml-20  p-1 w-full">
-              Admin please enter the password
+            <div className="popupAdmin">
+              <div className=" ml-20  p-1 w-full">
+                Admin please enter the password
+              </div>
+              <input
+                type="text"
+                className="mt-1 ml-20 mb-1 p-1 w-full"
+                name="teacherpassword"
+                defaultValue={teacherpassword}
+                placeholder="Admin Password"
+                id="teacherpassword"
+                onChange={(event) => onChangeHandler(event)}
+              />
+              <button onClick={CheckPassword} className="AddUser2">
+                Check
+              </button>
             </div>
-            <input
-              type="text"
-              className="mt-1 ml-20 mb-1 p-1 w-full"
-              name="teacherpassword"
-              defaultValue={teacherpassword}
-              placeholder="Admin Password"
-              id="teacherpassword"
-              onChange={(event) => onChangeHandler(event)}
-            />
-            <button onClick={CheckPassword} className="AddUser2">
-              Check
-            </button>
           </Popup>
           Employee
           <br></br>

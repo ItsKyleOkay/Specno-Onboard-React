@@ -914,6 +914,14 @@ section {
   background-color:  #489DDA;
 }
 
+.popupAdmin{
+  margin-left: 80px;
+  margin-bottom: 40px;
+  outline-color: #2b7eb9;
+  outline-width: 1px;
+ 
+}
+
 .wrong-info {
   color: #a9383c;
   justify-content: center;

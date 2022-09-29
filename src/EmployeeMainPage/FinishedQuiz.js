@@ -116,6 +116,22 @@ const FinishedQuiz = () => {
     }
   }
 
+  function AddCompletedQuiz(finalxp) {
+    var final = finalxp + 3;
+    if (finalxp !== "") {
+      firebase.auth().onAuthStateChanged(function (user) {
+        db.collection("users").doc(user.uid).update({
+          FinalScore: final,
+        });
+      });
+    }
+    navigate("/specno-quiz");
+    if (failedquizzes.includes(location.state.name)) {
+      newFail = failedquizzes.replaceAll(location.state.name, "");
+      console.log(newFail);
+    }
+  }
+
   return (
     <div>
       {users.map((post1, index) => {
@@ -149,12 +165,14 @@ const FinishedQuiz = () => {
                     {post1.Done.includes(location.state.name) ? (
                       <div>
                         <h5 className="Finished1">
-                          You have completed this quiz so no extra XP is added
+                          You have already completed this quiz so only 3 XP is
+                          added
                         </h5>
                         <div className="col-lg-12 d-flex justify-content-center">
                           <button
                             className="quizbtnfinish"
                             onClick={() => {
+                              AddCompletedQuiz(post1.FinalScore);
                               navigate("/specno-quiz");
                             }}
                           >

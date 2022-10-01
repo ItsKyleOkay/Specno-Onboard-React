@@ -6,16 +6,10 @@ import firebase from "firebase";
 import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 function EditProfile() {
-
   const [progress, setProgress] = useState(0);
-  const formHandler = (e) => {
-    e.preventDefault();
-    const file = e.target[0].files[0];
-    uploadFiles(file);
-  };
-
   const navigate = useNavigate();
   const user = useContext(UserContext);
   const [currentUser, setCurrentUser] = useState(user);
@@ -24,6 +18,12 @@ function EditProfile() {
   const [bio, setBio] = useState(currentUser.Bio);
   const [uploadedPic, setUploadedPic] =  useState(currentUser.photoURL);
   const joinDate = user.DateTime
+
+  const formHandler = (e) => {
+    e.preventDefault();
+    const file = e.target[0].files[0];
+    uploadFiles(file);
+  };
 
   const AddChanges = (displayName, email) => {
     db.collection("users").doc(currentUser.uid).update({
@@ -39,13 +39,14 @@ function EditProfile() {
   };
 
   const uploadFiles = (file) => {
+    console.log(progress);
     const uploadTask = storage.ref(currentUser.uid + ".jpg").put(file);
     uploadTask.on(
       "state_changed",
       (snapshot) => {
         //
         const prog = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          (snapshot.bytesTransferred / snapshot.totalBytes) 
         );
         setProgress(prog);
         console.log(progress)
@@ -63,10 +64,12 @@ function EditProfile() {
                 photoURL: url,
               })
             });
-          });
-
+          });    
+          setProgress(0);
+          console.log(progress);
       }
     );
+
   };
 
   return (
@@ -111,6 +114,10 @@ function EditProfile() {
                           </div>
                         </div>
                       </div>
+                      <ProgressBar
+                      now={(100 / progress) }
+                      variant="progress-quiz"
+                    />
                       <div className="tab-content pt-3">
                         <div className="tab-pane active">
                             <div className="row">

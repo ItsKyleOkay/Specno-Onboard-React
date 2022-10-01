@@ -6,6 +6,10 @@ import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
 import AdminNavbar from "../Navigation/AdminNavbar.js";
 import { useNavigate } from "react-router-dom";
+import styled, { keyframes } from 'styled-components';
+import { fadeIn } from 'react-animations';
+
+const CardAnimation = styled.div`animation: 1.5s ${keyframes`${fadeIn}`} 1`;
 
 const QuizAdmin = () => {
   const [loading, setLoading] = useState(true);
@@ -108,7 +112,7 @@ const QuizAdmin = () => {
           <div className="row" data-aos="zoom-in" data-aos-delay="100">
             {posts.map((post) =>
               all === post.Filter ? (
-                <div className="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
+                <CardAnimation className="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
                   <div className="rounded course-item shadow">
                     <img
                       src={contentPic}
@@ -141,41 +145,43 @@ const QuizAdmin = () => {
                       <p>{post.Info}</p>
                     </div>
                   </div>
-                </div>
+                </CardAnimation>
               ) : all === "everything" ? (
                 <div className="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
-                  <div className="rounded course-item shadow">
-                    <img
-                      src={contentPic}
-                      className="img-fluid rounded-top"
-                      alt="..."
-                      style={{ cursor: "pointer" }}
-                      onClick={() => {
-                        /* 1. Navigate to the Details route with params */
-                        navigate("/specno-quiz/data", {
-                          state: { id: 1, name: post.Name },
-                        });
-                      }}
-                    />
-                    <div className="course-content">
-                      <div className="d-flex justify-content-between align-items-center mb-3">
-                        <h4 className="filtertab">{post.Filter}</h4>
-                      </div>
-
-                      <button
-                        className="d-flex justify-content-between align-items-center mb-3 color Blue fw-bold"
+                  <CardAnimation className="d-flex">
+                    <div className="rounded course-item shadow">
+                      <img
+                        src={contentPic}
+                        className="img-fluid rounded-top"
+                        alt="..."
+                        style={{ cursor: "pointer" }}
                         onClick={() => {
                           /* 1. Navigate to the Details route with params */
-                          navigate("/specno-quiz/data/admin/edit", {
+                          navigate("/specno-quiz/data", {
                             state: { id: 1, name: post.Name },
                           });
                         }}
-                      >
-                        {post.Name}
-                      </button>
-                      <p>{post.Info}</p>
+                      />
+                      <div className="course-content">
+                        <div className="d-flex justify-content-between align-items-center mb-3">
+                          <h4 className="filtertab">{post.Filter}</h4>
+                        </div>
+
+                        <button
+                          className="d-flex justify-content-between align-items-center mb-3 color Blue fw-bold"
+                          onClick={() => {
+                            /* 1. Navigate to the Details route with params */
+                            navigate("/specno-quiz/data/admin/edit", {
+                              state: { id: 1, name: post.Name },
+                            });
+                          }}
+                        >
+                          {post.Name}
+                        </button>
+                        <p>{post.Info}</p>
+                      </div>
                     </div>
-                  </div>
+                  </CardAnimation>
                 </div>
               ) : null
             )}

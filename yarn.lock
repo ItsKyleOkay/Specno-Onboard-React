@@ -9606,6 +9606,11 @@
     "iconv-lite" "0.4.24"
     "unpipe" "1.0.0"
 
+"react-animations@^1.0.0":
+  "integrity" "sha512-ePPpVgdKnNEXm+LP1ww5s3n0JzebBw9QdRfxRqogzeg1PDIn6kf0pmvgeTeVZQXXpGmHImkIeTiaQR1O6xjntA=="
+  "resolved" "https://registry.npmjs.org/react-animations/-/react-animations-1.0.0.tgz"
+  "version" "1.0.0"
+
 "react-app-polyfill@^3.0.0":
   "integrity" "sha512-sZ41cxiU5llIB003yxxQBYrARBqe0repqPTTYBTmMqTz9szeBbE37BehCE891NZsmdZqqP+xWKdT3eo3vOzN8w=="
   "resolved" "https://registry.npmjs.org/react-app-polyfill/-/react-app-polyfill-3.0.0.tgz"

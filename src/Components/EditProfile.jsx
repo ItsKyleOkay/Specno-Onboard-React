@@ -17,12 +17,23 @@ function EditProfile() {
   const [email, setEmail] = useState(currentUser.email);
   const [bio, setBio] = useState(currentUser.Bio);
   const [uploadedPic, setUploadedPic] =  useState(currentUser.photoURL);
-  const joinDate = user.DateTime
+  const [nickName, setNickName] = useState(currentUser.nickName);
+
 
   const formHandler = (e) => {
-    e.preventDefault();
-    const file = e.target[0].files[0];
-    uploadFiles(file);
+      var fileName = document.getElementById("fileName").value;
+      console.log(fileName);
+      var idxDot = fileName.lastIndexOf(".") + 1;
+      console.log(idxDot);
+      var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+      console.log(extFile);
+      if (extFile=="jpg" || extFile=="jpeg" || extFile=="png" || extFile=="gif"){
+        e.preventDefault();
+        const file = e.target[0].files[0];
+        uploadFiles(file);
+      }else{
+          alert("Only jpg/jpeg and png files are allowed!");
+      }     
   };
 
   const AddChanges = (displayName, email) => {
@@ -88,7 +99,7 @@ function EditProfile() {
                         <div className="col-12 col-sm-auto mb-3">
                           <div className="mx-auto " style={{ width: "140px" }}>
                             <img src={uploadedPic} 
-                              alt="https://professionals.tarkett.com/media/img/M/THH_24567080_24594080_24596080_24601080_24563080_24565080_24588080_001.jpg" 
+                              alt="avatar" 
                               className="d-flex justify-content-center align-items-center rounded-circle" 
                               style={{ height: "140px", backgroundColor: "rgb(233, 236, 239)" }}
                             >
@@ -97,12 +108,12 @@ function EditProfile() {
                         </div>
                         <div className="align-items-center col d-flex flex-column flex-sm-row justify-content-between mb-3">
                           <div className=" text-sm-left mb-2 mb-sm-0">
-                            <h2 className="pt-sm-2 pb-1 mb-0 text-nowrap fw-bold">Profile</h2>
+                            <h2 className="pt-sm-2 pb-1 mb-0 text-nowrap fw-bold">{currentUser.displayName}</h2>
                             <p className="mb-0">Update your avatar and personal details</p>
                             {/* Change photo button */}
                             <div className="mt-2">
                               <form onSubmit={formHandler}>
-                                <input type="file" className="btn-colour btn btn-block text-uppercase mb-2 rounded-pill shadow-sm" />
+                                <input type="file" accept="image/*" id="fileName" className="btn-colour btn btn-block text-uppercase mb-2 rounded-pill shadow-sm" />
                                 <button type="submit" className="btn-colour btn btn-block text-uppercase mb-2 rounded-pill shadow-sm" >
                                   <i className="fa fa-fw fa-camera"></i>
                                   <span>Change Photo</span>
@@ -125,14 +136,14 @@ function EditProfile() {
                                 <div className="row">
                                   <div className="col">
                                     <div className="form-group">
-                                      <label>Full Name</label>
+                                      <label>Username</label>
                                       <input
                                         className="form-control"
                                         type="text"
                                         name="name"
-                                        placeholder="Full Name"
-                                        defaultValue={currentUser.displayName}
-                                        onChange={(e) => setDisplayName(e.target.value)}
+                                        placeholder="Username"
+                                        defaultValue={currentUser.nickName}
+                                        onChange={(e) => setNickName(e.target.value)}
                                       />
                                     </div>
                                   </div>
@@ -166,7 +177,7 @@ function EditProfile() {
                             <div className="col d-flex justify-content-end">
                               <button
                                 className="btn-colour btn btn-block text-uppercase mb-2 rounded-pill shadow-sm"
-                                onClick={() => {AddChanges(displayName, email, bio);
+                                onClick={() => {AddChanges(nickName, email, bio);
                                   navigate("/profile"); }}
                               >
                                 Save Changes

@@ -283,12 +283,12 @@ const Leaderboard = () => {
                   </div>
                 ))}
               </div>
-
               <div className={classes.box3style}>
                 <div className={classes.PrizeHead}>Your badges</div>
+                <div class="row" data-aos="zoom-in" data-aos-delay="100">
                 {badges.map((badge) =>
                   badge2.includes(badge.Name) ? (
-                    <div className="col-lg-3 col-md-2 d-flex align-items-stretch mt-4 mt-md-0">
+                    <div className="col-lg-5 col-md-5 d-flex align-items-stretch mt-4 mt-md-0">
                       <div className={classes.progresscontent}>
                         <div
                           style={{
@@ -307,6 +307,7 @@ const Leaderboard = () => {
                     </div>
                   ) : null
                 )}
+                </div>
               </div>
             </div>
           </div>

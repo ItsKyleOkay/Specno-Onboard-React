@@ -1051,6 +1051,18 @@ section {
   border-radius: 60px;
 }
 
+.filtertab2{
+      font-size: 14px;
+    background: #489dda;
+    padding: 10px 14px;
+    color: #fff;
+    margin: 0;
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
 .filtertabDone{
   border-radius: 60px;
   font-size: 14px;
@@ -1158,6 +1170,13 @@ align-content: center;
 .progressquiz {
   width: 95%;
 }
+
+.progressquiz2{
+   width: 95%;
+   margin-bottom: 10px;
+}
+
+
 
 .bg-progress-quiz{
   background-color: #2b7eb9!important;
@@ -2203,3 +2222,16 @@ line-height: 24px;
 .h-60{
   height: 55%;
 }
+
+.quizHead{
+  font-weight: bold;
+  color: rgb(97, 97, 98);
+  padding: 6px 20px ;
+  font-size: 18px;
+}
+
+.profileHeader{
+  font-weight: bold;
+  color: rgb(43, 43, 43);
+  padding: 6px 20px ;
+  font-size: 18px;}

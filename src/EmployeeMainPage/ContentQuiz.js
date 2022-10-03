@@ -7,10 +7,12 @@ import Navbar from "../Navigation/Navbar.js";
 import contentPic from "../Styles/img/content.jpg";
 import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
-import styled, { keyframes } from 'styled-components';
-import { fadeIn } from 'react-animations';
+import styled, { keyframes } from "styled-components";
+import { fadeIn } from "react-animations";
 
-const CardAnimation = styled.div`animation: 1.5s ${keyframes`${fadeIn}`} 1`;
+const CardAnimation = styled.div`
+  animation: 1.5s ${keyframes`${fadeIn}`} 1;
+`;
 
 const Content = () => {
   const [email, setEmail] = useState();

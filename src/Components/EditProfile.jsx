@@ -17,7 +17,7 @@ function EditProfile() {
   const [email, setEmail] = useState(currentUser.email);
   const [bio, setBio] = useState(currentUser.Bio);
   const [uploadedPic, setUploadedPic] =  useState(currentUser.photoURL);
-  const [nickName, setNickName] = useState(currentUser.nickName);
+  const [nickname, setNickname] = useState(currentUser.Nickname);
 
 
   const formHandler = (e) => {
@@ -36,9 +36,9 @@ function EditProfile() {
       }     
   };
 
-  const AddChanges = (displayName, email) => {
+  const AddChanges = (email) => {
     db.collection("users").doc(currentUser.uid).update({
-      displayName,
+      Nickname:nickname,
       email,
       Bio:bio
     })
@@ -142,8 +142,8 @@ function EditProfile() {
                                         type="text"
                                         name="name"
                                         placeholder="Username"
-                                        defaultValue={currentUser.nickName}
-                                        onChange={(e) => setNickName(e.target.value)}
+                                        defaultValue={currentUser.Nickname}
+                                        onChange={(e) => setNickname(e.target.value)}
                                       />
                                     </div>
                                   </div>
@@ -177,7 +177,7 @@ function EditProfile() {
                             <div className="col d-flex justify-content-end">
                               <button
                                 className="btn-colour btn btn-block text-uppercase mb-2 rounded-pill shadow-sm"
-                                onClick={() => {AddChanges(nickName, email, bio);
+                                onClick={() => {AddChanges(nickname, email, bio);
                                   navigate("/profile"); }}
                               >
                                 Save Changes

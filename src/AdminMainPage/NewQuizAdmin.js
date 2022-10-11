@@ -140,7 +140,7 @@ const NewQuizAdmin = () => {
                 className="contentAddSave2"
                 onClick={() => AddChanges(Name, Time, Info, Filter)}
               >
-                Create Content
+                Create Quiz
               </button>
             </div>
           </div>

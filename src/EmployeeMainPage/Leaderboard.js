@@ -167,7 +167,10 @@ const Leaderboard = () => {
                   <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                       <TableRow>
-                        <TableCell style={{ fontWeight: "bold" }}>
+                        <TableCell
+                          className="TextVoucher"
+                          style={{ fontWeight: "bold" }}
+                        >
                           Player Name
                         </TableCell>
                         <TableCell align="right" style={{ fontWeight: "bold" }}>
@@ -252,7 +255,7 @@ const Leaderboard = () => {
                                   className={classes.imgfluid}
                                   alt="..."
                                 />
-                                {prize.Name}{" "}
+                                <div className="TextVoucher">{prize.Name} </div>
                               </div>
                             </div>
                           </div>
@@ -270,7 +273,7 @@ const Leaderboard = () => {
                   <div className="col-lg-5 col-md-5 d-flex align-items-stretch mt-4 mt-md-0">
                     <div className={classes.progresscontent}>
                       {email === post.email ? (
-                        <div>
+                        <div className="TextGlobal">
                           {" "}
                           Level {post.Level}
                           <br></br>
@@ -286,27 +289,27 @@ const Leaderboard = () => {
               <div className={classes.box3style}>
                 <div className={classes.PrizeHead}>Your badges</div>
                 <div class="row" data-aos="zoom-in" data-aos-delay="100">
-                {badges.map((badge) =>
-                  badge2.includes(badge.Name) ? (
-                    <div className="col-lg-5 col-md-5 d-flex align-items-stretch mt-4 mt-md-0">
-                      <div className={classes.progresscontent}>
-                        <div
-                          style={{
-                            display: "grid",
-                            gridTemplateColumns: "repeat(1, 3fr)",
-                            gridGap: 10,
-                          }}
-                        >
-                          <img
-                            src={badge.src}
-                            className={classes.imgfluid}
-                            alt="..."
-                          />
+                  {badges.map((badge) =>
+                    badge2.includes(badge.Name) ? (
+                      <div className="col-lg-5 col-md-5 d-flex align-items-stretch mt-4 mt-md-0">
+                        <div className={classes.progresscontent}>
+                          <div
+                            style={{
+                              display: "grid",
+                              gridTemplateColumns: "repeat(1, 3fr)",
+                              gridGap: 10,
+                            }}
+                          >
+                            <img
+                              src={badge.src}
+                              className={classes.imgfluid}
+                              alt="..."
+                            />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ) : null
-                )}
+                    ) : null
+                  )}
                 </div>
               </div>
             </div>

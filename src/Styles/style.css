@@ -1071,10 +1071,25 @@ section {
     margin-bottom: 10px;
 }
 
+.imagestyle{
+  border-radius: 6px;
+}
+.filtertab3{
+      font-size: 14px;
+    background: #489dda;
+    padding: 10px 14px;
+    color: #fff;
+    margin: 0;
+    border-radius: 6px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
 .filtertabDone{
   border-radius: 60px;
   font-size: 14px;
-  background: #20f732;
+  background: #08af16;
   padding: 7px 14px;
   color: #fff;
   margin: 0;
@@ -2233,13 +2248,63 @@ line-height: 24px;
 
 .quizHead{
   font-weight: bold;
-  color: rgb(97, 97, 98);
+  color: #2f2f2f;
   padding: 6px 20px ;
   font-size: 18px;
 }
 
 .profileHeader{
   font-weight: bold;
-  color: rgb(43, 43, 43);
+  color: #2f2f2f;
   padding: 6px 20px ;
   font-size: 18px;}
+
+  .profileHeader2{
+  font-weight: bold;
+  color: #2f2f2f;
+  font-size: 18px;}
+
+  .textglobalsub{
+    font-size: 1rem;
+    color: #2f2f2f;
+    margin-bottom: 10px;
+    margin-top: 5px;
+  }
+
+  .textglobalsub2{
+    font-size: 1rem;
+    color: #2f2f2f;
+    margin-bottom: 5px;
+  }
+
+  .TextGlobal{
+    font-size: 0.9rem;
+    color: #2f2f2f;
+    font-weight: bold;
+  }
+
+  .TextVoucher{
+    font-size: 0.8rem;
+    color: #2f2f2f;
+    font-weight: bold;
+  }
+
+  .notificationDate{
+    font-size: 0.8rem;
+    color: #8a8989;
+
+  }
+
+  .pointersetting{
+    height: 30px;
+  }
+
+  .bioStyle{
+    text-align: center;
+    margin-top: 80px;
+    
+  }
+
+  .circlegraph{
+    width: 40px;
+  }

@@ -37,7 +37,7 @@ const Popup = (props) => {
               {posts.map((post) => (
                 <div className="sec new">
                   <div className="txt-white">{post.Notification}</div>
-                  <div classname="txt-white sub">{post.Time}</div>
+                  <div className="notificationDate">{post.Time}</div>
                 </div>
               ))}
             </div>

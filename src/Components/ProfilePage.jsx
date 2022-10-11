@@ -70,7 +70,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function (user) {
-      const quizzesdone = db
+      const quizfailed = db
         .collection("users")
         .doc(user.uid)
         .get()
@@ -79,7 +79,7 @@ const ProfilePage = () => {
             setFailed(doc.data().failed);
           }
         });
-      return () => quizzesdone();
+      return () => quizfailed();
     });
   });
 
@@ -91,7 +91,7 @@ const ProfilePage = () => {
         .get()
         .then((doc) => {
           if (doc && doc.exists) {
-            setDone(doc.data().failed);
+            setDone(doc.data().Done);
           }
         });
       return () => quizzesdone();
@@ -127,10 +127,10 @@ const ProfilePage = () => {
                   <div className="vh-100  ">
                     <div className="card z-index-2 h-60 mb-2 ">
                       <div className="card-header pb-0 pt-3 bg-transparent">
-                        <p className="text-capitalize  text-black">
+                        <div className="profileHeader2">
                           Hello {post.displayName}
-                        </p>
-                        <h6 className="text-black mb-2">
+                        </div>
+                        <h6 className="textglobalsub">
                           Welcome back to your onboarding at Specno
                         </h6>
                       </div>
@@ -148,7 +148,7 @@ const ProfilePage = () => {
                                       <div>
                                         <img
                                           src={contentPic}
-                                          className="img-fluid rounded-top"
+                                          className="imagestyle"
                                           alt="..."
                                           style={{ cursor: "pointer" }}
                                           onClick={() => {
@@ -163,7 +163,7 @@ const ProfilePage = () => {
                                         />
                                         <div className="course-content">
                                           <button
-                                            className="filtertab2"
+                                            className="filtertab3"
                                             onClick={() => {
                                               /* 1. Navigate to the Details route with params */
                                               navigate("/specno-quiz/data", {
@@ -191,7 +191,9 @@ const ProfilePage = () => {
                     <div className="card z-index-2 background-grey h-30 mb-2">
                       <div className="card-header pb-0 p-3">
                         <div className="d-flex justify-content-between">
-                          <h6 className="mb-1">Your onboarding process</h6>
+                          <div className="textglobalsub2">
+                            Your onboarding process
+                          </div>
                         </div>
 
                         <div className="progressquiz2">
@@ -214,12 +216,12 @@ const ProfilePage = () => {
                                   <div className="row">
                                     <div className="col-12">
                                       <div>
-                                        <p className="text-black text-sm mb-0  font-weight-bold">
+                                        <div className="profileHeader2">
                                           Current Score
-                                        </p>
+                                        </div>
                                         <div
                                           style={{ width: 55, height: 55 }}
-                                          className=" align-items-center "
+                                          className=" align-items-center ml-12 mt-2"
                                         >
                                           <CircularProgressbar
                                             value={post.FinalScore}
@@ -238,13 +240,13 @@ const ProfilePage = () => {
                                   <div className="row">
                                     <div className="col-12">
                                       <div>
-                                        <p className="text-black text-sm mb-0 font-weight-bold">
+                                        <div className="profileHeader2">
                                           Most recent score
-                                        </p>
+                                        </div>
 
                                         <div
                                           style={{ width: 55, height: 55 }}
-                                          className=" align-items-center "
+                                          className=" align-items-center ml-12 mt-2"
                                         >
                                           <CircularProgressbar
                                             value={post.RecentScore}
@@ -262,19 +264,18 @@ const ProfilePage = () => {
                                 <div className="card-body p-3">
                                   <div className="row">
                                     <div className="col-12">
-                                      <div>
-                                        <p className="text-black text-sm mb-0  font-weight-bold">
-                                          Score till prize
-                                        </p>
-                                        <div
-                                          style={{ width: 55, height: 55 }}
-                                          className=" align-items-center "
-                                        >
-                                          <CircularProgressbar
-                                            value={(100 / 80) * post.FinalScore}
-                                            text={(100 / 80) * post.FinalScore}
-                                          />
-                                        </div>
+                                      <div className="profileHeader2">
+                                        Score till prize
+                                      </div>
+
+                                      <div
+                                        style={{ width: 55, height: 55 }}
+                                        className=" align-items-center ml-12 mt-2"
+                                      >
+                                        <CircularProgressbar
+                                          value={(100 / 80) * post.FinalScore}
+                                          text={(100 / 80) * post.FinalScore}
+                                        />
                                       </div>
                                     </div>
                                   </div>
@@ -308,6 +309,7 @@ const ProfilePage = () => {
                               <img
                                 src="https://static.thenounproject.com/png/1416596-200.png"
                                 alt="rocket"
+                                className="pointersetting"
                                 style={{ cursor: "pointer" }}
                                 onClick={() => {
                                   navigate("/edit-profile");
@@ -333,9 +335,7 @@ const ProfilePage = () => {
                             {post.Department}
                           </div>
 
-                          <div className="d-flex justify-content-center align-items-center mt-20  ">
-                            {post.Bio}
-                          </div>
+                          <div className="bioStyle">{post.Bio}</div>
                         </div>
                       </div>
                     </div>

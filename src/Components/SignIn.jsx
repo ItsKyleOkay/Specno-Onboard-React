@@ -8,6 +8,24 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import signIn from "../Styles/img/sign_in.png";
 import Incorrect from "../Styles/img/thumbs-down.png";
+import styled, { keyframes } from "styled-components";
+import { fadeIn, zoomInUp } from "react-animations";
+
+const CardAnimation0 = styled.div`
+  animation: 2s ${keyframes`${fadeIn}`} 1;
+`;
+const CardAnimation1 = styled.div`
+  animation: 2.75s ${keyframes`${fadeIn}`} 1;
+`;
+const CardAnimation2 = styled.div`
+  animation: 3.5s ${keyframes`${fadeIn}`} 1;
+`;
+const CardAnimation3 = styled.div`
+  animation: 4.25s ${keyframes`${fadeIn}`} 1;
+`;
+const Shake = styled.div`
+  animation: 4s ${keyframes`${zoomInUp}`} 1;
+`;
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -84,31 +102,34 @@ const SignIn = () => {
               <h1 className={classes.headingspecno}> Specno </h1>
             </div>
             <div className="d-flex justify-content-center">
-              <div>
+              <Shake>
                 <img
                   src={signIn}
                   loading="lazy"
                   alt=""
                   className={classes.rocket}
                 ></img>
-              </div>
+              </Shake>
             </div>
             <div className="d-flex justify-content-center">
               <h1 className={classes.welcome}>
-                Hello! Welcome to Specno's Onboarding platform
+                Welcome to Specno's Onboarding platform
               </h1>
             </div>
             <div className="social-menu d-flex justify-content-center">
               <ul className="social-menu d-flex justify-content-center">
                 <li>
+                  <CardAnimation0>
                   <a
                     href="https://za.linkedin.com/company/specno"
                     target="blank"
                   >
                     <img src="https://uploads-ssl.webflow.com/5f479f688ac92ece1c89402b/5f74a475783567589bee3e35_Group%2029012.svg" />
                   </a>
+                  </CardAnimation0>
                 </li>
                 <li>
+                <CardAnimation1>
                   <a
                     href="https://www.facebook.com/appsbyspecno/"
                     target="blank"
@@ -118,8 +139,10 @@ const SignIn = () => {
                       alt=""
                     />
                   </a>
+                  </CardAnimation1>
                 </li>
                 <li>
+                <CardAnimation2>
                   <a
                     href="https://www.instagram.com/appsbyspecno/"
                     target="blank"
@@ -129,14 +152,17 @@ const SignIn = () => {
                       alt=""
                     />
                   </a>
+                  </CardAnimation2>
                 </li>
                 <li>
+                <CardAnimation3>
                   <a href="https://twitter.com/appsbyspecno">
                     <img
                       src="https://uploads-ssl.webflow.com/5f479f688ac92ece1c89402b/5f74a49e7f04f6feb227f666_Group%2029016.svg"
                       alt=""
                     />
                   </a>
+                  </CardAnimation3>
                 </li>
               </ul>
             </div>
@@ -226,3 +252,4 @@ const SignIn = () => {
 };
 
 export default SignIn;
+

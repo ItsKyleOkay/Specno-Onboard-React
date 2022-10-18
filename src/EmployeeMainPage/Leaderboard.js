@@ -174,7 +174,7 @@ const Leaderboard = () => {
                           Player Name
                         </TableCell>
                         <TableCell align="right" style={{ fontWeight: "bold" }}>
-                          Date and Time
+                          Date added
                         </TableCell>
                         <TableCell align="right" style={{ fontWeight: "bold" }}>
                           Difficulty

@@ -24,7 +24,7 @@ const ContentDataAdminEdit = () => {
   const [Type, setType] = useState("");
   const [Number, setNumber] = useState(1);
   const [Number2, setNumber2] = useState(1);
-  const [TotalQuestions, setTotalQuestions] = useState(1);
+  const [TotalQuestions, setTotalQuestions] = useState(0);
   const [TotalQuestions3, setTotalQuestions3] = useState(1);
   const [TotalQuestions2, setTotalQuestions2] = useState();
   const [Question, setQuestion] = useState("");
@@ -290,6 +290,7 @@ const ContentDataAdminEdit = () => {
     }
   }
 
+  console.log(TotalQuestions3);
   return (
     <div>
       <AdminNavbar />

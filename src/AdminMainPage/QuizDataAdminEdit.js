@@ -323,7 +323,7 @@ const ContentDataAdminEdit = () => {
               }}
               onClick={() => addQuestion("Question" + TotalQuestions3)}
             >
-              Add
+              Add Question
             </button>
             <button
               className="contentAddSave2"
@@ -332,7 +332,7 @@ const ContentDataAdminEdit = () => {
               }}
               onClick={() => setQuestionFilter("Question" + QuestionIncrease())}
             >
-              Next
+              Next Question
             </button>
           </div>
           <br />
@@ -466,7 +466,7 @@ const ContentDataAdminEdit = () => {
                         )
                       }
                     >
-                      Save
+                      Save changes
                     </button>
                   </div>
                 ) : null}

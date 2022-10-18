@@ -6,10 +6,12 @@ import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
 import AdminNavbar from "../Navigation/AdminNavbar.js";
 import { useNavigate } from "react-router-dom";
-import styled, { keyframes } from 'styled-components';
-import { fadeIn } from 'react-animations';
+import styled, { keyframes } from "styled-components";
+import { fadeIn } from "react-animations";
 
-const CardAnimation = styled.div`animation: 1.5s ${keyframes`${fadeIn}`} 1`;
+const CardAnimation = styled.div`
+  animation: 1.5s ${keyframes`${fadeIn}`} 1;
+`;
 
 const QuizAdmin = () => {
   const [loading, setLoading] = useState(true);
@@ -105,7 +107,7 @@ const QuizAdmin = () => {
                   navigate("/quiz-admin/new/edit");
                 }}
               >
-                Add
+                Add Quiz
               </button>
             </div>
           </div>

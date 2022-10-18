@@ -7,16 +7,20 @@ import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
 import Navbar from "../Navigation/Navbar.js";
 import { useNavigate } from "react-router-dom";
-import styled, { keyframes } from 'styled-components';
-import { fadeIn } from 'react-animations';
+import styled, { keyframes } from "styled-components";
+import { fadeIn } from "react-animations";
 
-const CardAnimation = styled.div`animation: 1.5s ${keyframes`${fadeIn}`} 1`;
+const CardAnimation = styled.div`
+  animation: 1.5s ${keyframes`${fadeIn}`} 1;
+`;
 
 const Quiz = () => {
   const [email, setEmail] = useState();
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
   const [all, setAll] = useState();
+  const [quizinfo, setQuizInfo] = useState([]);
+
   const navigate = useNavigate();
 
   firebase.auth().onAuthStateChanged(function (user) {
@@ -26,6 +30,27 @@ const Quiz = () => {
       // No user is signed in.
     }
   });
+
+  useEffect(() => {
+    const getPostsFromFirebase = [];
+    const quizzes = db
+      .collection("quiz")
+      .doc("Dev Team")
+      .collection("Quizzes")
+
+      .onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          getPostsFromFirebase.push({
+            ...doc.data(), //spread operator
+            key: doc.id, // `id` given to us by Firebase
+          });
+        });
+        setQuizInfo(getPostsFromFirebase);
+
+        document.getElementById("btn").click();
+      });
+    return () => quizzes();
+  }, []);
 
   useEffect(() => {
     const getPostsFromFirebase = [];
@@ -139,7 +164,7 @@ const Quiz = () => {
             </div>
           </div>
           <div className="row" data-aos="zoom-in" data-aos-delay="100">
-            {posts.map((post) => {
+            {quizinfo.map((post) => {
               return all === post.Filter ? (
                 <CardAnimation className="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
                   <div className="rounded course-item shadow">
@@ -189,7 +214,7 @@ const Quiz = () => {
                   </div>
                 </CardAnimation>
               ) : all === "everything" ? (
-                <div className="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 rounded">
+                <div className="col-lg-3 col-md-4 d-flex align-items-stretch mt-4 mt-md-0 rounded">
                   <CardAnimation className="d-flex">
                     <div className="rounded course-item shadow">
                       <img

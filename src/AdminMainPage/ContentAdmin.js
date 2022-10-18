@@ -5,10 +5,12 @@ import AdminNavbar from "../Navigation/AdminNavbar.js";
 import contentPic from "../Styles/img/content.jpg";
 import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
-import styled, { keyframes } from 'styled-components';
-import { fadeIn } from 'react-animations';
+import styled, { keyframes } from "styled-components";
+import { fadeIn } from "react-animations";
 
-const CardAnimation = styled.div`animation: 1.5s ${keyframes`${fadeIn}`} 1`;
+const CardAnimation = styled.div`
+  animation: 1.5s ${keyframes`${fadeIn}`} 1;
+`;
 
 const ContentAdmin = () => {
   const [loading, setLoading] = useState(true);
@@ -103,7 +105,7 @@ const ContentAdmin = () => {
                   navigate("/content-admin/new/edit");
                 }}
               >
-                Add
+                Add Content
               </button>
             </div>
           </div>

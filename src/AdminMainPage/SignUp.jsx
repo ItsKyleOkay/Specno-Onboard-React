@@ -13,6 +13,9 @@ const AddEmployee = () => {
   const [Department, setDepartment] = useState("");
   const [isChecked, setIsChecked] = useState(true);
   const [displayName, setDisplayName] = useState("");
+  const [photoURL, setphotoURL] = useState(
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpotoCGLaCq7upiGsJ8ovSCS8H8W9Dzapqyg&usqp=CAU"
+  );
   const [DateTime, setDate] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -41,6 +44,7 @@ const AddEmployee = () => {
       );
       generateUserDocument(
         user,
+        { photoURL },
         { displayName },
         { employee },
         { Age },
@@ -57,7 +61,7 @@ const AddEmployee = () => {
         { ID },
         { Difficulty }
       );
-      isChecked ? navigate("/profile") : navigate("/admin-profile");
+      isChecked ? navigate("/admin-profile") : navigate("/admin-profile");
     } catch (error) {
       setError("The email or password doesnt meet requirements");
     }
@@ -79,6 +83,7 @@ const AddEmployee = () => {
       );
       generateUserDocument(
         user,
+        { photoURL },
         { displayName },
         { employee },
         { Age },
@@ -174,7 +179,7 @@ const AddEmployee = () => {
             className="my-1 p-1 w-full "
             name="date"
             value={DateTime}
-            placeholder="28 Sep 2022"
+            placeholder="13 Oct 2022"
             id="date"
             onChange={(event) => onChangeHandler(event)}
           />
@@ -254,7 +259,7 @@ const AddEmployee = () => {
           <button
             className="AddUser"
             onClick={() => {
-              navigate("/employee-list");
+              navigate("/admin-profile");
             }}
           >
             Back

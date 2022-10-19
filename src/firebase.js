@@ -22,7 +22,6 @@ export const storage = firebase.storage();
 
 export const generateUserDocument = async (
   user,
-  photoURL,
   additionalData,
   employee,
   Age,
@@ -46,12 +45,12 @@ export const generateUserDocument = async (
 
   console.log(userRef);
   if (!snapshot.exists) {
-    const { email, displayName } = user;
+    const { email, displayName, photoURL } = user;
     try {
       await userRef.set({
         displayName,
         email,
-        ...photoURL,
+        photoURL,
         ...additionalData,
         ...employee,
         ...Age,

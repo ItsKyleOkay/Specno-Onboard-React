@@ -25,6 +25,7 @@ const ProfilePage = () => {
   const [email, setEmail] = useState();
   const [quizinfo, setQuizInfo] = useState([]);
 
+  //The profile page holds the dashboard.
 
   useEffect(() => {
     const getPostsFromFirebase = [];
@@ -62,6 +63,8 @@ const ProfilePage = () => {
       });
     return () => quizzes();
   }, []);
+
+  //Useeffects fetches all the data we need
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function (user) {
@@ -113,7 +116,7 @@ const ProfilePage = () => {
       }
     });
   });
-
+  //Getting user email of whos logged in.
   var count = 0;
   return (
     <div>
@@ -131,7 +134,7 @@ const ProfilePage = () => {
                         <div className="profileHeader2">
                           Hello {post.displayName}
                         </div>
-                        <h6 className="textglobalsub">
+                        <h6 className="textglobalsub" data-testid="header">
                           Welcome back to your onboarding at Specno
                         </h6>
                       </div>

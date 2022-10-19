@@ -45,7 +45,6 @@ const AddEmployee = () => {
       );
       generateUserDocument(
         user,
-        { photoURL },
         { displayName },
         { employee },
         { Age },
@@ -84,7 +83,6 @@ const AddEmployee = () => {
       );
       generateUserDocument(
         user,
-        { photoURL },
         { displayName },
         { employee },
         { Age },

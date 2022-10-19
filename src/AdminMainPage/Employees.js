@@ -42,7 +42,7 @@ const Employee = () => {
               id="outlined-basic"
               variant="outlined"
               fullWidth
-              label="Search"
+              placeholder="Search"
               value={filter}
               onChange={(event) => setFilter(event.target.value)}
             />

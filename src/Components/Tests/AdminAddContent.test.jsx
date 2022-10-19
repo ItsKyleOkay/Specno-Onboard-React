@@ -5,7 +5,7 @@ import ContentDataAdminEdit from "../../AdminMainPage/ContentDataAdminEdit";
 import { BrowserRouter } from "react-router-dom";
 
 //test block
-test("Test header", () => {
+test("Render text on form", () => {
   // render the component on virtual dom
   render(
     <BrowserRouter>

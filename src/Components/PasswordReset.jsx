@@ -16,6 +16,8 @@ const PasswordReset = () => {
     }
   };
 
+  //Page for reseting password.
+  //Code was simple and didnt have much styling effort
   const sendResetEmail = (event) => {
     event.preventDefault();
     auth

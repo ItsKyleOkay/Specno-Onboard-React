@@ -6,7 +6,6 @@ import "../Styles/bootstrap/css/bootstrap.min.css";
 import Navbar from "../Navigation/Navbar.js";
 import { BrowserRouter } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import Profile from "../Styles/img/Kyle.png";
 import firebase from "firebase";
 import { db } from "../firebase";
 import contentPic from "../Styles/img/content.jpg";
@@ -14,8 +13,6 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import styled, { keyframes } from "styled-components";
-import { fadeIn } from "react-animations";
 
 const ProfilePage = () => {
   const user = useContext(UserContext);
@@ -28,9 +25,7 @@ const ProfilePage = () => {
   const [email, setEmail] = useState();
   const [quizinfo, setQuizInfo] = useState([]);
 
-  const CardAnimation = styled.div`
-    animation: 1.5s ${keyframes`${fadeIn}`} 1;
-  `;
+
   useEffect(() => {
     const getPostsFromFirebase = [];
 

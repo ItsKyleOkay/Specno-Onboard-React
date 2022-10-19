@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Logo from "../Styles/img/logo.png";
+import Logo from "../Styles/img/Logo2.svg";
 import Bell from "../Styles/img/bell.png";
 import "../Styles/style.css";
 import "../Styles/bootstrap/css/bootstrap.min.css";
@@ -22,14 +22,9 @@ const Navbar = () => {
   return (
     <header id="header" className="fixed-top d-flex align-items-center;">
       <div className="container d-flex justify-content-between align-items-center w-full">
-        <div className="logo">
-          <a href="/profile">
-            <img src={Logo} alt="" className="img-fluid specno-img" />
-          </a>
-          <h1>
-            <a href="/profile">Specno</a>
-          </h1>
-        </div>
+        <NavLink to="/profile" className="logo">
+          <img src={Logo} alt="" className="img-fluid specno-img" />
+        </NavLink>
         <nav id="navbar" className="navbar">
           <ul>
             <li>

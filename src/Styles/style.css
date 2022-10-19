@@ -1853,6 +1853,8 @@ align-content: center;
 
 .specno-img {
   display: inline !important;
+  filter: brightness(0) invert(1);
+  width: 9.2em;
 }
 
 .content-data-img {
@@ -1891,7 +1893,7 @@ align-content: center;
 .content-text {
   font-family: Poppins, sans-serif;
   color: #333;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 36px;
   font-weight: 300;
   text-align: left;

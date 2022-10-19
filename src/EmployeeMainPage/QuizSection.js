@@ -26,8 +26,11 @@ const QuizSection = () => {
 
   const [quizinfo, setQuizInfo] = useState([]);
   const [isSelected, setSelected] = useState([false, false, false]);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(5);
   const [combo, setCombo] = useState(1);
+
+  const { state } = useLocation();
+  const currentCategory = state && state.name;
 
   var positionAns = 0;
 
@@ -91,7 +94,7 @@ const QuizSection = () => {
       .collection("quiz")
       .doc("Dev Team")
       .collection("Quizzes")
-      .doc(location.state.name)
+      .doc(currentCategory)
       .collection("Questions")
 
       .onSnapshot((querySnapshot) => {
@@ -163,8 +166,7 @@ const QuizSection = () => {
     <div>
       <Navbar />
       {quizinfo.map((post2) =>
-        (post2.Name === location.state.name) &
-        (post2.Questions !== totalquestions)
+        (post2.Name === currentCategory) & (post2.Questions !== totalquestions)
           ? (setTotalQuestions(post2.Questions), setName(post2.Name))
           : null
       )}
@@ -310,7 +312,7 @@ const QuizSection = () => {
                             increaseScore();
                             setCombo(combo + 1);
                             var valpercent = totalquestions * 5;
-                            var scorepercent = ((score + 5) * 100) / valpercent;
+                            var scorepercent = (score * 100) / valpercent;
                             if (scorepercent > 49) {
                               navigate("/specno-quiz/data/complete", {
                                 state: {

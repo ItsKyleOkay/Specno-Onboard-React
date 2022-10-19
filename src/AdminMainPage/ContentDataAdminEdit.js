@@ -19,6 +19,8 @@ const ContentDataAdminEdit = () => {
   const [background, setBackground] = useState("");
   const [info, setInfo] = useState("");
   const [youtube, setYoutube] = useState("");
+  const { state } = useLocation();
+  const currentCategory = state && state.name;
 
   useEffect(() => {
     const getPostsFromFirebase = [];
@@ -72,7 +74,7 @@ const ContentDataAdminEdit = () => {
               }}
             >
               {" "}
-              {location.state.name}
+              {currentCategory}
             </h1>
             <button
               data-testid="header"

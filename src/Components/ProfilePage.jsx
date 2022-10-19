@@ -70,46 +70,52 @@ const ProfilePage = () => {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function (user) {
-      const quizfailed = db
-        .collection("users")
-        .doc(user.uid)
-        .get()
-        .then((doc) => {
-          if (doc && doc.exists) {
-            setFailed(doc.data().failed);
-          }
-        });
-      return () => quizfailed();
+      if (user) {
+        const quizfailed = db
+          .collection("users")
+          .doc(user.uid)
+          .get()
+          .then((doc) => {
+            if (doc && doc.exists) {
+              setFailed(doc.data().failed);
+            }
+          });
+        return () => quizfailed();
+      }
     });
   });
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function (user) {
-      const quizzesdone = db
-        .collection("users")
-        .doc(user.uid)
-        .get()
-        .then((doc) => {
-          if (doc && doc.exists) {
-            setDone(doc.data().Done);
-          }
-        });
-      return () => quizzesdone();
+      if (user) {
+        const quizzesdone = db
+          .collection("users")
+          .doc(user.uid)
+          .get()
+          .then((doc) => {
+            if (doc && doc.exists) {
+              setDone(doc.data().Done);
+            }
+          });
+        return () => quizzesdone();
+      }
     });
   });
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function (user) {
-      const emaildone = db
-        .collection("users")
-        .doc(user.uid)
-        .get()
-        .then((doc) => {
-          if (doc && doc.exists) {
-            setEmail(doc.data().email);
-          }
-        });
-      return () => emaildone();
+      if (user) {
+        const emaildone = db
+          .collection("users")
+          .doc(user.uid)
+          .get()
+          .then((doc) => {
+            if (doc && doc.exists) {
+              setEmail(doc.data().email);
+            }
+          });
+        return () => emaildone();
+      }
     });
   });
 
@@ -264,7 +270,10 @@ const ProfilePage = () => {
                                 <div className="card-body p-3">
                                   <div className="row">
                                     <div className="col-12">
-                                      <div className="profileHeader2">
+                                      <div
+                                        className="profileHeader2"
+                                        data-testid="header"
+                                      >
                                         Score till prize
                                       </div>
 
@@ -318,15 +327,26 @@ const ProfilePage = () => {
                             </div>
                           </div>
                           <div className="d-flex justify-content-center align-items-center ">
-                            <img
-                              src={post.photoURL}
-                              alt="avatar"
-                              className="d-flex justify-content-center align-items-center rounded-circle"
-                              style={{
-                                height: "140px",
-                                backgroundColor: "rgb(233, 236, 239)",
-                              }}
-                            ></img>
+                            {post.photoURL !== null ? (
+                              <img
+                                src={post.photoURL}
+                                alt="avatar"
+                                className="d-flex justify-content-center align-items-center rounded-circle"
+                                style={{
+                                  height: "140px",
+                                  backgroundColor: "rgb(233, 236, 239)",
+                                }}
+                              ></img>
+                            ) : (
+                              firebase
+                                .auth()
+                                .onAuthStateChanged(function (user) {
+                                  db.collection("users").doc(user.uid).update({
+                                    photoURL:
+                                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpotoCGLaCq7upiGsJ8ovSCS8H8W9Dzapqyg&usqp=CAU",
+                                  });
+                                })
+                            )}
                           </div>
                           <div className="d-flex justify-content-center align-items-center mt-10  ">
                             {post.displayName}

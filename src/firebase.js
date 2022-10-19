@@ -44,6 +44,7 @@ export const generateUserDocument = async (
   const userRef = firestore.doc(`users/${user.uid}`);
   const snapshot = await userRef.get();
 
+  console.log(userRef);
   if (!snapshot.exists) {
     const { email, displayName } = user;
     try {

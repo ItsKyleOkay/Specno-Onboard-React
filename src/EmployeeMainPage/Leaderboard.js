@@ -16,6 +16,7 @@ import { BrowserRouter } from "react-router-dom";
 
 const Leaderboard = () => {
   const [email, setEmail] = useState();
+  const [uid, setUid] = useState("");
   const [badges, setBadges] = useState([]);
   const [badge2, setBadge] = useState("1");
   const [posts, setPosts] = useState([]);
@@ -60,16 +61,20 @@ const Leaderboard = () => {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function (user) {
-      const quizzesdone = db
-        .collection("users")
-        .doc(user.uid)
-        .get()
-        .then((doc) => {
-          if (doc && doc.exists) {
-            setBadge(doc.data().Badge);
-          }
-        });
-      return () => quizzesdone();
+      if (user) {
+        setUid(user.uid);
+
+        const quizzesdone = db
+          .collection("users")
+          .doc(uid)
+          .get()
+          .then((doc) => {
+            if (doc && doc.exists) {
+              setBadge(doc.data().Badge);
+            }
+          });
+        return () => quizzesdone();
+      }
     });
   });
 
@@ -288,7 +293,7 @@ const Leaderboard = () => {
               </div>
               <div className={classes.box3style}>
                 <div className={classes.PrizeHead}>Your badges</div>
-                <div class="row" data-aos="zoom-in" data-aos-delay="100">
+                <div className="row" data-aos="zoom-in" data-aos-delay="100">
                   {badges.map((badge) =>
                     badge2.includes(badge.Name) ? (
                       <div className="col-lg-5 col-md-5 d-flex align-items-stretch mt-4 mt-md-0">

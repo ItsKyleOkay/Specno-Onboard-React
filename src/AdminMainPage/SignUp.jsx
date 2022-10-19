@@ -16,6 +16,7 @@ const AddEmployee = () => {
   const [photoURL, setphotoURL] = useState(
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpotoCGLaCq7upiGsJ8ovSCS8H8W9Dzapqyg&usqp=CAU"
   );
+
   const [DateTime, setDate] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -61,7 +62,7 @@ const AddEmployee = () => {
         { ID },
         { Difficulty }
       );
-      isChecked ? navigate("/admin-profile") : navigate("/admin-profile");
+      isChecked ? navigate("/profile") : navigate("/admin-profile");
     } catch (error) {
       setError("The email or password doesnt meet requirements");
     }
@@ -259,7 +260,7 @@ const AddEmployee = () => {
           <button
             className="AddUser"
             onClick={() => {
-              navigate("/admin-profile");
+              navigate("/employee-list");
             }}
           >
             Back

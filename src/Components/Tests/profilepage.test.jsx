@@ -16,7 +16,5 @@ test("Test header", () => {
 
   //interact with those elements
 
-  expect(headertext).toHaveTextContent(
-    "Designing And Building World Class Digital Products"
-  );
+  expect(headertext).toHaveTextContent(" Score till prize");
 });

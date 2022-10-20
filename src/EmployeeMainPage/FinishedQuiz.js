@@ -16,6 +16,8 @@ const FinishedQuiz = () => {
   const [passedquizzes, setPassed] = useState();
   const [failedquizzes, setFailed] = useState();
 
+  const removedDecimal = Math.trunc(location.state.percent);
+
   var newFail;
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -149,7 +151,7 @@ const FinishedQuiz = () => {
                     />
                     <div className="Finished1">
                       {" "}
-                      Score on quiz: {location.state.percent}%{" "}
+                      Score on quiz: {removedDecimal}%{" "}
                     </div>
                     <div className="Finished1">
                       {" "}

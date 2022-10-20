@@ -33,14 +33,19 @@ const ContentDataAdminEdit = () => {
   const [QuestionFilter, setQuestionFilter] = useState("Question1");
   const [QuestionFilterNum, setQuestionFilterNum] = useState(1);
 
-  console.log(TotalQuestions);
+  var holder = 1;
   console.log(QuestionFilterNum);
+  console.log(QuestionFilter);
   const QuestionIncrease = () => {
     if (QuestionFilterNum < TotalQuestions) {
+      console.log("hello");
       setQuestionFilterNum(QuestionFilterNum + 1);
-      return QuestionFilterNum;
+      holder = QuestionFilterNum + 1;
+      setQuestionFilter("Question" + holder);
+      console.log(QuestionFilterNum);
     }
   };
+
   useEffect(() => {
     const getPostsFromFirebase = [];
     const quizzes = db
@@ -157,7 +162,6 @@ const ContentDataAdminEdit = () => {
       });
   }
 
-  console.log(QuestionFilter);
   function AddChanges(
     Option1,
     Option2,
@@ -290,7 +294,6 @@ const ContentDataAdminEdit = () => {
     }
   }
 
-  console.log(TotalQuestions3);
   return (
     <div>
       <AdminNavbar />
@@ -331,7 +334,7 @@ const ContentDataAdminEdit = () => {
               style={{
                 flex: "1",
               }}
-              onClick={() => setQuestionFilter("Question" + QuestionIncrease())}
+              onClick={() => QuestionIncrease()}
             >
               Next Question
             </button>
